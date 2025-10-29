@@ -1,0 +1,92 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DotGothic16&family=Doto:wght@100..900&family=Flow+Circular&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jersey+10&family=Lexend:wght@100..900&family=Oswald:wght@200..700&family=Sora:wght@100..800&display=swap');
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Oswald", sans-serif;
+}
+
+:root{
+    --mainColor: rgb(187, 41, 41);
+    --mainColorLight: rgb(218, 127, 127);
+    --secondaryColor: rgb(8, 8, 8);
+    --textColor: #eee;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    padding: 0 2rem;
+    background-color: var(--mainColor);
+    color: var(--textColor);
+}
+
+nav a{
+    margin: 0 2rem;
+    color: var(--textColor);
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+}
+
+nav a:hover{
+    color: var(--secondaryColor);
+    background-color: var(--mainColorLight);
+}
+
+
+
+header .nav-btn {
+    padding: 5px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--textColor);
+    display: none;
+    opacity: 0;
+}
+
+@media only screen and (max-width: 1024px){
+    header .nav-btn {
+        display: block;
+        opacity: 1;
+        padding: 0.5rem 1rem;
+        transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+        border-radius: 20px;
+    }
+
+    header .nav-btn:hover{
+        color: var(--secondaryColor);
+        background-color: var(--mainColorLight);
+    }
+
+    header nav{
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 1.5rem;
+        background-color: var(--mainColor);
+        transition: 1s;
+        transform: translateY(-100vh);
+    }
+
+    header .responsive_nav{
+        transform: none;
+    }
+
+   
+}
