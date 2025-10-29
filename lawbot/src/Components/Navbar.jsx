@@ -1,6 +1,6 @@
 import {FaBars, FaTimes} from "react-icons/fa";
 import {useRef} from "react";
-import "../Styles/main.css"
+import classes from "../Styles/main.module.css"
 
 
 function Navbar() {
@@ -9,23 +9,23 @@ function Navbar() {
 
     const showNavbar = () =>{
         // assigns the class "responsive_nav to apply responsive styling"
-        navRef.current.classList.toggle("responsive_nav");
+        navRef.current.classList.toggle(classes.responsive_nav);
     }
 
     return (  
-        <header>
+        <header className={classes.header}>
             <h2>LawBot</h2>
-            <nav ref={navRef}>
+            <nav ref={navRef} className={classes.nav}>
                 <a href="/#">Home</a>
                 <a href="/#">Login</a>
                 <a href="/#">About Us</a>
                 <a href="/#">Help</a>
-                <button className="nav-btn nav-close-btn" onClick={showNavbar}>
+                <button className={`${classes.navBtn} ${classes.navCloseBtn} ${classes.button}`} onClick={showNavbar}>
                     <FaTimes/>
                 </button>
             </nav>
 
-            <button className="nav-btn nav-close-btn" onClick={showNavbar}>
+            <button className={`${classes.navBtn} ${classes.navCloseBtn} ${classes.button}`} onClick={showNavbar}>
                 <FaBars/>
             </button>
 
