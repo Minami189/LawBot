@@ -10,10 +10,10 @@
 }
 
 :root{
-    --mainColor: rgb(187, 41, 41);
-    --mainColorLight: rgb(218, 127, 127);
-    --secondaryColor: rgb(8, 8, 8);
-    --textColor: #eee;
+    --mainColor: #e3d9c5;
+    --mainColorLight: rgb(202, 185, 154);
+    --secondaryColor: #dd6464;
+    --textColor: #a14949;
 }
 
 header{
@@ -40,8 +40,6 @@ nav a:hover{
     color: var(--secondaryColor);
     background-color: var(--mainColorLight);
 }
-
-
 
 header .navBtn{
     padding: 5px;
