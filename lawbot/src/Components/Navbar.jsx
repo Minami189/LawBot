@@ -14,16 +14,29 @@ function Navbar() {
 
     return (  
         <header className={classes.header}>
-            <h2>LawBot</h2>
-            <nav ref={navRef} className={classes.nav}>
-                <a href="/#">Home</a>
-                <a href="/#">Login</a>
-                <a href="/#">About Us</a>
-                <a href="/#">Help</a>
+            <div className={classes.logo}>
+                 <h2>LawBot</h2>
+            </div>
+           
+        
+            <nav ref={navRef} className={classes.mainNav}>
+                <div className={classes.centerNav}>
+                    <a href="/#">Home</a>
+                    <a href="/#">About Us</a>
+                    <a href="/#">Help</a>
+                </div>
+                <div className={classes.rightNav}>
+                    <a href="">Login</a>
+                    <a href="">Try For Free</a>
+                </div>
                 <button className={`${classes.navBtn} ${classes.navCloseBtn} ${classes.button}`} onClick={showNavbar}>
                     <FaTimes/>
                 </button>
             </nav>
+
+           
+
+          
 
             <button className={`${classes.navBtn} ${classes.navCloseBtn} ${classes.button}`} onClick={showNavbar}>
                 <FaBars/>
