@@ -10,20 +10,41 @@
 }
 
 :root{
-    --mainColor: #e3d9c5;
-    --mainColorLight: rgb(202, 185, 154);
-    --secondaryColor: #dd6464;
-    --textColor: #a14949;
+    --mainColor: #F9EADC;
+    --mainColorLight: #F6DFCA;
+    --MainColorContrast: #3C3232;
+    --secondaryColor: #ffffff;
+    --textColor: #3C3232;
 }
 
 header{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     height: 80px;
     padding: 0 2rem;
     background-color: var(--mainColor);
     color: var(--textColor);
+}
+.logo {
+    width: 33%;
+    flex: 0 0 auto;
+}
+
+.mainNav {
+    width: 66%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    align-items: center;
+}
+
+.centerNav {
+    width: 50%;
+    margin: 0 auto;
+}
+.rightNav {
+    width: 50%;
+  margin-left: auto;
 }
 
 nav a{
@@ -38,7 +59,7 @@ nav a{
 
 nav a:hover{
     color: var(--secondaryColor);
-    background-color: var(--mainColorLight);
+    background-color: var(--MainColorContrast);
 }
 
 header .navBtn{
