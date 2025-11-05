@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+:root {
+  --maincolor: #F6DFCA;
+  --secondarycolor: #F9EADC;
+  --tertiarycolor: #A29090;
+  --textcolor: #3C3232;
+  --title: "Playfair Display", serif;
+  --subtitle: "Merriweather Sans", sans-serif;
+  --textfont: "Geist Mono", monospace;
+  background-color: var(--maincolor);
+}
+
+.landingPageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background-color: var(--maincolor);
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  background-color: var(--secondarycolor);
+  border: 3px solid var(--textcolor);
+  border-radius: 2rem;
+  padding: 2vw 4vw;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  max-height: 700px;
+  max-width: 1300px;
+  width: 100%;
+}
+
+.hero img {
+  width: clamp(200px, 35vw, 320px);
+  height: auto;
+  mix-blend-mode: multiply;
+}
+
+
+.title {
+  color: var(--textcolor);
+  font-family: var(--title);
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  max-width: 800px;
+}
+
+
+.uploadBar {
+  color: #fff;
+  background-color: var(--textcolor);
+  border-radius: 30px;
+  padding: 1.5rem 2.5rem;
+  font-family: var(--subtitle);
+  font-size: clamp(0.9rem, 1.2vw, 1rem);
+  width: 100%;
+  max-width: 600px;
+}
+
+.uploadBar p {
+  margin: 0;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+
+.subtitle p {
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  font-family: var(--subtitle);
+  color: var(--textcolor);
+  margin-top: 0.5rem;
+}
+
+
+@media (max-width: 1024px) {
+  .hero {
+    padding: 3rem 5vw;
+    max-width: 90%;
+  }
+
+  .title {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+  }
+
+  .uploadBar {
+    max-width: 90%;
+    padding: 1rem 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    border-width: 2px;
+    padding: 2rem 1.5rem;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .hero img {
+    width: 60%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    gap: 1.5rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .uploadBar {
+    font-size: 0.8rem;
+    padding: 0.8rem 1rem;
+  }
+}
