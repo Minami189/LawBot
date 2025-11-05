@@ -1,0 +1,840 @@
+@font-face {
+  font-family: "SF Pro Display-Bold";
+  src: url(assets/fonts/SF_Pro_Display/SFPRODISPLAYBOLD.OTF);
+}
+
+@font-face {
+  font-family: "SF Pro Display-Medium";
+  src: url(assets/fonts/SF_Pro_Display/SFPRODISPLAYMEDIUM.OTF);
+}
+
+@font-face {
+  font-family: "SF Pro Display-Regular";
+  src: url(assets/fonts/SF_Pro_Display/SFPRODISPLAYREGULAR.OTF);
+}
+
+:root {
+  /*==========Background Colors==========*/
+  --body-bg-color: #edf2fb;
+  --header-bg-color: #ccdbfd;
+  --header-dropdown-bg-color: rgba(255, 255, 255, 0.75);
+  --footer-main-bg-color: #0d47a1;
+  --footer-cpyrt-bg-color: #00072d;
+  --sidebar-bg-color: rgba(255, 255, 255, 0.75);
+
+  /*==========Shadow Colors==========*/
+  --header-shadow-color: 0rem 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+  --sidebar-shadow-color: 0rem 0.25rem 2rem rgba(0, 0, 0, 0.2);
+
+  /*==========Icon Colors==========*/
+  --mail-color: #0d47a1;
+  --fb-color: #0d47a1;
+  --yt-color: #0d47a1;
+  --icon-circle-color: white;
+
+  /*==========Button Colors==========*/
+  --header-button-color: #ccdbfd;
+  --header-button-border-color: black;
+  --header-button-font-color: black;
+  --footer-button-color: #0d47a1;
+  --footer-button-border-color: white;
+  --footer-button-font-color: white;
+
+  /*==========Text Colors==========*/
+  --header-font-logo-color: black;
+  --header-font-nav-color: black;
+  --header-burger-color: black;
+  --sidebar-font-nav-color: black;
+  --footer-font-logo-color: white;
+  --footer-font-nav-title-color: white;
+  --footer-font-nav-section-color: white;
+  --footer-font-content-color: white;
+  --footer-font-cpyrt-color: white;
+
+  /*==========Hover Colors==========*/
+  --header-font-nav-hover-color: black;
+  --header-font-nav-underline-color: black;
+  --header-font-nav-dim-color: rgba(0, 0, 0, 0.4);
+  --header-dropdown-bg-hover-color: rgba(226, 234, 252, 0.75);
+  --header-button-hover-color: #00296b;
+  --header-button-font-hover-color: white;
+  --sidebar-font-nav-hover-color: white;
+  --sidebar-font-nav-bg-color: #0353a4;
+  --sidebar-font-nav-dim-color: rgba(0, 0, 0, 0.4);
+  --footer-font-nav-hover-color: white;
+  --footer-font-nav-underline-color: white;
+  --footer-icon-hover-color: white;
+  --footer-icon-circle-hover-color: #0d47a1;
+  --footer-button-hover-color: #ccdbfd;
+  --footer-button-font-hover-color: black;
+
+  --header-height: 6rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: var(--header-height);
+}
+
+body {
+  background-color: var(--body-bg-color);
+}
+
+html,
+body {
+  height: 100dvh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main p,
+header p,
+footer p {
+  margin: 0;
+}
+
+/*=============Universal Skeleton Loading CSS Layout=============*/
+.skeleton {
+  opacity: 0.7;
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+.skeleton-text {
+  width: 100%;
+  height: 0.5rem;
+  margin: 0.25rem;
+  border-radius: 0.125rem;
+  opacity: 0.7;
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+.skeleton-text:last-child {
+  width: 80%;
+  margin: 0;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(200, 20%, 70%);
+  }
+  100% {
+    background-color: hsl(200, 20%, 95%);
+  }
+}
+
+/*=============Header CSS Layout=============*/
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: var(--header-bg-color);
+  gap: 1rem;
+  padding: 1.5rem;
+
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  height: var(--header-height);
+
+  font-family: "SF Pro Display-Bold";
+  box-shadow: var(--header-shadow-color);
+  transition: top 0.3s ease-in-out;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  margin-left: 0.5rem;
+}
+
+#header-logo {
+  height: 3em;
+  object-fit: cover;
+}
+
+#header-name {
+  color: var(--header-font-logo-color);
+  font-size: 1.75rem;
+}
+
+.header-middle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex: 1 1 auto; /* shorthand for grow/shrink/basis */
+}
+
+/* Dropdown wrapper */
+.header-dropdown {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+}
+
+/* Main link */
+.header-dropdown > a {
+  position: relative;
+  z-index: 2;
+  padding: 1rem 0; /* combines top & bottom padding */
+  font-size: 1.25rem;
+  font-family: "SF Pro Display-Bold";
+  color: var(--header-font-nav-color);
+  text-decoration: none;
+  transition: color 0.3s ease, filter 0.3s ease;
+}
+
+/* Underline */
+.underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 0.1875rem;
+  background-color: var(--header-font-nav-underline-color);
+  width: 0;
+  transition: width 0.3s ease;
+  z-index: 1;
+}
+
+/* Dropdown menu */
+.header-dropdown-menu {
+  position: absolute;
+  top: 100%; /* cleaner than calc(100% - (-0rem)) */
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: max-content;
+  padding: 1rem;
+  background: var(--header-dropdown-bg-color);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition-delay: 0.3s;
+  z-index: 3;
+}
+
+.header-dropdown-menu a {
+  display: block;
+  padding: 0.5rem 3rem 0.5rem 1rem; /* combines padding-right with shorthand */
+  white-space: nowrap;
+  font-size: 1.1rem;
+  font-family: "SF Pro Display-Bold";
+  color: var(--header-font-nav-color);
+  text-decoration: none;
+  border-radius: 0.5rem;
+}
+
+.header-dropdown-menu a:hover {
+  background: var(--header-dropdown-bg-hover-color);
+}
+
+/* Optional dimming effect */
+.header-middle:hover .header-dropdown:not(:hover) > a:not(.active-link) {
+  color: var(--header-font-nav-dim-color);
+  filter: brightness(0.8);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  margin-right: 0.5rem;
+}
+
+.header-right a {
+  text-decoration: none;
+}
+
+#header-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.5rem;
+  width: 11rem;
+  height: 3.25rem;
+  background-color: var(--header-button-color);
+
+  border-width: 0.125rem;
+  border-radius: 0.5em;
+  border-color: var(--header-button-border-color);
+
+  color: var(--header-button-font-color);
+  font-size: 1.2rem;
+  font-family: "SF Pro Display-Bold";
+
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#header-button:hover {
+  color: var(--header-button-font-hover-color);
+  background-color: var(--header-button-hover-color);
+}
+
+.header-button-icon-wrapper {
+  display: flex;
+  position: relative;
+  width: 1em;
+  height: 1em;
+}
+
+#header-button .far,
+#header-button .fas {
+  position: absolute;
+  transition: opacity 0.3s ease, color 0.3s ease;
+  color: var(--header-button-font-color);
+}
+
+/* Default: show solid, hide regular */
+#header-button .far {
+  opacity: 1;
+}
+
+#header-button .fas {
+  opacity: 0;
+}
+
+/* On hover: show regular, hide solid */
+#header-button:hover .far {
+  opacity: 0;
+}
+
+#header-button:hover .fas {
+  opacity: 1;
+  color: var(--header-button-font-hover-color);
+}
+
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 1rem;
+}
+
+.burger div {
+  width: 1.5625rem;
+  height: 0.1875rem;
+  background-color: var(--header-burger-color);
+  border-radius: 0.125rem;
+}
+
+/* --- Mobile menu container --- */
+.mobile-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 20rem;
+  padding: 5.5rem 1.5rem 0 1.5rem;
+  gap: 0.5rem;
+  background-color: var(--sidebar-bg-color);
+  backdrop-filter: blur(5px);
+  box-shadow: var(--sidebar-shadow-color);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(10px);
+  transition: opacity 0.3s ease, transform 0.5s ease;
+  z-index: 999;
+}
+
+.mobile-menu.show {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+/* --- Menu links --- */
+.mobile-menu .nav-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 3.5rem;
+  padding: 0 1rem;
+  border-radius: 0.2rem;
+  font-size: 1.25rem;
+  font-family: "SF Pro Display-Bold";
+  color: var(--sidebar-font-nav-color);
+  text-decoration: none;
+  transition: color 0.3s ease, background-color 0.3s ease, filter 0.3s ease;
+}
+
+/* Dim all other nav-items when one is hovered */
+.mobile-menu:has(.nav-item:hover) .nav-item:not(:hover):not(.dropdown-open) {
+  color: var(--sidebar-font-nav-dim-color);
+  filter: brightness(0.8);
+}
+
+.mobile-menu .nav-item:hover {
+  color: var(--sidebar-font-nav-hover-color);
+  background-color: var(--sidebar-font-nav-bg-color);
+  filter: brightness(1);
+}
+
+/* --- Icon wrapper for regular/fill swap --- */
+.header-icon-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-right: 0.75rem;
+}
+
+.header-icon-wrapper i {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 1.6rem;
+  color: inherit;
+  transition: opacity 0.2s ease;
+}
+
+/* Default: show regular, hide fill */
+.header-icon-wrapper .ph {
+  opacity: 1;
+}
+.header-icon-wrapper .ph-fill {
+  opacity: 0;
+}
+
+/* Hover swap: hide regular, show fill */
+.nav-item:hover .header-icon-wrapper .ph {
+  opacity: 0;
+}
+.nav-item:hover .header-icon-wrapper .ph-fill {
+  opacity: 1;
+}
+
+/* Dropdown container */
+.sidebar-dropdown {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Dropdown menu hidden by default */
+.sidebar-dropdown-menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  background: none;
+}
+
+/* Open state */
+.sidebar-dropdown.open .sidebar-dropdown-menu {
+  max-height: 500px; /* adjust if more links */
+}
+
+/* Dropdown menu links */
+.sidebar-dropdown-menu .sidebar-dropdown-menu-item {
+  display: block;
+  padding: 0.6rem 1rem 0.6rem 3.5rem;
+  font-size: 1.05rem;
+  color: var(--sidebar-font-nav-color);
+  text-decoration: none;
+  background: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.mobile-menu .sidebar-dropdown .sidebar-dropdown-menu-item:hover {
+  color: var(--sidebar-font-nav-hover-color);
+  background: var(--sidebar-font-nav-bg-color);
+}
+
+/* Caret icon */
+.caret-icon {
+  margin-left: auto;
+  transition: transform 0.3s ease;
+}
+
+/* Keep hover effect on parent when hovering its dropdown */
+.sidebar-dropdown:hover > .nav-item {
+  color: var(--sidebar-font-nav-hover-color);
+  background-color: var(--sidebar-font-nav-bg-color);
+  filter: brightness(1);
+}
+
+/* Force open dropdown's parent to stay highlighted */
+.sidebar-dropdown.open > .nav-item {
+  color: var(--sidebar-font-nav-hover-color) !important;
+  background-color: var(--sidebar-font-nav-bg-color) !important;
+  filter: brightness(1) !important;
+}
+
+/* Dim dropdown items when hovering parent */
+.sidebar-dropdown:hover .sidebar-dropdown-menu a {
+  color: var(--sidebar-font-nav-dim-color);
+}
+
+/* Keep hovered dropdown item bright */
+.sidebar-dropdown-menu a:hover {
+  color: var(--sidebar-font-nav-hover-color);
+  background: var(--sidebar-font-nav-bg-color);
+  filter: brightness(1);
+}
+
+.sidebar-dropdown.open .caret-icon {
+  transform: rotate(90deg);
+}
+
+/* Close button */
+.sidebar-close {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  background: none;
+  border: none;
+  color: var(--sidebar-font-color);
+  font-size: 1.75rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  line-height: 1;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.sidebar-close:hover {
+  color: var(--sidebar-font-hover-color);
+  transform: rotate(90deg);
+}
+
+/*=============Footer CSS Layout=============*/
+footer {
+  bottom: 0;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.footer-main {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5rem;
+  gap: 3rem;
+  background-color: var(--footer-main-bg-color);
+}
+
+.footer-copyright {
+  display: block;
+  padding: 1rem 3rem;
+
+  text-align: center;
+  font-size: 0.8rem;
+  font-family: "SF Pro Display-Bold";
+  color: var(--footer-font-cpyrt-color);
+  background-color: var(--footer-cpyrt-bg-color);
+}
+
+.footer-right {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+
+  gap: 2rem;
+  margin-top: 0.5rem;
+
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 3rem;
+
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+}
+
+.footer-top {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.75rem;
+
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+
+  font-family: "SF Pro Display-Bold";
+}
+
+#footer-logo {
+  height: 3em;
+  object-fit: cover;
+}
+
+#footer-name {
+  font-size: 1.5rem;
+  color: var(--footer-font-logo-color);
+}
+
+.footer-content {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-items: center;
+  max-width: 28rem;
+
+  font-family: "SF Pro Display-Medium";
+  text-align: justify;
+  font-size: 1.25rem;
+  line-height: 1.5em;
+  color: var(--footer-font-content-color);
+}
+
+.footer-accounts {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+}
+
+.footer-bottom {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-items: center;
+}
+
+.footer-right-container-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 50%;
+}
+
+.footer-right-container-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 50%;
+}
+
+.title {
+  color: var(--footer-font-nav-title-color);
+  font-size: 1.3rem;
+  margin-bottom: 3rem;
+  font-family: "SF Pro Display-Bold";
+}
+
+.subcontent {
+  color: var(--footer-font-nav-section-color);
+  font-size: 1.15rem;
+  margin-bottom: 1.75rem;
+  font-family: "SF Pro Display-Regular";
+}
+
+.footer-right a {
+  position: relative;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-right a::after {
+  content: "";
+  position: absolute;
+  background-color: var(--footer-font-nav-underline-color);
+  height: 0.1875rem;
+  width: 100%;
+  left: 0;
+  bottom: -0.625rem;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+.footer-right a:hover {
+  color: var(--footer-font-nav-hover-color);
+}
+
+.footer-right a:hover::after {
+  transform: scaleX(1);
+}
+
+.footer-right a.active-link::after {
+  transform: scaleX(1);
+}
+
+.icon-circle.mail {
+  color: var(--mail-color);
+}
+.icon-circle.facebook {
+  color: var(--fb-color);
+}
+
+.icon-circle.facebook {
+  color: var(--fb-color);
+}
+
+.icon-container {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.icon-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: var(--icon-circle-color);
+
+  scale: 1;
+  font-size: 1.5rem;
+  text-decoration: none;
+
+  transition: background-color 0.3s ease, color 0.3s ease, scale 0.6s ease;
+}
+
+.icon-circle:hover {
+  scale: 1.5;
+  color: var(--footer-icon-hover-color);
+  background-color: var(--footer-icon-circle-hover-color);
+}
+
+#button-footer {
+  background-color: var(--footer-button-color);
+  padding: 0.5rem;
+  width: 11rem;
+  height: 3.5rem;
+
+  border-width: 0.125rem;
+  border-radius: 0.25rem;
+  border-color: var(--footer-button-border-color);
+
+  color: var(--footer-button-font-color);
+  font-size: 1.05rem;
+  font-family: "SF Pro Display-Bold";
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#button-footer:hover {
+  color: var(--footer-button-font-hover-color);
+  background-color: var(--footer-button-hover-color);
+}
+
+@media (max-width: 80rem) {
+  /* Header Responsiveness */
+  .header-middle {
+    display: none;
+  }
+  .header-right {
+    display: none;
+  }
+  .burger {
+    display: flex;
+  }
+}
+
+@media (max-width: 66rem) {
+  /* Footer Responsiveness */
+  .footer-right-container-left,
+  .footer-right-container-right {
+    flex-basis: auto;
+    align-items: center;
+  }
+  .footer-left {
+    flex-basis: 100%;
+  }
+  .footer-right {
+    margin-right: 0rem;
+    gap: 2rem;
+    justify-content: space-around;
+  }
+  .footer-content {
+    max-width: fit-content;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  /* Mobile Devices */
+  .parent {
+    flex-direction: column;
+  }
+  .child {
+    flex-basis: 100%;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  /* Tablet Devices */
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1439px) {
+  /* Laptop Devices */
+}
+
+@media only screen and (min-width: 1440px) and (max-width: 1023px) {
+  /* Desktop Devices */
+}
+
+/*
+=============Responsive Parent-Child Layout=============
+
+.parent {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.children {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: center;
+}
+
+*/
