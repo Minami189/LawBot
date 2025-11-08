@@ -5,7 +5,6 @@ import Navbar from "./Navbar";
 import archive from '../assests/archive.png'
 import flashlight from '../assests/flashlight.png'
 import protection from '../assests/protection.png'
-
 function Landing() {
 
 
@@ -53,24 +52,23 @@ function Landing() {
 
                     <div className={classes.featuresContainer}>
                         <div className={classes.feature}>
-                            <img src={protection} alt="" />
+                            <img src={protection} alt="Secured Data Image" />
                             <h2>Secured Data</h2>
                             <p>Confidential documents  uploaded goes through data encryption.</p>
                         </div>
 
                         <div className={classes.feature}>
-                            <img src={flashlight} alt="" />
+                            <img src={flashlight} alt="Highlight Image" />
                             <h2>Highlight</h2>
                             <p>Identifying key clauses, deadlines, and responsibilities.</p>
                         </div>
 
                         <div className={classes.feature}>
-                            <img src={archive} alt="" className={classes.flashlight}/>
+                            <img src={archive} alt="Archive Image" className={classes.flashlight}/>
                             <h2>Archive</h2>
                             <p>Access and revisit previous documents.</p>
                         </div>
                     </div>
-
                     
 
                 </div>

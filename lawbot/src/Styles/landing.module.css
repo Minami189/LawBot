@@ -306,7 +306,7 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
 @media (max-width: 900px) {
   .features{
     max-height: 30%;
-    gap: 1rem;
+    gap: 0rem;
     padding: 0;
   }
   .featuresContainer {
@@ -316,19 +316,26 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
     gap: 1rem;
   }
 
-  .feature img {
-    max-width: 40%;
+  .feature {
+    width: clamp(180px, 85%, 350px);
+    height: clamp(150px, 35vh, 250px);
+    padding: clamp(0.75rem, 2vw, 1.25rem);
+    border-radius: 1rem;
+    box-sizing: border-box;
   }
 
-  .hiwText h1 {
-    color: var(--textcolor);
-    font-size: clamp(2.5rem, 4vw, 3.5rem);
-  }
+ .feature img {
+  width: clamp(60px, 40%, 100px);
+  height: auto;
+  object-fit: contain;
+  margin-bottom: clamp(0.5rem, 1.5vw, 1rem);
+  transition: transform 0.3s ease;
+}
 
-  .hiwText p {
-    font-size: clamp(0.9rem, 2vw, 1.2rem);
+  .features h1{
+    padding: 0;
+    gap: 0;
   }
-
   
 }
 
