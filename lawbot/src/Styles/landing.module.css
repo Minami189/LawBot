@@ -5,6 +5,7 @@
   --secondarycolor: #F9EADC;
   --tertiarycolor: #A29090;
   --textcolor: #3C3232;
+  --textcolorlight: #FBECE1;
   --title: "Playfair Display", serif;
   --subtitle: "Merriweather Sans", sans-serif;
   --textfont: "Geist Mono", monospace;
@@ -98,14 +99,14 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
   
 }
 
-.hero, .hiw, .features {
+.hiw{
   width: 100%;
   max-width: 1200px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content:left ;
 }
 
 
@@ -216,7 +217,7 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
   }
 
   .hiwText h1 {
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
   }
 
   .hiwText p {
@@ -233,6 +234,104 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
     width: 100%;
   }
 }
+
+.features{
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center ;
+}
+
+.features h1{
+  font-family: var(--title);
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  color: var(--textcolor);
+  padding-bottom: 5rem;
+}
+
+.featuresContainer{
+  gap: 5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.feature{
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--secondarycolor);
+  height: 20rem;
+  width: 18rem;
+  max-width: 1200px;
+  border: 3px #3c32327e solid;
+  border-radius: 20px;
+  padding: 1rem;
+}
+
+
+.feature img{
+  width: 100%;
+  height: auto;
+  max-width: 95px;
+}
+
+
+.feature img .flashlight{
+  width: 100%;
+  height: auto;
+  max-width: 10rem;
+}
+
+
+.feature h2{
+  font-family: var(--subtitle);
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  color: var(--textcolor);
+}
+.feature p{
+  font-family: var(--subtitle);
+  font-size: clamp(0.5rem, 4vw, 0.90rem);
+  color: var(--textcolor);
+}
+
+@media (max-width: 900px) {
+  .features{
+    max-height: 30%;
+    gap: 1rem;
+    padding: 0;
+  }
+  .featuresContainer {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+    gap: 1rem;
+  }
+
+  .feature img {
+    max-width: 40%;
+  }
+
+  .hiwText h1 {
+    color: var(--textcolor);
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+  }
+
+  .hiwText p {
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+  }
+
+  
+}
+
 
 @keyframes blink {
   50% {

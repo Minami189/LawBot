@@ -11,7 +11,6 @@ function App() {
       <Route index element={<Landing/>}/>
       <Route path="/login" element={<Login/>}/>
     </Routes>
-
    </BrowserRouter>
   );
 }

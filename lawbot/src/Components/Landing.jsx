@@ -1,7 +1,11 @@
-import classes from "../Styles/landing.module.css"
+import classes from "../Styles/Landing.module.css"
 import moralLady from '../assests/moralLady.png'
 import hiwGraphic from '../assests/hiwGraphic.png'
 import Navbar from "./Navbar";
+import archive from '../assests/archive.png'
+import flashlight from '../assests/flashlight.png'
+import protection from '../assests/protection.png'
+
 function Landing() {
 
 
@@ -47,11 +51,27 @@ function Landing() {
                 <div className={classes.features}>
                     <h1>Your Legal Assistant in a Click</h1>
 
-                    <div className={classes.featureContainer}>
-                        <img src="" alt="" />
-                        <h1></h1>
-                        <p></p>
+                    <div className={classes.featuresContainer}>
+                        <div className={classes.feature}>
+                            <img src={protection} alt="" />
+                            <h2>Secured Data</h2>
+                            <p>Confidential documents  uploaded goes through data encryption.</p>
+                        </div>
+
+                        <div className={classes.feature}>
+                            <img src={flashlight} alt="" />
+                            <h2>Highlight</h2>
+                            <p>Identifying key clauses, deadlines, and responsibilities.</p>
+                        </div>
+
+                        <div className={classes.feature}>
+                            <img src={archive} alt="" className={classes.flashlight}/>
+                            <h2>Archive</h2>
+                            <p>Access and revisit previous documents.</p>
+                        </div>
                     </div>
+
+                    
 
                 </div>
             </section>
