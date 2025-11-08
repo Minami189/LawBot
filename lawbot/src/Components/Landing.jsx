@@ -1,11 +1,13 @@
 import classes from "../Styles/landing.module.css"
 import moralLady from '../assests/moralLady.png'
 import hiwGraphic from '../assests/hiwGraphic.png'
+import Navbar from "./Navbar";
 function Landing() {
 
 
     return ( 
         <>
+            <Navbar/>
             <section className={classes.section}>
                 <div className={classes.hero}>
                     <img src={moralLady} alt="Moral Lady"></img>

@@ -7,6 +7,7 @@ function Navbar() {
 
     const navRef = useRef();
 
+
     const showNavbar = () =>{
         // assigns the class "responsive_nav to apply responsive styling"
         navRef.current.classList.toggle(classes.responsive_nav);
@@ -27,7 +28,7 @@ function Navbar() {
             </nav>
 
             <nav className={classes.rightNav}>
-                <a href="">Login</a>
+                <a href="/Login">Login</a>
                 <a href="">Try For Free</a>
             </nav>
 
