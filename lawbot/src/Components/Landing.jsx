@@ -5,7 +5,7 @@ function Landing() {
 
 
     return ( 
-        <div className={classes.landingPageContainer}>
+        <>
             <section className={classes.section}>
                 <div className={classes.hero}>
                     <img src={moralLady} alt="Moral Lady"></img>
@@ -16,19 +16,21 @@ function Landing() {
                         <p>Upload PNG / Text / PDF / Word Document</p>
                     </div>
                     <div className={`${classes.subtitle}`}>
-                        <p className={classes.typing}> Try it now.</p>
+                        <p className={`${classes.typing} ${classes.text}`}> Try it now.</p>
                     </div>
                 </div>
             </section>
 
             <section className={classes.section}>
+                <div className={classes.hiwTitle}>
+                  <h1>One Goal, Simplify Law. 
+                    Offer Transparency.</h1>
+                </div>
                 <div className={classes.hiw}>
                     <div className={classes.hiwImg}>
                         <img src={hiwGraphic} alt="robotgraphic" />
                     </div>
                     <div className={classes.hiwText}>
-                        <h1>One Goal, Simplify Law. 
-                            Offer Transparency.</h1>
                         <p>LawBot bridges the gap between complex legal documents and 
                             everyday understanding. With advanced AI summarization, it 
                             transforms lengthy, jargon-filled files into clear, concise 
@@ -38,7 +40,21 @@ function Landing() {
                     </div>
                 </div>
             </section>
-        </div>
+
+            <section className={classes.section}>
+                <div className={classes.features}>
+                    <h1>Your Legal Assistant in a Click</h1>
+
+                    <div className={classes.featureContainer}>
+                        <img src="" alt="" />
+                        <h1></h1>
+                        <p></p>
+                    </div>
+
+                </div>
+            </section>
+
+        </>
      );
 }
 

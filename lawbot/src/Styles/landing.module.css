@@ -11,31 +11,33 @@
 }
 
 
-
-.html,
-body {
+html, body {
   height: 100%;
   margin: 0;
+  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   overflow-y: scroll;
 }
 
-.landingPageContainer {
-  height: 100vh;
-  width: 100%;
-  scroll-snap-type: y proximity;
-  overflow-y: scroll;
-  scroll-behavior:smooth;
-}
+
+
+html { scrollbar-width: none; }
+body { -ms-overflow-style: none; } 
+body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Chrome */
+
+
 
 .section {
-  scroll-snap-align: start;
-  height: 100vh; /* fills screen */
+  height: 100vh;
   width: 100%;
   display: flex;
-  align-items: center; 
-  justify-content: center; 
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  scroll-snap-align: start;
   background-color: var(--maincolor);
+  padding: 3rem 2rem;
+  box-sizing: border-box;
 }
 
 .hero {
@@ -90,10 +92,20 @@ body {
 
 .subtitle p {
   font-size: clamp(1rem, 1.5vw, 1.0rem);
-  font-family: var(--subtitle);
+  font-family: "Geist Mono";
   color: var(--textcolor);
   margin-top: 0.5rem;
-  padding-bottom: 1rem;
+  
+}
+
+.hero, .hiw, .features {
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 
@@ -159,19 +171,9 @@ body {
   width: 0;
   animation: typing 1.0s steps(40, end) forwards, blink 0.75s step-end infinite;
 }
-
-.hiw{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-
-  padding: 1.5rem 10rem;
-  width: 80%;
-  max-width: 1300px;
-  box-sizing: border-box;
-  height: auto;
-  margin: 0; 
+.hiw {
+  flex-direction: row;
+  gap: 2rem;
 }
 
 .hiwText{
@@ -180,8 +182,8 @@ body {
   color: var(--textcolor);
 }
 
-.hiwText h1{
-  padding: 1rem;
+.hiwTitle h1{
+  padding-bottom: 3rem;
   font-family: var(--title);
   font-size: 3rem;
   text-align: center;
@@ -193,13 +195,35 @@ body {
   font-family: var(--subtitle);
 }
 .hiwImg{
-   margin: 0;
+  margin: 0;
   padding: 0;
 }
-.hiwImg img{
-  width: 650px;
-  height: 350px;
+.hiwImg img {
+  width: 100%;
+  
+  height: auto;
 }
+
+@media (max-width: 900px) {
+  .hiw {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .hiwImg img {
+    max-width: 90%;
+  }
+
+  .hiwText h1 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+  }
+
+  .hiwText p {
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+  }
+}
+
 
 @keyframes typing {
   from {
