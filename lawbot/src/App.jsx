@@ -5,7 +5,6 @@ import Landing from './Components/Landing.jsx';
 function App() {
   return (
    <>
-    <Navbar/> 
     <Landing/>
    </>
   );
