@@ -346,6 +346,47 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
   
 }
 
+.tutorial{
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center ;
+}
+
+
+.tutorialTitleContainer{
+  padding: 0;
+  margin: 0;
+  gap: 0;
+
+}
+
+.tutorialTitleContainer h1{
+  font-family: var(--title);
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  color: var(--textcolor);
+
+}
+
+.tutorialTitleContainer p{
+  font-weight: 300;
+  font-size: clamp(0.5rem, 4vw, 1rem);
+  font-family: var(--subtitle);
+  text-align: center;
+}
+
+.tutorialPartsContainer{
+  gap: 5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  
+}
+
 
 @keyframes blink {
   50% {

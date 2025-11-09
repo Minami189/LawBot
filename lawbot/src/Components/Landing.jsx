@@ -51,7 +51,6 @@ function Landing() {
             <section className={classes.section}>
                 <div className={classes.features}>
                     <h1>Your Legal Assistant in a Click</h1>
-
                     <div className={classes.featuresContainer}>
                         <div className={classes.feature}>
                             <img src={protection} alt="Secured Data Image" />
@@ -71,8 +70,19 @@ function Landing() {
                             <p>Access and revisit previous documents.</p>
                         </div>
                     </div>
-                    
+                </div>
+            </section>
 
+            <section className={classes.section}>
+                <div className={classes.tutorial}>
+                    <div className={classes.tutorialTitleContainer}>
+                        <h1>From Upload to Insight.</h1>
+                        <p>Here’s how LawBot simplifies your legal workflow.</p>
+                    </div>
+
+                    <div className={classes.tutorialPartsContainer}>
+
+                    </div>
                 </div>
             </section>
 
