@@ -184,13 +184,14 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
 .hiwText{
   align-items: center;
   justify-content: center;
-  color: var(--textcolor);
+  
 }
 
 .hiwTitle h1{
   padding-bottom: 3rem;
   font-family: var(--title);
   font-size: 3rem;
+  color: var(--textcolor);
   text-align: center;
 }
 
@@ -198,6 +199,7 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
   font-weight: 300;
   font-size: 1.25rem;
   font-family: var(--subtitle);
+  text-align: left;
 }
 .hiwImg{
   margin: 0;

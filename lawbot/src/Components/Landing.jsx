@@ -9,20 +9,10 @@ import { useEffect, useRef, useState } from "react";
 
 function Landing() {
 
-    const [scrolled, setScrolled] = useState(false);
-
-    useEffect(()=> {
-        const handleScroll = () => {
-            const heroHeight = window.innerHeight * 0.7;
-            setScrolled(window.scrollY > heroHeight);
-        };
-        window.addEventListener("scroll", handleScroll);  console.log("added HandleScroll");
-        return ()=> {window.removeEventListener("scroll", handleScroll); console.log("Removed HandleScroll")};
-    }, []);
 
     return ( 
         <>
-            <Navbar isScrolled={scrolled}/>
+            <Navbar/>
             <section className={classes.section}>
                 <div className={classes.hero}>
                     <img src={moralLady} alt="Moral Lady"></img>

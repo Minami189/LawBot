@@ -3,7 +3,7 @@ import {useRef} from "react";
 import classes from "../Styles/main.module.css"
 
 
-function Navbar({isScrolled}) {
+function Navbar() {
 
     const navRef = useRef();
 
@@ -16,7 +16,7 @@ function Navbar({isScrolled}) {
     return (  
 
     <div className="mainNavbar">
-        <header className={`${classes.header} ${isScrolled ? classes.scrolled : ""}`}>
+        <header className={`${classes.header}`}>
             <div className={classes.logo}>
                  <h2>LawBot</h2>
             </div>
