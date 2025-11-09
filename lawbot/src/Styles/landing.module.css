@@ -37,10 +37,14 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
   flex-direction: column;
   scroll-snap-align: start;
   background-color: var(--maincolor);
-  padding: 3rem 2rem;
+  padding: 3rem 5rem;
   box-sizing: border-box;
+  padding-top: 80px;
 }
 
+.hero .hiw .features{
+  padding-bottom: 10rem;
+}
 .hero {
   gap: 3rem;
   text-align: center;
@@ -326,6 +330,7 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
 
  .feature img {
   width: clamp(60px, 40%, 100px);
+  max-width: 70px;
   height: auto;
   object-fit: contain;
   margin-bottom: clamp(0.5rem, 1.5vw, 1rem);
