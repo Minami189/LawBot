@@ -8,6 +8,7 @@ import protection from '../assests/Landing/protection.png'
 import upload from '../assests/Landing/Upload.png';
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Reveal } from "./animations/Reveal.tsx";
 
 function Landing() {
     const [activeStep, setActiveStep] = useState(0);
@@ -35,13 +36,19 @@ function Landing() {
             <Navbar/>
             <section className={classes.section}>
                 <div className={classes.hero}>
-                    <img src={moralLady} alt="Moral Lady"></img>
+                    <Reveal>
+                        <img src={moralLady} alt="Moral Lady"></img>
+                    </Reveal>
+                    <Reveal>
                     <p className={classes.title}>
                         Summarize Legal Documents in Seconds.
                     </p>
+                    </Reveal>
+                    <Reveal>
                     <div className={classes.uploadBar}>
                         <p>Upload PNG / Text / PDF / Word Document</p>
                     </div>
+                    </Reveal>
                     <div className={`${classes.subtitle}`}>
                         <p className={`${classes.typing} ${classes.text}`}> Try it now.</p>
                     </div>
@@ -49,28 +56,37 @@ function Landing() {
             </section>
 
             <section className={classes.section}>
+                <Reveal>
                 <div className={classes.hiwTitle}>
                   <h1>One Goal, Simplify Law. 
                     Offer Transparency.</h1>
                 </div>
+                 </Reveal>
                 <div className={classes.hiw}>
                     <div className={classes.hiwImg}>
+                        <Reveal>
                         <img src={hiwGraphic} alt="robotgraphic" />
+                        </Reveal>
                     </div>
                     <div className={classes.hiwText}>
+                        <Reveal>
                         <p>LawBot bridges the gap between complex legal documents and 
                             everyday understanding. With advanced AI summarization, it 
                             transforms lengthy, jargon-filled files into clear, concise 
                             insights anyone can grasp. Whether you’re a student, a 
                             professional, or simply someone trying to make sense of a contract, LawBot gives you 
                             clarity, accuracy, and confidence - without needing a law degree.</p>
+                        </Reveal>
                     </div>
                 </div>
             </section>
 
             <section className={classes.section}>
                 <div className={classes.features}>
+                    <Reveal width="100%">
                     <h1>Your Legal Assistant in a Click</h1>
+                    </Reveal>
+                    <Reveal width="100%">
                     <div className={classes.featuresContainer}>
                         <div className={classes.feature}>
                             <img src={protection} alt="Secured Data Image" />
@@ -90,18 +106,27 @@ function Landing() {
                             <p>Access and revisit previous documents.</p>
                         </div>
                     </div>
+                    </Reveal>
                 </div>
+                
             </section>
 
             <section className={classes.section}>
                 <div className={classes.tutorial}>
                     <div className={classes.tutorialTitleContainer}>
-                        <h1>From Upload to Insight.</h1>
-                        <p>Here’s how LawBot simplifies your legal workflow.</p>
+                        <Reveal>
+                        <h1 className={classes.tutorialTitle}>From Upload to Insight.</h1>
+                        </Reveal>
+                        <Reveal>
+                        <p className={classes.tutorialSubtitle}>Here’s how LawBot simplifies your legal workflow.</p>
+                        </Reveal>
                     </div>
 
                     <div className={classes.tutorialPartsContainer} id={classes.tutorial}>
+
+                       
                         <div className={classes.tutorialLeft}>
+                        <Reveal width="100%">
                         {steps.map((step, i) => (
                             <motion.div
                             key={i}
@@ -118,9 +143,11 @@ function Landing() {
                             {step}
                             </motion.div>
                         ))}
+                         </Reveal>
                         </div>
-
-                        <div className={classes.tutorialRight}>
+                        
+                       
+                        <div className={classes.tutorialRight}>        
                             <AnimatePresence mode="wait">
                                 <motion.div
                                     key={activeStep}

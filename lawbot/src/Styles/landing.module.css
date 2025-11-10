@@ -62,7 +62,6 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
 .hero img {
   width: 300px;
   height: auto;
-  mix-blend-mode: multiply;
 }
 
 
@@ -280,6 +279,11 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
   border: 3px #3c32327e solid;
   border-radius: 20px;
   padding: 1rem;
+  width: clamp(180px, 85%, 300px);
+  height: auto;
+  padding: clamp(0.75rem, 2vw, 1.25rem);
+  border-radius: 1rem;
+  box-sizing: border-box;
 }
 
 
@@ -310,9 +314,9 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
 
 @media (max-width: 900px) {
   .features{
-    max-height: 30%;
-    gap: 0rem;
-    padding: 0;
+    max-height: none; 
+    gap: 1rem;
+    padding: 1rem;
   }
   .featuresContainer {
     flex-direction: column;
@@ -430,6 +434,8 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
   height: 40vh;
   max-width: 40vh;
   max-height: 40vh;
+  position: relative;
+  z-index: 1;
 }
 
 .tutorialRight .graphic h1{
