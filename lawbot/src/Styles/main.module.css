@@ -25,11 +25,21 @@
     --subtitle: "Merriweather Sans", sans-serif;
     --textfont: "Geist Mono", monospace;
 }
+
+body, html{
+    background-color: var(--mainColorLight);
+}
     
 
 
 .mainNavbar{
-    position: absolute; 
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: var(--mainColorLight);
+    position: fixed;
+    top: 0;
+    z-index: 9999;
 }
 
 .header {
@@ -38,14 +48,15 @@
   justify-content: space-between;
   height: 80px;
   width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 9999;
   padding: 0 2rem;
   background-color: var(--maincolor);
   color: var(--textcolor);
   transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
+}
+
+.header {
+  max-width: 1920px;
+  margin: 0 auto;
 }
 
 

@@ -13,7 +13,7 @@
 
 
 html, body {
-  height: 100%;
+  height: auto;
   margin: 0;
   overflow-y: scroll;
   scroll-behavior: smooth;
@@ -101,15 +101,7 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
   
 }
 
-.hiw{
-  width: 100%;
-  max-width: 1200px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content:left ;
-}
+
 
 
 @media (max-width: 1024px) {
@@ -174,7 +166,14 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
   width: 0;
   animation: typing 1.0s steps(40, end) forwards, blink 0.75s step-end infinite;
 }
-.hiw {
+
+.hiw{
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content:left ;
   flex-direction: row;
   gap: 2rem;
 }
@@ -676,12 +675,15 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
   letter-spacing: 0.5px;
   font-family: var(--subtitle);
   font-size: clamp(0.75rem, 1.5vw, 1.0rem);
+  cursor:pointer;
+  transition: color 0.4s ease-in-out;
+  transition: background-color 0.4s ease-in-out;
 }
 
-
-
-
-
+.tryNowButton:hover{
+  color: #fbece1;
+  background-color: var(--textcolor);
+}
 
 .subtitle p{
   font-size: clamp(1rem, 1.5vw, 1.0rem);
@@ -733,3 +735,13 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
   }
 }
 
+.hero,
+.hiwContainer,
+.features,
+.tutorial,
+.security,
+.cta{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}

@@ -57,29 +57,31 @@ function Landing() {
             </section>
 
             <section className={classes.section}>
-                <Reveal>
-                <div className={classes.hiwTitle}>
-                  <h1>One Goal, Simplify Law. 
-                    Offer Transparency.</h1>
-                </div>
-                 </Reveal>
-                <div className={classes.hiw}>
-                    <div className={classes.hiwImg}>
-                        <Reveal>
-                        <img src={hiwGraphic} alt="robotgraphic" />
-                        </Reveal>
+                <div className={classes.hiwContainer}>
+                    <Reveal>
+                    <div className={classes.hiwTitle}>
+                    <h1>One Goal, Simplify Law. 
+                        Offer Transparency.</h1>
                     </div>
-                    <div className={classes.hiwText}>
-                        <Reveal>
-                        <p>LawBot bridges the gap between complex legal documents and 
-                            everyday understanding. With advanced AI summarization, it 
-                            transforms lengthy, jargon-filled files into clear, concise 
-                            insights anyone can grasp. Whether you’re a student, a 
-                            professional, or simply someone trying to make sense of a contract, LawBot gives you 
-                            clarity, accuracy, and confidence - without needing a law degree.</p>
-                        </Reveal>
+                    </Reveal>
+                    <div className={classes.hiw}>
+                        <div className={classes.hiwImg}>
+                            <Reveal>
+                            <img src={hiwGraphic} alt="robotgraphic" />
+                            </Reveal>
+                        </div>
+                        <div className={classes.hiwText}>
+                            <Reveal>
+                            <p>LawBot bridges the gap between complex legal documents and 
+                                everyday understanding. With advanced AI summarization, it 
+                                transforms lengthy, jargon-filled files into clear, concise 
+                                insights anyone can grasp. Whether you’re a student, a 
+                                professional, or simply someone trying to make sense of a contract, LawBot gives you 
+                                clarity, accuracy, and confidence - without needing a law degree.</p>
+                            </Reveal>
+                        </div>
                     </div>
-                </div>
+                 </div>
             </section>
 
             <section className={classes.section}>
