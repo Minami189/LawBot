@@ -1,15 +1,35 @@
 import classes from "../Styles/Landing.module.css"
-import moralLady from '../assests/moralLady.png'
-import hiwGraphic from '../assests/hiwGraphic.png'
+import moralLady from '../assests/Landing/moralLady.png'
+import hiwGraphic from '../assests/Landing/hiwGraphic.png'
 import Navbar from "./Navbar";
-import archive from '../assests/archive.png'
-import flashlight from '../assests/flashlight.png'
-import protection from '../assests/protection.png'
+import archive from '../assests/Landing/archive.png'
+import flashlight from '../assests/Landing/flashlight.png'
+import protection from '../assests/Landing/protection.png'
+import upload from '../assests/Landing/Upload.png';
 import { useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 function Landing() {
-    
+    const [activeStep, setActiveStep] = useState(0);
 
+    const steps = ["Upload", "Summarize", "Review"];
+    const graphics = [
+    {
+      title: "Upload your files",
+      desc: "Drag and drop or select files from your computer.",
+      img: upload, // insert your image path
+    },
+    {
+      title: "Summarize",
+      desc: "AI automatically extracts key clauses and insights.",
+      img: "",
+    },
+    {
+      title: "Review",
+      desc: "Check the summarized document and export or save.",
+      img: "",
+    },
+    ];
     return ( 
         <>
             <Navbar/>
@@ -82,26 +102,42 @@ function Landing() {
 
                     <div className={classes.tutorialPartsContainer} id={classes.tutorial}>
                         <div className={classes.tutorialLeft}>
-                            <div className={classes.step} data-step="0">Upload</div>
-                            <div className={classes.step} data-step="1">Summarize</div>
-                            <div className={classes.step} data-step="2">Review</div>
+                        {steps.map((step, i) => (
+                            <motion.div
+                            key={i}
+                            className={classes.step}
+                            data-step={i}
+                            animate={{
+                                color: activeStep === i ? "var(--textcolor)"  : "var(--tertiarycolor)" ,
+                                opacity: activeStep === i ? 1 : 0.6,
+                                scale: activeStep === i ? 1.05 : 1,
+                            }}
+                            transition={{ duration: 0.5 }}
+                            onClick={() => setActiveStep(i)}
+                            >
+                            {step}
+                            </motion.div>
+                        ))}
                         </div>
+
                         <div className={classes.tutorialRight}>
-                            <div className={classes.graphic} data-step="0">
-                                <h1>Upload your files</h1>
-                                <img src="" alt="" />
-                                <p>Drag and drop or  files from your computer</p>
-                            </div>
-                            <div className={classes.graphic} data-step="1">
-                                <h1>Upload your files</h1>
-                                <img src="" alt="" />
-                                <p>Drag and drop or  files from your computer</p>
-                            </div>
-                            <div className={classes.graphic} data-step="2">
-                                <h1>Upload your files</h1>
-                                <img src="" alt="" />
-                                <p>Drag and drop or  files from your computer</p>
-                            </div>
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={activeStep}
+                                    className={classes.graphic}
+                                    initial={{ opacity: 0, x: 50 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x: -50 }}
+                                    transition={{
+                                    duration: 0.9,
+                                    ease: [0.42, 0, 0.58, 1], // cubic-bezier easing: slow start, fast middle, slow end
+                                    }}
+                                >
+                                    <h1>{graphics[activeStep].title}</h1>
+                                    <img src={graphics[activeStep].img} alt="" />
+                                    <p>{graphics[activeStep].desc}</p>
+                                </motion.div>
+                            </AnimatePresence>
                         </div>
                     </div>
                 </div>

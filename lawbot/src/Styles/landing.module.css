@@ -15,9 +15,9 @@
 html, body {
   height: 100%;
   margin: 0;
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
   overflow-y: scroll;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory; 
 }
 
 
@@ -37,13 +37,12 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
   flex-direction: column;
   scroll-snap-align: start;
   background-color: var(--maincolor);
-  padding: 3rem 5rem;
+  padding: 3rem 3rem;
   box-sizing: border-box;
-  padding-top: 80px;
 }
 
 .hero .hiw .features{
-  padding-bottom: 10rem;
+  padding-bottom: 5rem;
 }
 .hero {
   gap: 3rem;
@@ -222,8 +221,8 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
     max-width: 90%;
   }
 
-  .hiwText h1 {
-    font-size: clamp(2.5rem, 4vw, 3.5rem);
+  .hiwTitle  h1 {
+    font-size: clamp(2.5rem, 2vw, 2.5em);
   }
 
   .hiwText p {
@@ -323,15 +322,24 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
   }
 
   .feature {
-    width: clamp(180px, 85%, 350px);
-    height: clamp(150px, 35vh, 250px);
+    width: clamp(180px, 85%, 300px);
+    height: clamp(150px, 35vh, 200px);
     padding: clamp(0.75rem, 2vw, 1.25rem);
     border-radius: 1rem;
     box-sizing: border-box;
   }
-
+  .feature h2{
+  font-family: var(--subtitle);
+  font-size: clamp(0.75rem, 4vw, 1.25rem);
+  color: var(--textcolor);
+  }
+  .feature p{
+    font-family: var(--subtitle);
+    font-size: clamp(0.5rem, 4vw, 0.90rem);
+    color: var(--textcolor);
+  }
  .feature img {
-  width: clamp(60px, 40%, 100px);
+  width: clamp(60px, 40%, 80px);
   max-width: 70px;
   height: auto;
   object-fit: contain;
@@ -340,6 +348,7 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
 }
 
   .features h1{
+    font-size: clamp(0.5rem, 1.5rem, 2rem);
     padding: 0;
     gap: 0;
   }
@@ -354,6 +363,7 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
   flex-direction: column;
   align-items: center;
   justify-content: center ;
+  margin-bottom: 5rem;
 }
 
 
@@ -361,8 +371,8 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
   padding: 0;
   margin: 0;
   gap: 0;
-  padding-top: 12rem;
-  padding-bottom: 5rem;
+  padding-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .tutorialTitleContainer h1{
@@ -385,40 +395,123 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  padding-bottom: 12rem;
 }
 
-.tutorialLeft .step{
+.tutorialLeft{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+ .step{
   color: #3C3232;
   font-family: var(--title);
-  font-size: 4rem;
+  font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: bold;
 }
 
 .tutorialRight{
+  gap: 2rem;
   display: flex;
   flex-direction: column;
   width: 50%;
-  height: 100vh;
 }
 
 .tutorialRight .graphic{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
   border-radius: 30px;
   background-color: #FBECE1;
   border: 2px #3C3232 solid;
-  padding: 6rem 2.5rem;
-  padding: 5rem;
+  padding: 4rem 2.5rem;
+  width: 40vh;
+  height: 40vh;
+  max-width: 40vh;
+  max-height: 40vh;
 }
 
 .tutorialRight .graphic h1{
   color: var(--textcolor);
-  font-size: 3rem;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
 }
 
 .tutorialRight .graphic p{
+  font-size: clamp(0.4rem, 1.5vw, 1rem);
   color: var(--textcolor);
 }
 
+.tutorialRight .graphic img{
+  width: 500px;
+  max-width: 300px;
+}
+
+@media (max-width: 900px) {
+  .tutorial{
+    max-height: 30%;
+    gap: 0rem;
+    padding: 0;
+  }
+
+  .tutorialTitleContainer{
+  padding: 0;
+  margin: 0;
+  gap: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+  .tutorialPartsContainer {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+    gap: 3rem;
+  }
+
+  .tutorialRight .graphic {
+    width: clamp(180px, 85%, 350px);
+    height: clamp(150px, 35vh, 250px);
+    padding: clamp(0.75rem, 2vw, 1.25rem);
+    border-radius: 1rem;
+    box-sizing: border-box;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  .tutorialRight .graphice img {
+    width: clamp(60px, 40%, 100px);
+    max-width: 70px;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: clamp(0.5rem, 1.5vw, 1rem);
+    transition: transform 0.3s ease;
+  }
+  .tutorialRight, .tutorialLeft {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  .tutorialRight .graphic{
+    padding: 0;
+    gap: 1rem;
+  }
+  .tutorialRight .graphic p{
+    padding: 0;
+    gap: 0;
+  }
+
+  .tutorialRight .graphic img{
+    width: clamp(150px,175px,200px);
+    max-width: 200px;
+    padding: 0;
+    gap: 0;
+  }
+  
+}
 @keyframes blink {
   50% {
     border-color: transparent;

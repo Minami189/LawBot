@@ -1,6 +1,6 @@
 import classes from "../Styles/Login.module.css";
 import Navbar from "./Navbar";
-import moralLady from "../assests/moralLady.png";
+import moralLady from "../assests/Landing/moralLady.png";
 
 export default function Login(){
     return(
