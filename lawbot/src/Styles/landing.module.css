@@ -379,13 +379,13 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
   margin-bottom: 2rem;
 }
 
-.tutorialTitleContainer h1{
+.tutorialTitle{
   font-family: var(--title);
   font-size: clamp(1.5rem, 4vw, 2.5rem);
   color: var(--textcolor);
 }
 
-.tutorialTitleContainer p{
+.tutorialSubtitle{
   font-weight: 300;
   font-size: clamp(0.5rem, 4vw, 1rem);
   font-family: var(--subtitle);
@@ -461,11 +461,11 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
   }
 
   .tutorialTitleContainer{
-  padding: 0;
-  margin: 0;
-  gap: 0;
-  padding-bottom: 0;
-  margin-bottom: 0;
+    padding: 0;
+    margin: 0;
+    gap: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
 }
 
   .tutorialPartsContainer {
@@ -516,8 +516,217 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
     padding: 0;
     gap: 0;
   }
+}
+
+.security{
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+    display: flex;  
+    flex-direction: column;
+    align-items: center;
+    justify-content: center ;
+  }
+  .securityTitleContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .securityTitleContainer h1{
+    font-family: var(--title);
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    color: var(--textcolor);
+  }
+  .securityTitleContainer p{
+    font-family: var(--title);
+    font-size: clamp(0.5rem, 2vw, 1.5rem);
+    color: var(--textcolor);
+    width: 50vw;
+    padding-bottom: 5rem;
+  }
+
+.securityFeaturesContainer{
+  gap: 5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.securityFeature{
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--secondarycolor);
+  height: 50vh;
+  max-height: 250px;
+  width: 18rem;
+  max-width: 1200px;
+  border: 3px #3c32327e solid;
+  border-radius: 20px;
+  padding: 1rem;
+  width: clamp(180px, 85%, 300px);
+  padding: clamp(0.75rem, 2vw, 1.25rem);
+  border-radius: 1rem;
+  box-sizing: border-box;
+}
+
+
+.securityFeature img{
+  width: 100%;
+  height: auto;
+  max-width: 95px;
+}
+
+
+.securityFeature img .flashlight{
+  width: 100%;
+  height: auto;
+  max-width: 10rem;
+}
+
+
+.securityFeature h2{
+  font-family: var(--subtitle);
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  color: var(--textcolor);
+}
+.securityFeature p{
+  font-family: var(--subtitle);
+  font-size: clamp(0.5rem, 4vw, 0.90rem);
+  color: var(--textcolor);
+}
+
+@media (max-width: 1200px) {
+  securityFeatureTitle
+  .security{
+    max-height: none; 
+    gap: 1rem;
+    padding: 1rem;
+  }
+  .securityFeature{
+    max-height: 150px;
+  }
+  .securityFeaturesContainer {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+   .securityTitleContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .securityTitleContainer h1{
+    font-family: var(--title);
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    color: var(--textcolor); 
+  }
+  .securityTitleContainer p{
+    font-family: var(--title);
+    font-size: clamp(0.9rem, 2vw, 1.5rem);
+    color: var(--textcolor);
+    width: 50vw;
+    padding: 0;
+
+  }
+}
+
+.cta {
+  gap: 3rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 10rem;
+  width: 80%;
+  max-width: 1300px;
+  box-sizing: border-box;
+  height: auto;
+  margin: 0; 
+}
+
+.cta img {
+  width: 300px;
+  height: auto;
+}
+
+.tryNowContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tryNowButton{
+  color: var(--textcolor);
+  background-color: #fbece1;
+  border-radius: 30px;
+  padding: 2.5rem 3.5rem;
+  width: 100vw;
+  max-width: 600px;
+  border: 3px #3C3232 solid;
+  margin: 0;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  font-family: var(--subtitle);
+  font-size: clamp(0.75rem, 1.5vw, 1.0rem);
+}
+
+
+
+
+
+
+.subtitle p{
+  font-size: clamp(1rem, 1.5vw, 1.0rem);
+  font-family: "Geist Mono";
+  color: var(--textcolor);
+  margin-top: 0.5rem;
   
 }
+
+
+
+@media (max-width: 1024px) {
+  .cta {
+    padding: 3rem 5vw;
+    max-width: 90%;
+  }
+
+  .title {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+  }
+
+  .tryNow {
+    max-width: 90%;
+    padding: 1rem 1.5rem;
+  }
+
+  .tryNowButton{
+  color: var(--textcolor);
+  background-color: #fbece1;
+  border-radius: 30px;
+  padding: clamp(1rem ,2vw,2.5rem) (1.5rem ,2vw, 3.5rem) ;
+  width: clamp(1rem ,2vw,2.5rem) (1.5rem ,2vw, 3.5rem);
+  max-width: 300px;
+  max-height: 100px;
+  border: 3px #3C3232 solid;
+  margin: 0;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  font-family: var(--subtitle);
+  font-size: clamp(.75rem, 1.25vw, 1rem);
+}
+
+}
+
+
 @keyframes blink {
   50% {
     border-color: transparent;

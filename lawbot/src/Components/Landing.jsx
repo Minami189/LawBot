@@ -11,6 +11,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Reveal } from "./animations/Reveal.tsx";
 
 function Landing() {
+    const [count, setCount] = useState(0);
     const [activeStep, setActiveStep] = useState(0);
 
     const steps = ["Upload", "Summarize", "Review"];
@@ -167,6 +168,61 @@ function Landing() {
                             </AnimatePresence>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            
+            <section className={classes.section}>
+                <div className={classes.security}>
+                    <Reveal width="100%">
+                        <div className={classes.securityTitleContainer}>
+                            <h1>Confidentiality Is Our Priority</h1>
+                            <p>Lawbot utilizes different types of security measurements to ensure proper encryption 
+                            of your data while delivering fast and reliable services</p>
+                        </div>
+                   
+                    </Reveal>
+                    <Reveal width="100%">
+                    <div className={classes.securityFeaturesContainer}>
+                        <div className={classes.securityFeature}>
+                            <h2>HTTPS</h2>
+                            <p>secure data transfer.</p>
+                        </div>
+
+                        <div className={classes.securityFeature}>
+                            <h2>AES-256</h2>
+                            <p>Ensured encryption for stored files.</p>
+                        </div>
+
+                        <div className={classes.securityFeature}>
+                            <h2>Auto-Deletion</h2>
+                            <p>Documents auto-delete after 24 hours.</p>
+                        </div>
+                        <div className={classes.securityFeature}>
+                            <h2>Independence</h2>
+                            <p>No third-party data sharing.</p>
+                        </div>
+                    </div>
+                    </Reveal>
+                </div>
+                
+            </section>
+
+             <section className={classes.section}>
+                <div className={classes.cta}>
+                    <Reveal>
+                        <img src={moralLady} alt="Moral Lady"></img>
+                    </Reveal>
+                    <Reveal>
+                    <p className={classes.title}>
+                       Ready to simplify your legal documents?.
+                    </p>
+                    </Reveal>
+                    <Reveal>
+                    <div className={classes.tryNowContainer}>
+                            <button className={classes.tryNowButton}>Get Started For Free</button>
+                    </div>
+                    </Reveal>
                 </div>
             </section>
 
