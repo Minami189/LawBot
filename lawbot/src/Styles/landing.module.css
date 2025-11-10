@@ -12,18 +12,19 @@
 }
 
 
-html, body {
-  height: auto;
-  margin: 0;
+
+
+.scrollContainer {
+  height: 100vh;
   overflow-y: scroll;
-  scroll-behavior: smooth;
-  scroll-snap-type: y mandatory; 
+  scroll-snap-type: y mandatory;
+  scroll-behavior:smooth;
 }
 
 
 
-html { scrollbar-width: none; }
-body { -ms-overflow-style: none; } 
+html, .scrollContainer { scrollbar-width: none; }
+body, .scrollContainer { -ms-overflow-style: none; } 
 body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Chrome */
 
 
@@ -39,6 +40,7 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
   background-color: var(--maincolor);
   padding: 3rem 3rem;
   box-sizing: border-box;
+  scroll-snap-align: start;
 }
 
 .hero .hiw .features{
@@ -167,7 +169,7 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
   animation: typing 1.0s steps(40, end) forwards, blink 0.75s step-end infinite;
 }
 
-.hiw{
+.hiwContentContainer{
   width: 100%;
   max-width: 1200px;
   text-align: center;

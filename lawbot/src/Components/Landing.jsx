@@ -35,6 +35,7 @@ function Landing() {
     return ( 
         <>
             <Navbar/>
+            <div className={classes.scrollContainer}>
             <section className={classes.section}>
                 <div className={classes.hero}>
                     <Reveal>
@@ -64,7 +65,7 @@ function Landing() {
                         Offer Transparency.</h1>
                     </div>
                     </Reveal>
-                    <div className={classes.hiw}>
+                    <div className={classes.hiwContentContainer}>
                         <div className={classes.hiwImg}>
                             <Reveal>
                             <img src={hiwGraphic} alt="robotgraphic" />
@@ -227,7 +228,7 @@ function Landing() {
                     </Reveal>
                 </div>
             </section>
-
+            </div>
         </>
      );
 }
