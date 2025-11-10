@@ -361,14 +361,14 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
   padding: 0;
   margin: 0;
   gap: 0;
-
+  padding-top: 12rem;
+  padding-bottom: 5rem;
 }
 
 .tutorialTitleContainer h1{
   font-family: var(--title);
   font-size: clamp(1.5rem, 4vw, 2.5rem);
   color: var(--textcolor);
-
 }
 
 .tutorialTitleContainer p{
@@ -379,17 +379,49 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
 }
 
 .tutorialPartsContainer{
+  width: 100%;
   gap: 5rem;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  
+  justify-content: space-around;
+  padding-bottom: 12rem;
 }
 
+.tutorialLeft .step{
+  color: #3C3232;
+  font-family: var(--title);
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.tutorialRight{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 100vh;
+}
+
+.tutorialRight .graphic{
+  border-radius: 30px;
+  background-color: #FBECE1;
+  border: 2px #3C3232 solid;
+  padding: 6rem 2.5rem;
+  padding: 5rem;
+}
+
+.tutorialRight .graphic h1{
+  color: var(--textcolor);
+  font-size: 3rem;
+}
+
+.tutorialRight .graphic p{
+  color: var(--textcolor);
+}
 
 @keyframes blink {
   50% {
     border-color: transparent;
   }
 }
+

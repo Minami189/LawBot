@@ -8,7 +8,7 @@ import protection from '../assests/protection.png'
 import { useEffect, useRef, useState } from "react";
 
 function Landing() {
-
+    
 
     return ( 
         <>
@@ -80,8 +80,29 @@ function Landing() {
                         <p>Here’s how LawBot simplifies your legal workflow.</p>
                     </div>
 
-                    <div className={classes.tutorialPartsContainer}>
-
+                    <div className={classes.tutorialPartsContainer} id={classes.tutorial}>
+                        <div className={classes.tutorialLeft}>
+                            <div className={classes.step} data-step="0">Upload</div>
+                            <div className={classes.step} data-step="1">Summarize</div>
+                            <div className={classes.step} data-step="2">Review</div>
+                        </div>
+                        <div className={classes.tutorialRight}>
+                            <div className={classes.graphic} data-step="0">
+                                <h1>Upload your files</h1>
+                                <img src="" alt="" />
+                                <p>Drag and drop or  files from your computer</p>
+                            </div>
+                            <div className={classes.graphic} data-step="1">
+                                <h1>Upload your files</h1>
+                                <img src="" alt="" />
+                                <p>Drag and drop or  files from your computer</p>
+                            </div>
+                            <div className={classes.graphic} data-step="2">
+                                <h1>Upload your files</h1>
+                                <img src="" alt="" />
+                                <p>Drag and drop or  files from your computer</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
