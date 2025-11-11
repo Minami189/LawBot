@@ -1,27 +1,28 @@
-import classes from "../Styles/login.module.css";
+import classes from "../Styles/register.module.css";
 import Navbar from "./Navbar";
 import moralLady from "../assests/Landing/moralLady.png";
 import notvisibleIcon from "../assests/Login/eye-slash.png"
 import visibleIcon from "../assests/Login/visible.png"
 import { useState, useRef } from "react";
 
-
-export default function Login(){
+export default function Register(){
     const [showPass, setShowPass] = useState(false);
+    const userRef = useRef(null);
     const emailRef = useRef(null);
     const passRef = useRef(null);
+
+    function handleRegister(){
+        const email = emailRef.current.value;
+        const pass = passRef.current.value;
+        const user = userRef.current.value;
+
+        console.log(email, pass, user);
+    }
 
     function handleVisible(){
         if (showPass) setShowPass(false);
         if (!showPass) setShowPass(true);
     }
-
-    function handleLogin(){
-        const email = emailRef.current.value;
-        const pass = passRef.current.value;
-        console.log(email, pass);
-    }
-
     return(
         <div className={classes.page}>
             <Navbar/>
@@ -30,37 +31,31 @@ export default function Login(){
 
                 <div className={classes.left}>
                     <div className={classes.loginCard}>
-                        <div className={classes.top}>
-                            <h1>LawBot</h1>
-                        </div>
-
 
                         <div className={classes.loginHead}>
-                            <h2>Welcome Back</h2>
-                            <h3>Please enter your details to log in</h3>
+                            <h2>Create Your Account</h2>
+                            <h3>Please fill in all fields to register</h3>
                         </div>
 
                         <div className={classes.inputs}>
+                            <label>Username</label>
+                            <input placeholder="Your Username" type="text" ref={userRef}/>
+                            <br/>
                             <label>Your Email Address</label>
                             <input placeholder="Your Email Address" type="email" ref={emailRef}/>
                             <br/>
-                            <label>Password</label>
-
+                            <label>Your Password</label>
                             <div className={classes.passwordInput}>
                                 <input placeholder="password" type={showPass ? "text" : "password"} ref={passRef}/>
                                 <img src={showPass ? visibleIcon : notvisibleIcon} onClick={handleVisible}/>
                             </div>  
-
                         </div>
 
-                        <div className={classes.bottom}>
-                            <label><input type="checkbox"/>Remember me</label>
-                            <a href="#">Forgot password?</a>
-                        </div>
-                        
+                        <div className={classes.bottom}/>
+
                         <div className={classes.action}>
-                            <button onClick={handleLogin}>Log In</button>
-                            <label className={classes.signupLabel}>Don't have an account? <a href="/signup">Sign Up</a></label>
+                            <button onClick={handleRegister}>Register</button>
+                            <label className={classes.signupLabel}>Already have an account? <a href="/login">Log In</a></label>
                         </div>
 
 
@@ -71,7 +66,7 @@ export default function Login(){
                 <div className={classes.right}>
                     <img src={moralLady} className={classes.moralLady}/>
                 </div>
- 
+
 
 
             </div>
