@@ -1,155 +1,363 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DotGothic16&family=Doto:wght@100..900&family=Flow+Circular&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jersey+10&family=Lexend:wght@100..900&family=Oswald:wght@200..700&family=Sora:wght@100..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DotGothic16&family=Doto:wght@100..900&family=Flow+Circular&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jersey+10&family=Lexend:wght@100..900&family=Oswald:wght@200..700&family=Sora:wght@100..800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
-
-
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "Oswald", sans-serif;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Oswald", sans-serif;
 }
 
-
-:root{
-    --mainColor: #F9EADC;
-    --mainColorLight: #F6DFCA;
-    --MainColorContrast: #3C3232;
-    --secondaryColor: #ffffff;
-    --textColor: #3C3232;
-    --tertiarycolor: #A29090;
-    --textcolorlight: #FBECE1;
-    --title: "Playfair Display", serif;
-    --subtitle: "Merriweather Sans", sans-serif;
-    --textfont: "Geist Mono", monospace;
+:root {
+  --mainColor: #F9EADC;
+  --mainColorLight: #FCF4ED;
+  --mainColorDark: #F6DFCB;
+  --MainColorContrast: #3c3232;
+  --secondaryColor: #ffffff;
+  --textColor: #3c3232;
+  --tertiarycolor: #a29090;
+  --textcolorlight: #fbece1;
+  --title: "Playfair Display", serif;
+  --subtitle: "Merriweather Sans", sans-serif;
+  --textfont: "Geist Mono", monospace;
 }
 
-body, html{
-    background-color: var(--mainColorLight);
+body,
+html {
+  background-color: var(--mainColorDark);
 }
-    
 
-.mainNavbar{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    background-color: var(--mainColorLight);
-    position: fixed;
-    top: 0;
-    z-index: 9999;
+.mainNavigation, .header {
+  background-color: var(--mainColor);
+  width: 100%;
+  height: 4.5rem;
+
+  position: fixed;
+  top: 0;
+  z-index: 999;
 }
 
 .header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 80px;
-  padding: 0 2rem;
-  background-color: var(--mainColorLight);
+  
+  gap: 1rem;
+  padding: 1rem 0.75rem;
+  max-width: 1920px;
+
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+
   color: var(--textColor);
   transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
-  max-width: 1920px;
-  margin: 0 auto;
 }
 
-.header {
-  max-width: 1920px;
-  margin: 0 auto;
-}
+.leftHeader {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
 
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  margin-left: 0.5rem;
+}
 
 .logo {
-    width:33%;
-    display:flex;
-    justify-content: left;
+  height: 2.5em;
+  object-fit: cover;
 }
 
-.centerNav .rightNav{
-    font-family: var(--subtitle);
+.name {
+  color: var(--header-font-logo-color);
+  font-size: 1.75rem;
+  font-family: var(--title);
+  font-weight: 650;
 }
 
 .centerNav {
-    width:33%;
-    margin: 0 auto;
-    display:flex;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 1rem;
+  flex: 1 1 auto;
+}
+
+.navItem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+  cursor: pointer;
+}
+
+.navItem a {
+  position: relative;
+  z-index: 2;
+  padding: 1rem 0;
+  font-size: 1.15rem;
+  color: var(--textColor);
+  font-family: var(--title);
+  font-weight: 650;
+  text-decoration: none;
+  transition: color 0.3s ease, filter 0.3s ease;
+}
+
+.underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 0.1875rem;
+  background-color: var(--MainColorContrast);
+  width: 0;
+  transition: width 0.3s ease;
+  z-index: 1;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: max-content;
+  padding: 1rem;
+  background-color: var(--mainColorLight);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition-delay: 0.3s;
+  border-radius: 0.5rem;
+  z-index: 3;
+}
+
+.navItem:hover .underline {
+  width: 100%;
+}
+
+.dropdownMenu a {
+  display: block;
+  padding: 0.5rem 3rem 0.5rem 1rem;
+  white-space: nowrap;
+  font-size: 1.1rem;
+  color: var(--textColor);
+  text-decoration: none;
+  border-radius: 0.5rem;
+}
+
+.dropdownMenu a:hover {
+  background-color: var(--MainColorContrast);
+  color: var(--secondaryColor);
+}
+
+.navItem:hover .dropdownMenu {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* For mobile click */
+.dropdownMenu.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .rightNav {
-    width:33%;
-    margin-left: auto;
-    display:flex;
-    justify-content: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.5rem;
+
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  margin-right: 0.5rem;
 }
 
-nav a{
-    margin: 0 2rem;
-    color: var(--textColor);
-    text-decoration: none;
-    font-size: clamp(0.8rem, 2.5vw, 1.5rem);
-    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+.rightNav a {
+  text-decoration: none;
+}
+
+.btnLogin {
+  color: var(--MainColorContrast);
+  font-size: 1.15rem;
+  font-family: var(--title);
+  font-weight: 650;
+}
+
+.btnTrial {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  width: 7rem;
+  height: 2.5rem;
+
+  color: var(--mainColor);
+  font-size: 1rem;
+  font-family: var(--title);
+  font-weight: 600;
+  background-color: var(--MainColorContrast);
+  border-width: 0.125rem;
+  border-radius: 0.5em;
+
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+.btnTrial:hover {
+  color: var(--MainColorContrast);
+  background-color: var(--mainColor);
+}
+
+.btnIconWrapper{
+  display: flex;
+  position: relative;
+  width: 1em;
+  height: 1em;
+}
+
+.btnIconFill,
+.btnIconReg {
+  position: absolute;
+  transition: opacity 0.3s ease, color 0.3s ease;
+  color: var(--mainColor);
+  width: 1em;
+  height: 1em;
+}
+
+/* Default: show solid, hide regular */
+.btnIconFill {
+  opacity: 1;
+}
+
+.btnIconReg {
+  opacity: 0;
+}
+
+/* On hover: show regular, hide solid */
+.btnTrial:hover .btnIconFill {
+  opacity: 0;
+}
+
+.btnTrial:hover .btnIconReg {
+  opacity: 1;
+  color: var(--MainColorContrast);
+}
+
+/* ====== Both Burger Menu and Close Button ====== */
+.navBtn {
+  padding: 5px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--textColor);
+  display: none;
+  opacity: 0;
+}
+
+/* ========= Sidebar ========= */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 20rem;
+  background-color: var(--mainColor);
+  padding: 5rem 1.5rem 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transform: translateX(100%);
+  transition: transform 0.4s ease;
+  z-index: 10000;
+}
+
+.showSidebar {
+  transform: translateX(0);
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: var(--textColor);
+  font-family: var(--title);
+  font-weight: 650;
+  font-size: 1.25rem;
+  padding: 0.75rem 0;
+  border-radius: 6px;
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+.sidebar a:hover {
+  background-color: var(--MainColorContrast);
+  color: var(--secondaryColor);
+}
+
+/* ========= Sidebar dropdowns ========= */
+.sidebarDropdown {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebarToggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  color: var(--textColor);
+  font-size: 1.25rem;
+  padding: 0.75rem 0;
+  cursor: pointer;
+  font-family: var(--title);
+}
+
+.sidebarDropdownMenu {
+  max-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: max-height 0.3s ease;
+}
+
+.sidebarDropdownMenu a {
+  padding: 0.5rem 1rem 0.5rem 1.5rem;
+  font-size: 1.1rem;
+}
+
+.sidebarDropdownMenu.open {
+  max-height: 300px;
+}
+
+@media only screen and (max-width: 800px) {
+  header .navBtn {
+    display: block;
+    opacity: 1;
     padding: 0.5rem 1rem;
-    border-radius: 6px;
-    font-family: var(--title);
-    font-weight: 650;
-}
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+    border-radius: 20px;
+    z-index: 10000;
+  }
 
-nav a:hover{
-    color: var(--secondaryColor);
-    background-color: var(--MainColorContrast);
-}
+  .navCloseBtn {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+  }
 
-header .navBtn{
-    padding: 5px;
-    cursor: pointer;
-    background: transparent;
-    border: none;
-    outline: none;
-    color: var(--textColor);
-    display: none;
-    opacity: 0;
-}
-
-@media only screen and (max-width: 1024px){
-    header .navBtn {
-        display: block;
-        opacity: 1;
-        padding: 0.5rem 1rem;
-        transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
-        border-radius: 20px;
-    }
-
-    header .navBtn:hover{
-        color: var(--secondaryColor);
-        background-color: var(--mainColorLight);
-    }
-
-    header nav{
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        gap: 1.5rem;
-        background-color: var(--mainColor);
-        transition: 1s;
-        transform: translateY(-100vh);
-    }
-
-    header .responsive_nav{
-        transform: none;
-    }
-
-   
+  .centerNav,
+  .rightNav {
+    visibility: hidden;
+  }
 }
