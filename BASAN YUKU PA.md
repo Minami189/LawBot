@@ -6,4 +6,6 @@ katapos non siguraduhin nyong itype muna ang "npm i" tapos "npm run dev"
 
 ka-"npm run dev" nyo may llitaw na link sa localhost lagay nyo sa url tas yun na yung app naten
 
+
+# backend
 mga files sa backend ay ilalagay sa htdocs.
