@@ -5,6 +5,7 @@ import Login from './Components/Login.jsx';
 import Dashboard from './Components/Dashboard.jsx';
 import Register from './Components/Register.jsx';
 import Logs from "./Components/Logs.jsx"
+import About from './Components/About.jsx';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Route path="/dashboard" element={<Dashboard/>}/>
       <Route path="/signup" element={<Register/>}/>
       <Route path="/logs" element={<Logs/>}/>
+      <Route path="/about" element={<About/>}/>
     </Routes>
    </BrowserRouter>
   );
