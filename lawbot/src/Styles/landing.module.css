@@ -43,6 +43,7 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
   scroll-snap-align: start;
 }
 
+
 .hero .hiw .features{
   padding-bottom: 5rem;
 }
