@@ -166,7 +166,7 @@ a{
     background: linear-gradient( #A28787 -100%, #3C3232 100%);
     border: solid 1px #382E2E;
     color: #F5DAC2;
-    margin-top: 5%;
+    margin-top:0;
     font-weight: normal;
     font-size: 1.2rem;
     padding: 20px 0px;
