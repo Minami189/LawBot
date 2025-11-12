@@ -9,6 +9,7 @@ import upload from '../assests/Landing/Upload.png';
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Reveal } from "./animations/Reveal.tsx";
+import FileUpload from "../Components/FileUpload.jsx";
 
 function Landing() {    
     const [activeStep, setActiveStep] = useState(0);
@@ -32,6 +33,11 @@ function Landing() {
     },
     ];
 
+    const handleFileUpload = (file) => {
+    console.log("File received:", file);
+    // file sent to the back end after
+  };
+
 
     return ( 
         <>
@@ -49,11 +55,12 @@ function Landing() {
                     </Reveal>
                     <Reveal>
                     <div className={classes.uploadBar}>
-                        <p>Upload PNG / Text / PDF / Word Document</p>
+                         <FileUpload onFileUpload={handleFileUpload} />
                     </div>
                     </Reveal>
                     <div className={`${classes.subtitle}`}>
                         <p className={`${classes.typing} ${classes.text}`}> Try it now.</p>
+
                     </div>
                 </div>
             </section>
