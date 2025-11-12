@@ -1,0 +1,249 @@
+@import url('./main.module.css');
+
+footer {
+  bottom: 0;
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.mainFooter {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5rem;
+  gap: 3rem;
+  background-color: var(--mainColor);
+}
+
+.footerCopyright {
+  display: block;
+  padding: 1rem 3rem;
+
+  text-align: center;
+  font-size: 0.8rem;
+  font-family: var(--textfont);
+  color: var(--footer-font-cpyrt-color);
+  background-color: var(--mainColorLight);
+}
+
+.footerRight {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+
+  gap: 2rem;
+  margin-top: 0.5rem;
+
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+}
+
+.footerLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 3rem;
+
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+}
+
+.footerTop {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.75rem;
+
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+
+  font-family: "SF Pro Display-Bold";
+}
+
+.footerLogo {
+  height: 3em;
+  object-fit: cover;
+}
+
+.footerName {
+  font-size: 1.5rem;
+  color: var(--footer-font-logo-color);
+}
+
+.footerContent {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-items: center;
+  max-width: 28rem;
+
+  font-family: "SF Pro Display-Medium";
+  text-align: justify;
+  font-size: 1.25rem;
+  line-height: 1.5em;
+  color: var(--footer-font-content-color);
+}
+
+.footerAccounts {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+}
+
+.footerBottom {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-items: center;
+}
+
+.footerRightContainerLeft,
+.footerRightContainerRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 50%;
+}
+
+.title {
+  color: var(--footer-font-nav-title-color);
+  font-size: 1.3rem;
+  margin-bottom: 3rem;
+  font-family: "SF Pro Display-Bold";
+}
+
+.subcontent {
+  color: var(--footer-font-nav-section-color);
+  font-size: 1.15rem;
+  margin-bottom: 1.75rem;
+  font-family: "SF Pro Display-Regular";
+}
+
+.footerRight a {
+  position: relative;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footerRight a::after {
+  content: "";
+  position: absolute;
+  background-color: var(--footer-font-nav-underline-color);
+  height: 0.1875rem;
+  width: 100%;
+  left: 0;
+  bottom: -0.625rem;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+.footerRight a:hover {
+  color: var(--footer-font-nav-hover-color);
+}
+
+.footerRight a:hover::after {
+  transform: scaleX(1);
+}
+
+.footerRight a.active-link::after {
+  transform: scaleX(1);
+}
+
+.iconCircle.mail {
+  color: var(--mail-color);
+}
+.iconCircle.facebook {
+  color: var(--fb-color);
+}
+
+.iconCircle.facebook {
+  color: var(--fb-color);
+}
+
+/*
+.icon-container {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+*/
+
+.iconCircle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: var(--icon-circle-color);
+
+  scale: 1;
+  font-size: 1.5rem;
+  text-decoration: none;
+
+  transition: background-color 0.3s ease, color 0.3s ease, scale 0.6s ease;
+}
+
+.iconCircle:hover {
+  scale: 1.5;
+  color: var(--footer-icon-hover-color);
+  background-color: var(--footer-icon-circle-hover-color);
+}
+
+.buttonFooter {
+  background-color: var(--footer-button-color);
+  padding: 0.5rem;
+  width: 11rem;
+  height: 3.5rem;
+
+  border-width: 0.125rem;
+  border-radius: 0.25rem;
+  border-color: var(--footer-button-border-color);
+
+  color: var(--footer-button-font-color);
+  font-size: 1.05rem;
+  font-family: "SF Pro Display-Bold";
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.buttonFooter:hover {
+  color: var(--footer-button-font-hover-color);
+  background-color: var(--footer-button-hover-color);
+}
+
+@media (max-width: 800px) {
+  /* Footer Responsiveness */
+  .footerRightContainerLeft,
+  .footerRightContainerRight {
+    flex-basis: auto;
+    align-items: center;
+  }
+  .footerLeft {
+    flex-basis: 100%;
+  }
+  .footerRight {
+    margin-right: 0rem;
+    gap: 2rem;
+    justify-content: space-around;
+  }
+  .footerContent {
+    max-width: fit-content;
+  }
+}

@@ -2,6 +2,7 @@ import classes from "../Styles/Landing.module.css"
 import moralLady from '../assests/Landing/moralLady.png'
 import hiwGraphic from '../assests/Landing/hiwGraphic.png'
 import Navbar from "./Navbar";
+import Footer from "./Footer.jsx";
 import archive from '../assests/Landing/archive.png'
 import flashlight from '../assests/Landing/flashlight.png'
 import protection from '../assests/Landing/protection.png'
@@ -237,6 +238,7 @@ function Landing() {
                 </div>
             </section>
             </div>
+            <Footer/>
         </>
      );
 }

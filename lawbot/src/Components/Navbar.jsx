@@ -1,36 +1,36 @@
 import { useRef, useState, useEffect } from "react";
 import { XIcon, GavelIcon, ListIcon, CaretRightIcon, CaretDownIcon } from "@phosphor-icons/react";
-import classes from "../Styles/main.module.css";
+import classes from "../Styles/navbar.module.css";
 import logo from "../assests/logo.png";
 
 function Navbar() {
-  const navRef = useRef();
-  const [openSidebar, setOpenSidebar] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState(null);
-  const [isMobile, setIsMobile] = useState(false);
+  	const navRef = useRef();
+  	const [openSidebar, setOpenSidebar] = useState(false);
+  	const [openDropdown, setOpenDropdown] = useState(null);
+  	const [isMobile, setIsMobile] = useState(false);
 
-  // Detect if viewport is mobile
-  useEffect(() => {
-    const checkScreen = () => setIsMobile(window.innerWidth <= 1024);
-    checkScreen();
-    window.addEventListener("resize", checkScreen);
-    return () => window.removeEventListener("resize", checkScreen);
-  }, []);
+  	// Detect if viewport is mobile
+  	useEffect(() => {
+    	const checkScreen = () => setIsMobile(window.innerWidth <= 1024);
+    	checkScreen();
+    	window.addEventListener("resize", checkScreen);
+    	return () => window.removeEventListener("resize", checkScreen);
+  	}, []);
 
-  const showNavbar = () => {
-    setOpenSidebar(!openSidebar);
-  };
+  	const showNavbar = () => {
+    	setOpenSidebar(!openSidebar);
+  	};
 
-  const toggleDropdown = (menu) => {
-    setOpenDropdown(openDropdown === menu ? null : menu);
-  };
+  	const toggleDropdown = (menu) => {
+    	setOpenDropdown(openDropdown === menu ? null : menu);
+  	};
 
 	return (
 		<div className={classes.mainNavigation}>
 			<header className={classes.header}>
 				{/* Logo */}
 				<div className={classes.leftHeader}>
-					<img src={logo} alt="logo" className={classes.logo}/>
+					<img src={logo} alt="Lawbot Logo" className={classes.logo}/>
 					<p className={classes.name}>LawBot</p>
 				</div>
 
@@ -175,7 +175,7 @@ function Navbar() {
 				</nav>
 			</header>
 		</div>
-  );
+  	);
 }
 
 export default Navbar;
