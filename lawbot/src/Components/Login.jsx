@@ -43,7 +43,7 @@ export default function Login(){
                         <div className={classes.inputs}>
                             <label>Your Email Address</label>
                             <input placeholder="Your Email Address" type="email" ref={emailRef}/>
-                            <br/>
+                    
                             <label>Password</label>
 
                             <div className={classes.passwordInput}>
