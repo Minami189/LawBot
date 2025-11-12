@@ -1,18 +1,5 @@
 para mairun ito kailangan mo ng ollama at composer
-
-AI
 https://getcomposer.org/
 https://ollama.com/
 
-Login/Register
-
-setup:
-lipat nyo muna sa htdocs ang buong folder na toh ("backend")
-
-then sa bash paste this: 
-
-cd (directory ng backend folder sa loob ng htdocs)
-
-composer require vlucas/phpdotenv
-composer require ardagnsrn/ollama-php
-composer require firebase/php-jwt
+then sa bash paste this: composer require ardagnsrn/ollama-php
