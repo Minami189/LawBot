@@ -16,10 +16,22 @@ export default function Login(){
         if (!showPass) setShowPass(true);
     }
 
-    function handleLogin(){
+    async function handleLogin(){
         const email = emailRef.current.value;
         const pass = passRef.current.value;
-        console.log(email, pass);
+
+        //kaya tayo nag fform data dito imbes na deretsong json nalang
+        //para makuha natin via $_POST superglobal sa php neh
+        const loginData = new FormData;
+        loginData.append("email", email);
+        loginData.append("password", pass);
+        const response = await fetch("http://localhost/backend/login.php",{
+            method: "POST",
+            body: loginData
+        });
+
+        const data = await response.json();
+        console.log(data);
     }
 
     return(

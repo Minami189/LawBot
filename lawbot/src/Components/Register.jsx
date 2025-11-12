@@ -11,12 +11,22 @@ export default function Register(){
     const emailRef = useRef(null);
     const passRef = useRef(null);
 
-    function handleRegister(){
+    async function handleRegister(){
         const email = emailRef.current.value;
         const pass = passRef.current.value;
         const user = userRef.current.value;
+        const registerData = new FormData;
+        registerData.append("username", user);
+        registerData.append("password", pass);
+        registerData.append("email", email);
 
-        console.log(email, pass, user);
+        const response = await fetch("http://localhost/backend/register.php", {
+            method:"POST",
+            body: registerData
+        })
+        const {message, username} = response.json();
+        console.log(data);
+
     }
 
     function handleVisible(){
