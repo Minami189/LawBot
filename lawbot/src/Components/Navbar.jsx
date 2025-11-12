@@ -40,7 +40,7 @@ function Navbar() {
 					<div className={`${classes.navItem} ${
 							openDropdown === "about" ? classes.activeDropdown : ""
 						}`}>
-						<a href="/#">Home</a>
+						<a href="/">Home</a>
 						<span className={classes.underline}></span>
 					</div>
 
@@ -53,7 +53,7 @@ function Navbar() {
 						onMouseEnter={() => !isMobile && setOpenDropdown("about")}
 						onMouseLeave={() => !isMobile && setOpenDropdown(null)}
 					>
-						<a href="/#">About Us</a>
+						<a href="/about">About Us</a>
 						<span className={classes.underline}></span>
 						<div
 							className={`${classes.dropdownMenu} ${

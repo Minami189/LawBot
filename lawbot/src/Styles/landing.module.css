@@ -211,7 +211,7 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
 }
 
 @media (max-width: 900px) {
-  .hiw {
+  .hiwContentContainer {
     flex-direction: column;
     text-align: center;
     padding: 2rem;
@@ -229,7 +229,6 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
     font-size: clamp(0.9rem, 2vw, 1.2rem);
   }
 }
-
 
 @keyframes typing {
   from {
@@ -429,7 +428,7 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
   gap: 2rem;
   border-radius: 30px;
   background-color: #FBECE1;
-  border: 2px #3C3232 solid;
+  border: 3px #3c3232ae solid;
   padding: 4rem 2.5rem;
   width: 40vh;
   height: 40vh;
@@ -603,7 +602,6 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
 }
 
 @media (max-width: 1200px) {
-  securityFeatureTitle
   .security{
     max-height: none; 
     gap: 1rem;
@@ -667,11 +665,12 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
 .tryNowButton{
   color: var(--textcolor);
   background-color: #fbece1;
-  border-radius: 30px;
-  padding: 2.5rem 3.5rem;
+  border-radius: 20px;
+  padding: 1.2rem ;
   width: 100vw;
   max-width: 600px;
-  border: 3px #3C3232 solid;
+  max-height: 70px;
+  border: 3px #3c3232c4 solid;
   margin: 0;
   font-weight: 500;
   letter-spacing: 0.5px;

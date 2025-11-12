@@ -10,8 +10,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Reveal } from "./animations/Reveal.tsx";
 
-function Landing() {
-    const [count, setCount] = useState(0);
+function Landing() {    
     const [activeStep, setActiveStep] = useState(0);
 
     const steps = ["Upload", "Summarize", "Review"];
@@ -32,6 +31,8 @@ function Landing() {
       img: "",
     },
     ];
+
+
     return ( 
         <>
             <Navbar/>
@@ -218,12 +219,12 @@ function Landing() {
                     </Reveal>
                     <Reveal>
                     <p className={classes.title}>
-                       Ready to simplify your legal documents?.
+                       Ready to simplify your legal documents?
                     </p>
                     </Reveal>
                     <Reveal>
                     <div className={classes.tryNowContainer}>
-                            <button className={classes.tryNowButton}>Get Started For Free</button>
+                            <button className={classes.tryNowButton} onClick={()=>{window.location.href = "/signup";}}>Get Started For Free</button>
                     </div>
                     </Reveal>
                 </div>
