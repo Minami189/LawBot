@@ -4,13 +4,15 @@ import moralLady from "../assests/Landing/moralLady.png";
 import notvisibleIcon from "../assests/Login/eye-slash.svg"
 import visibleIcon from "../assests/Login/eye.svg"
 import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Register(){
     const [showPass, setShowPass] = useState(false);
+    const [message, setMessage] = useState("");
     const userRef = useRef(null);
     const emailRef = useRef(null);
     const passRef = useRef(null);
-
+    const navigate = useNavigate();
     async function handleRegister(){
         const email = emailRef.current.value;
         const pass = passRef.current.value;
@@ -24,9 +26,17 @@ export default function Register(){
             method:"POST",
             body: registerData
         })
-        const {message, username} = response.json();
-        console.log(data);
-
+        const {success, message} = await response.json();
+        if(!success){
+            console.log(message);
+            setMessage(message)
+            setTimeout(()=>{
+                setMessage("")
+            }, 2000)
+            return;
+        }
+        
+        navigate("/login")
     }
 
     function handleVisible(){
@@ -64,6 +74,7 @@ export default function Register(){
                         <div className={classes.bottom}/>
 
                         <div className={classes.action}>
+                            <p>{message}</p>
                             <button onClick={handleRegister}>Register</button>
                             <label className={classes.signupLabel}>Already have an account? <a href="/login">Log In</a></label>
                         </div>

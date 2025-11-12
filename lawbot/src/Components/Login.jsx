@@ -3,11 +3,14 @@ import Navbar from "./Navbar";
 import moralLady from "../assests/Landing/moralLady.png";
 import notvisibleIcon from "../assests/Login/eye-slash.svg"
 import visibleIcon from "../assests/Login/eye.svg"
+import {jwtDecode} from "jwt-decode"
+
 import { useState, useRef } from "react";
 
 
 export default function Login(){
     const [showPass, setShowPass] = useState(false);
+    const [message, setMessage] = useState("");
     const emailRef = useRef(null);
     const passRef = useRef(null);
 
@@ -15,7 +18,7 @@ export default function Login(){
         if (showPass) setShowPass(false);
         if (!showPass) setShowPass(true);
     }
-
+    
     async function handleLogin(){
         const email = emailRef.current.value;
         const pass = passRef.current.value;
@@ -29,9 +32,33 @@ export default function Login(){
             method: "POST",
             body: loginData
         });
+        const {message, token, success} = await response.json();
 
-        const data = await response.json();
-        console.log(data);
+        //para magamit natin later on 
+        
+
+        //ttuloy pa to and so on yey
+        if(!success){
+            console.log("not logged in");
+            setMessage(message)
+            setTimeout(()=>{
+                setMessage("")
+            }, 2000)
+            return;
+        }
+
+        //para magamit natin later on 
+        localStorage.setItem("userInfo", token);
+
+        //for testing lang toh, di ddecode agad dito
+        const userInfo = jwtDecode(token);
+        console.log("logged in with", userInfo);
+        
+        successLogin();
+    }
+
+    function successLogin(){
+        //dito nyan code naten for when successful login
     }
 
     return(
@@ -54,6 +81,7 @@ export default function Login(){
 
                         <div className={classes.inputs}>
                             <label>Your Email Address</label>
+                            
                             <input placeholder="Your Email Address" type="email" ref={emailRef}/>
                     
                             <label>Password</label>
@@ -71,6 +99,7 @@ export default function Login(){
                         </div>
                         
                         <div className={classes.action}>
+                            <p>{message}</p>
                             <button onClick={handleLogin}>Log In</button>
                             <label className={classes.signupLabel}>Don't have an account? <a href="/signup">Sign Up</a></label>
                         </div>
@@ -84,8 +113,6 @@ export default function Login(){
                     <img src={moralLady} className={classes.moralLady}/>
                 </div>
  
-
-
             </div>
 
 
