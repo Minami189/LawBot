@@ -124,6 +124,7 @@ a{
     height:150px;
 }
 
+
 .bottom label{
     display:flex;
     align-items: center;
@@ -134,7 +135,8 @@ a{
     display:flex;
     align-items: center;
     justify-content: space-between;
-    height: 50px;
+    height: 15px;
+    padding-top:25px;
 }
 
 .bottom input[type="checkbox"] {
@@ -239,11 +241,7 @@ a{
     }
 }
 
-@media (max-width: 1020px) {
-    .inputs{
-        height: 16vh;
-    }
-}
+
 
 @media (max-width: 910px) {
     .loginCard h2{

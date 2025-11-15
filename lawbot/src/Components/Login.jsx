@@ -3,9 +3,9 @@ import Navbar from "./Navbar";
 import moralLady from "../assests/Landing/moralLady.png";
 import notvisibleIcon from "../assests/Login/eye-slash.svg"
 import visibleIcon from "../assests/Login/eye.svg"
-import {jwtDecode} from "jwt-decode"
-
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import {AppContext} from "../App.jsx";
 
 
 export default function Login(){
@@ -13,6 +13,10 @@ export default function Login(){
     const [message, setMessage] = useState("");
     const emailRef = useRef(null);
     const passRef = useRef(null);
+    const rememberRef = useRef(null);
+    const navigate = useNavigate();
+    const [remember, setRemember] = useState(false);
+    const {setUserToken} = useContext(AppContext);
 
     function handleVisible(){
         if (showPass) setShowPass(false);
@@ -34,31 +38,32 @@ export default function Login(){
         });
         const {message, token, success} = await response.json();
 
-        //para magamit natin later on 
-        
-
-        //ttuloy pa to and so on yey
         if(!success){
-            console.log("not logged in");
             setMessage(message)
             setTimeout(()=>{
                 setMessage("")
             }, 2000)
             return;
         }
+        //remove sa storage kapag naglogin kahit nakaremember pa sila o nde
+        localStorage.removeItem("userInfo");
+        //sa variable lang massave kung di nakaset to remember
+        setUserToken(token);
+        //ito way para masave na nakalogin kung nakaset to remember
+        if(remember){
+            localStorage.setItem("userInfo", token);        
+        }
+        navigate("/dashboard");
 
-        //para magamit natin later on 
-        localStorage.setItem("userInfo", token);
-
-        //for testing lang toh, di ddecode agad dito
-        const userInfo = jwtDecode(token);
-        console.log("logged in with", userInfo);
-        
-        successLogin();
     }
 
-    function successLogin(){
-        //dito nyan code naten for when successful login
+    function handleRemember(){
+        const remember = rememberRef.current.checked;
+        if(remember){
+            setRemember(true);
+        }else{
+            setRemember(false);
+        }
     }
 
     return(
@@ -94,7 +99,7 @@ export default function Login(){
                         </div>
 
                         <div className={classes.bottom}>
-                            <label><input type="checkbox"/>Remember me</label>
+                            <label><input type="checkbox" ref={rememberRef} onChange={handleRemember}/>Remember me</label>
                             <a href="#">Forgot password?</a>
                         </div>
                         
