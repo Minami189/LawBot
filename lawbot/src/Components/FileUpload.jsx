@@ -12,7 +12,7 @@ function FileUpload({ onFileUpload, message="Click To Upload PNG / Text / PDF / 
     }
   }, [onFileUpload]);
 
-  const { getRootProps, getInputProps, } = useDropzone({
+  const { getRootProps, getInputProps, open} = useDropzone({
     onDrop,
     onDragEnter: ()=> console.log("entered"),
     onDragLeave: ()=> console.log("left"),

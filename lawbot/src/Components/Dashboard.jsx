@@ -6,7 +6,14 @@ import Calendar from "../assests/dashboard/CalendarDots.png";
 import Vector from "../assests/dashboard/Vector.png";
 import Folder from "../assests/dashboard/Folder.png";
 import Drives from "../assests/dashboard/HardDrives.png";
+import { useFileUpload } from "./functions/useFileUpload";
+
+
 export default function Dashboard() {
+  const upload = useFileUpload((file) => {
+    console.log("Uploaded:", file);
+  });
+
   return (
     <div className={classes.DashboardContainer}>
       <div className={classes.Dashboard}>Dashboard</div>
@@ -25,7 +32,10 @@ export default function Dashboard() {
             <div className={classes.QuickActionsButtons}>
               {/* Upload New Document */}
               <div className={classes.ActionBox}>
-                <div className={classes.ActionContent}>
+                {/*input para mapagana file upload no need visible*/}
+                <input {...upload.getInputProps()} style={{ display: "none" }} />
+                {/*eto nyan yung clickable para sa upload*/}
+                <div className={classes.ActionContent} onClick={upload.open}>
                   <img
                     src={fileIcon}
                     alt="file icon"
