@@ -12,7 +12,7 @@
   align-items: flex-start;
   gap: 30px;
   margin-top: 30px;
-  padding-right: 60px; /* gives space on right side */
+  padding-right: 60px; 
 }
 
 /* LEFT SIDE: holds Quick Actions + Recent Summaries */
@@ -68,7 +68,7 @@
   color: #3a2a1a;
 }
 
-/* You already have your base and container styles — continue from there */
+
 
 .QuickActionsButtons {
   display: flex;
@@ -106,7 +106,7 @@
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Icon styling */
+
 .ActionIcon {
   width: 28px;
   height: 28px;
@@ -115,10 +115,10 @@
 }
 
 .ActionIcon:hover {
-  transform: scale(1.1);
+  transform: scale(1.3);
 }
 
-/* Text under the icon */
+
 .ActionText {
   font-family: "Merriweather Sans";
   font-size: 1rem;
@@ -156,6 +156,14 @@
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.summaryCard:hover {
+  background-color: #f4e6d8;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 .summaryHeader {
@@ -171,7 +179,7 @@
 }
 
 .summaryDate {
-  font-family: sans-serif;
+  font-family: "Fire sans";
   font-size: 1rem;
   color: #8b7355;
   white-space: nowrap;
@@ -189,6 +197,14 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.summaryLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; 
+  flex: 1;
+}
+
 
 .fileType {
   font-family: sans-serif;
@@ -245,8 +261,9 @@
 }
 
 .UsageStatsTitle {
-  font-size: 20px;
-  font-weight: 600;
+  font-family: "Playfair";
+  font-size: 2rem;
+  font-weight: bold;
   color: #3b3027;
 }
 
@@ -258,7 +275,8 @@
   align-items: center;
   justify-content: space-between;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  margin-bottom: 15px; /* 👈 add space between cards */
+  margin-bottom: 15px; 
+  cursor: pointer;
 }
 
 
@@ -269,19 +287,22 @@
 }
 
 .UsageStatsLabel {
-  font-size: 15px;
+  font-size: 1.25rem;
   color: #3b3027;
-  font-weight: 500;
+  font-family: "Roboto";
 }
 
 .UsageStatsNumber {
-  font-size: 22px;
-  font-weight: 700;
+  font-size: 2rem;
+  font-weight: bold;
   color: #3b3027;
+  font-family: "Roboto";
+  
 }
 
 .UsageStatsInfo {
-  font-size: 13px;
+  font-family: "Roboto";
+  font-size: 1.125rem;
   color: #786e63;
   margin-top: 3px;
 }
@@ -289,7 +310,11 @@
 .UsageIconImage {
   width: 24px;
   height: 24px;
-  opacity: 0.7;
+}
+
+.UsageIconImage:hover {
+  transform: scale(1.3);
+  transition: all 0.2s ease;
 }
 
 .UsageBar {
