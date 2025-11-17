@@ -1,10 +1,11 @@
 
 import {motion, useInView, useAnimation} from "framer-motion";
 import { JSX, useEffect, useRef } from "react";
+import React from "react";
 
 interface Props{
     children: JSX.Element;
-    width : "fit-content" | "100%";
+    width?: "fit-content" | "100%";
 }
   
 
@@ -16,12 +17,11 @@ export const Reveal = ({children, width = "fit-content"}: Props) => {
 
 
     useEffect(()=> {
-        console.log(isInView)
         if (isInView){
             mainControls.start("visible");
             slideControls.start("visible");
         }
-    },[isInView]) 
+    },[isInView, mainControls, slideControls]) 
 
     return (
 

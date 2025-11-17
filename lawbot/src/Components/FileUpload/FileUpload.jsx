@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
-import classes from "../Styles/fileupload.module.css";
+import classes from "./FileUpload.module.css";
 
 function FileUpload({ onFileUpload, message="Click To Upload PNG / Text / PDF / Word Document"}) {
     const [isDragging, setIsDragging] = useState(false);

@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faYoutube } from '@fortawesome/free-brands-svg-icons';
-import classes from "../Styles/footer.module.css";
-import logo from "../assests/logo.png";
+import classes from "./Footer.module.css";
+import logo from "../../assests/logo.png";
 
 function Footer() {
     return (

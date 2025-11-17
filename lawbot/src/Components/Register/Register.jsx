@@ -1,8 +1,8 @@
-import classes from "../Styles/register.module.css";
-import Navbar from "./Navbar";
-import moralLady from "../assests/Landing/moralLady.png";
-import notvisibleIcon from "../assests/Login/eye-slash.svg"
-import visibleIcon from "../assests/Login/eye.svg"
+import classes from "./Register.module.css";
+import Navbar from "../Navbar/Navbar.jsx";
+import moralLady from "../../assests/Landing/moralLady.png";
+import notvisibleIcon from "../../assests/Login/eye-slash.svg"
+import visibleIcon from "../../assests/Login/eye.svg"
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 

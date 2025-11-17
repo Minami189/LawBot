@@ -1,18 +1,18 @@
-import classes from "../Styles/dashboard.module.css";
-import fileIcon from "../assests/dashboard/fileIcon.png";
-import bx_box from "../assests/dashboard/bx_box.png";
-import FileText from "../assests/dashboard/FileText.png";
-import Calendar from "../assests/dashboard/CalendarDots.png";
-import Vector from "../assests/dashboard/Vector.png";
-import Folder from "../assests/dashboard/Folder.png";
-import Drives from "../assests/dashboard/HardDrives.png";
-import SealCheck from "../assests/dashboard/SealCheck.png";
-import { useFileUpload } from "./functions/useFileUpload";
+import classes from "./Dashboard.module.css";
+import fileIcon from "../../assests/dashboard/fileIcon.png";
+import bx_box from "../../assests/dashboard/bx_box.png";
+import FileText from "../../assests/dashboard/FileText.png";
+import Calendar from "../../assests/dashboard/CalendarDots.png";
+import Vector from "../../assests/dashboard/Vector.png";
+import Folder from "../../assests/dashboard/Folder.png";
+import Drives from "../../assests/dashboard/HardDrives.png";
+import SealCheck from "../../assests/dashboard/SealCheck.png";
+import { useFileUpload } from "../../functions/useFileUpload";
 import { useContext } from "react";
-import { AppContext } from "../App";
+import { AppContext } from "../../App";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
-import { withBase } from "./functions/withBase";
+import { withBase } from "../../functions/withBase";
 
 
 export default function Dashboard() {

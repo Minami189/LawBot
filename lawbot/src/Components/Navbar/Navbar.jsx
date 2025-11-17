@@ -1,8 +1,8 @@
 import { useRef, useState, useEffect } from "react";
 import { XIcon, GavelIcon, ListIcon, CaretRightIcon, CaretDownIcon } from "@phosphor-icons/react";
-import classes from "../Styles/navbar.module.css";
-import logo from "../assests/logo.png";
-import { withBase } from "./functions/withBase";
+import classes from "./Navbar.module.css";
+import logo from "../../assests/logo.png";
+import { withBase } from "../../functions/withBase";
 
 function Navbar() {
   	const navRef = useRef();

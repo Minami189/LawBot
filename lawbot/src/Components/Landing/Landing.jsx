@@ -1,16 +1,16 @@
-import classes from "../Styles/Landing.module.css"
-import moralLady from '../assests/Landing/moralLady.png'
-import hiwGraphic from '../assests/Landing/hiwGraphic.png'
-import Navbar from "./Navbar";
-import Footer from "./Footer.jsx";
-import archive from '../assests/Landing/archive.png'
-import flashlight from '../assests/Landing/flashlight.png'
-import protection from '../assests/Landing/protection.png'
-import upload from '../assests/Landing/Upload.png';
+import classes from "./Landing.module.css"
+import moralLady from '../../assests/Landing/moralLady.png'
+import hiwGraphic from '../../assests/Landing/hiwGraphic.png'
+import Navbar from "../Navbar/Navbar.jsx";
+import Footer from "../Footer/Footer.jsx";
+import archive from '../../assests/Landing/archive.png'
+import flashlight from '../../assests/Landing/flashlight.png'
+import protection from '../../assests/Landing/protection.png'
+import upload from '../../assests/Landing/Upload.png';
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Reveal } from "./animations/Reveal.tsx";
-import FileUpload from "../Components/FileUpload.jsx";
+import { Reveal } from "../../animations/Reveal.tsx";
+import FileUpload from "../FileUpload/FileUpload.jsx";
 
 function Landing() {    
     const [activeStep, setActiveStep] = useState(0);

@@ -1,4 +1,4 @@
-import classes from "../Styles/logs.module.css";
+import classes from "./Logs.module.css";
 
 export default function Logs(){
     return(

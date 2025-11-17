@@ -1,11 +1,10 @@
 import { useState, createContext } from 'react'
-import Navbar from './Components/Navbar.jsx'
-import Landing from './Components/Landing.jsx';
-import Login from './Components/Login.jsx';
-import Dashboard from './Components/Dashboard.jsx';
-import Register from './Components/Register.jsx';
-import Logs from "./Components/Logs.jsx"
-import About from './Components/About.jsx';
+import Landing from './Components/Landing/Landing.jsx';
+import Login from './Components/Login/Login.jsx';
+import Dashboard from './Components/Dashboard/Dashboard.jsx';
+import Register from './Components/Register/Register.jsx';
+import Logs from "./Components/Logs/Logs.jsx"
+import About from './Components/About/About.jsx';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 //para makuha sa ibang pages sino logged user
