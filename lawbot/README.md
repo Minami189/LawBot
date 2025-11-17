@@ -1,16 +1,18 @@
-# React + Vite
+# Lawbot Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + Vite single-page app that must run under `http://localhost/lawbot/index.html` in XAMPP.
 
-Currently, two official plugins are available:
+## Develop
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. `npm install`
+2. `npm run dev`
+3. Open the printed Vite URL (defaults to `http://localhost:5173`).
 
-## React Compiler
+## Build for Apache/XAMPP
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. `npm run build` – outputs static assets to `dist/` with paths rooted at `/lawbot/`.
+2. Copy the entire `dist` folder into `C:\xampp\htdocs\lawbot` (create the directory if needed).
+3. Start Apache in the XAMPP Control Panel.
+4. Visit `http://localhost/lawbot/index.html`. BrowserRouter handles navigation (e.g., `http://localhost/lawbot/index.html/login`) thanks to the `.htaccess` file included in `public/`.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+> If your XAMPP installation lives somewhere else, adjust the target folder accordingly. No additional Apache configuration is required so long as `.htaccess` overrides are enabled (default in XAMPP).

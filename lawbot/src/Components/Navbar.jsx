@@ -3,6 +3,13 @@ import { XIcon, GavelIcon, ListIcon, CaretRightIcon, CaretDownIcon } from "@phos
 import classes from "../Styles/navbar.module.css";
 import logo from "../assests/logo.png";
 
+const basePath = (import.meta.env.BASE_URL ?? "/").replace(/\/+$/, "") || "";
+
+const withBase = (path) => {
+	const normalized = path.startsWith("/") ? path : `/${path}`;
+	return `${basePath}${normalized}`;
+};
+
 function Navbar() {
   	const navRef = useRef();
   	const [openSidebar, setOpenSidebar] = useState(false);
@@ -40,7 +47,7 @@ function Navbar() {
 					<div className={`${classes.navItem} ${
 							openDropdown === "about" ? classes.activeDropdown : ""
 						}`}>
-						<a href="/">Home</a>
+						<a href={withBase("/")}>Home</a>
 						<span className={classes.underline}></span>
 					</div>
 
@@ -53,16 +60,16 @@ function Navbar() {
 						onMouseEnter={() => !isMobile && setOpenDropdown("about")}
 						onMouseLeave={() => !isMobile && setOpenDropdown(null)}
 					>
-						<a href="/about">About Us</a>
+						<a href={withBase("/about")}>About Us</a>
 						<span className={classes.underline}></span>
 						<div
 							className={`${classes.dropdownMenu} ${
 								openDropdown === "about" ? classes.open : ""
 							}`}
 						>
-							<a href="/#mission">Mission & Vision</a>
-							<a href="/#team">Our Team</a>
-							<a href="/#history">History</a>
+							<a href={withBase("/#mission")}>Mission & Vision</a>
+							<a href={withBase("/#team")}>Our Team</a>
+							<a href={withBase("/#history")}>History</a>
 						</div>
 					</div>
 
@@ -75,25 +82,25 @@ function Navbar() {
 						onMouseEnter={() => !isMobile && setOpenDropdown("help")}
 						onMouseLeave={() => !isMobile && setOpenDropdown(null)}
 					>
-						<a href="/#">Help</a>
+						<a href={withBase("/#")}>Help</a>
 						<span className={classes.underline}></span>
 						<div
 							className={`${classes.dropdownMenu} ${
 								openDropdown === "help" ? classes.open : ""
 							}`}
 						>
-							<a href="/#faq">FAQ</a>
-							<a href="/#support">Support</a>
+							<a href={withBase("/#faq")}>FAQ</a>
+							<a href={withBase("/#support")}>Support</a>
 						</div>
 					</div>
 				</nav>
 
 				{/* Right side buttons */}
 				<div className={classes.rightNav}>
-					<a href="/Login" className={classes.btnLogin}>
+					<a href={withBase("/login")} className={classes.btnLogin}>
 							Login
 					</a>
-					<a href="/signup">
+					<a href={withBase("/signup")}>
 						<button className={classes.btnTrial}>
 							<span className={classes.btnIconWrapper}>
 								<GavelIcon weight="fill" className={classes.btnIconFill}/>
@@ -121,7 +128,7 @@ function Navbar() {
 						<XIcon size={28} />
 					</button>
 
-					<a href="/#">Home</a>
+					<a href={withBase("/#")}>Home</a>
 
 					<div className={classes.sidebarDropdown}>
 						<button
@@ -140,9 +147,9 @@ function Navbar() {
 								openDropdown === "about-side" ? classes.open : ""
 							}`}
 						>
-							<a href="/#mission">Mission & Vision</a>
-							<a href="/#team">Our Team</a>
-							<a href="/#history">History</a>
+							<a href={withBase("/#mission")}>Mission & Vision</a>
+							<a href={withBase("/#team")}>Our Team</a>
+							<a href={withBase("/#history")}>History</a>
 						</div>
 					</div>
 
@@ -163,13 +170,13 @@ function Navbar() {
 								openDropdown === "help-side" ? classes.open : ""
 							}`}
 						>
-							<a href="/#faq">FAQ</a>
-							<a href="/#support">Support</a>
+							<a href={withBase("/#faq")}>FAQ</a>
+							<a href={withBase("/#support")}>Support</a>
 						</div>
 					</div>
 
-					<a href="/Login">Login</a>
-					<a href="/#trial" className={classes.tryBtn}>
+					<a href={withBase("/login")}>Login</a>
+					<a href={withBase("/#trial")} className={classes.tryBtn}>
 						Try For Free
 					</a>
 				</nav>
