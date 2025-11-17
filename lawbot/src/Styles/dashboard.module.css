@@ -51,6 +51,8 @@
   max-width: 573px;
   width: 100%;
   margin-bottom: 10px;
+  color: #3c3232cc;
+  margin:0px;
 }
 
 .QuickActionsContainer {
@@ -71,13 +73,17 @@
   color: #3a2a1a;
 }
 
-
-
 .QuickActionsButtons {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 25px; /* space between the two boxes */
+  flex-direction: column;
+  align-items: stretch;
+  gap: 25px;
+}
+
+.QuickActionsTop {
+  display: flex;
+  gap: 25px;
+  width: 100%;
 }
 
 /* Each action box holds one clickable area */
@@ -86,6 +92,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+}
+
+.ActionBoxFullWidth {
+  width: 100%;
+}
+
+.ActionBoxFullWidth .ActionContent {
+  width: 100%;
 }
 
 /* Card-like clickable area */
@@ -343,6 +358,13 @@
   transition: all 0.2s ease;
 }
 
+
+
+
+
+
+
+
 /* RESPONSIVE STYLES */
 
 /* Tablet styles (768px and below) */
@@ -384,6 +406,7 @@
   .QuickActionsContainer {
     padding: 30px;
     max-width: 100%;
+    
   }
 
   .QuickActionsTitle {
@@ -391,8 +414,13 @@
   }
 
   .QuickActionsButtons {
+    display:flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 15px; 
+  }
+
+  .QuickActionsTop{
+    display:flex;
   }
 
   .ActionContent {

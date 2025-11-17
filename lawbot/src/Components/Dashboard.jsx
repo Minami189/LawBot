@@ -6,14 +6,20 @@ import Calendar from "../assests/dashboard/CalendarDots.png";
 import Vector from "../assests/dashboard/Vector.png";
 import Folder from "../assests/dashboard/Folder.png";
 import Drives from "../assests/dashboard/HardDrives.png";
+import SealCheck from "../assests/dashboard/SealCheck.png";
 import { useFileUpload } from "./functions/useFileUpload";
 import { useContext } from "react";
 import { AppContext } from "../App";
 import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
+import { withBase } from "./functions/withBase";
+
 
 export default function Dashboard() {
   const { userToken } = useContext(AppContext);
   const savedUserToken = localStorage.getItem("userInfo");
+  const navigate = useNavigate();
+
   let userEmail;
   if(savedUserToken){
     const decodedToken = jwtDecode(savedUserToken);
@@ -38,14 +44,22 @@ export default function Dashboard() {
     console.log(data);
   });
 
+  function handleSummarize(){
+    console.log("summarize open modal");
+  }
+
   return (
     <div className={classes.DashboardContainer}>
       <div className={classes.Dashboard}>Dashboard</div>
 
-      <div className={classes.dashboardText}>
-        See your latest activities, analyzed documents, and insights at a
-        glance. Stay organized and in control of your legal workflow.
+      <div style={{display:"flex", alignItems:"center", gap:15}}>
+        <img src={SealCheck}></img>
+        <div className={classes.dashboardText}>
+          See your latest activities, analyzed documents, and insights at a
+          glance. Stay organized and in control of your legal workflow.
+        </div>
       </div>
+
 
       {/* NEW FLEX WRAPPER */}
       <div className={classes.DashboardMainContent}>
@@ -54,36 +68,53 @@ export default function Dashboard() {
           <div className={classes.QuickActionsContainer}>
             <div className={classes.QuickActionsTitle}>Quick Actions</div>
             <div className={classes.QuickActionsButtons}>
-              {/* Upload New Document */}
-              <div className={classes.ActionBox}>
-                {/*input para mapagana file upload no need visible*/}
-                <input {...upload.getInputProps()} style={{ display: "none" }} />
-                {/*eto nyan yung clickable para sa upload*/}
-                <div className={classes.ActionContent} onClick={upload.open}>
+
+              <div className={classes.QuickActionsTop}>
+                {/* Upload New Document */}
+                <div className={classes.ActionBox}>
+                  {/*input para mapagana file upload no need visible*/}
+                  <input {...upload.getInputProps()} style={{ display: "none" }} />
+                  {/*eto nyan yung clickable para sa upload*/}
+                  <div className={classes.ActionContent} onClick={upload.open}>
+                    <img
+                      src={fileIcon}
+                      alt="file icon"
+                      className={classes.ActionIcon}
+                    />
+                    <span className={classes.ActionText}>
+                      Upload New Document
+                    </span>
+                  </div>
+                </div>
+
+                {/* View Document History */}
+                <div className={classes.ActionBox}>
+                  <div className={classes.ActionContent} onClick={()=>{console.log("click");navigate(withBase("/logs"))}}>
+                    <img
+                      src={bx_box}
+                      alt="box icon"
+                      className={classes.ActionIcon}
+                    />
+                    <span className={classes.ActionText}>
+                      View Document History
+                    </span>
+                  </div>
+                </div>
+                
+              </div>
+              <div className={`${classes.ActionBox} ${classes.ActionBoxFullWidth}`}>
+                <div className={classes.ActionContent} onClick={handleSummarize}>
                   <img
                     src={fileIcon}
                     alt="file icon"
                     className={classes.ActionIcon}
                   />
                   <span className={classes.ActionText}>
-                    Upload New Document
+                    Summarize a Document
                   </span>
                 </div>
               </div>
 
-              {/* View Document History */}
-              <div className={classes.ActionBox}>
-                <div className={classes.ActionContent}>
-                  <img
-                    src={bx_box}
-                    alt="box icon"
-                    className={classes.ActionIcon}
-                  />
-                  <span className={classes.ActionText}>
-                    View Document History
-                  </span>
-                </div>
-              </div>
             </div>
           </div>
 
