@@ -2,13 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { XIcon, GavelIcon, ListIcon, CaretRightIcon, CaretDownIcon } from "@phosphor-icons/react";
 import classes from "../Styles/navbar.module.css";
 import logo from "../assests/logo.png";
-
-const basePath = (import.meta.env.BASE_URL ?? "/").replace(/\/+$/, "") || "";
-
-const withBase = (path) => {
-	const normalized = path.startsWith("/") ? path : `/${path}`;
-	return `${basePath}${normalized}`;
-};
+import { withBase } from "./functions/withBase";
 
 function Navbar() {
   	const navRef = useRef();
