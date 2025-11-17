@@ -31,9 +31,10 @@
 }
 
 .DashboardContainer {
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  width: 100%;
   padding-left: 50px;
+  padding-bottom: 30px;
 }
 
 .Dashboard {
@@ -46,8 +47,10 @@
 .dashboardText {
   font-family: "Merriweather Sans";
   font-size: 1rem;
-  height: 40px;
-  width: 573px;
+  height: auto;
+  max-width: 573px;
+  width: 100%;
+  margin-bottom: 10px;
 }
 
 .QuickActionsContainer {
@@ -143,7 +146,8 @@
   font-size: 2rem;
   font-weight: bold;
   color: #3a2a1a;
-  width: 403px;
+  width: 100%;
+  max-width: 403px;
 }
 
 .summaryCard {
@@ -250,8 +254,8 @@
   padding: 30px 40px;
   border-radius: 15px;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
-  width: 486px;
- 
+  width: 100%;
+  max-width: 486px;
 }
 
 
@@ -339,6 +343,201 @@
   transition: all 0.2s ease;
 }
 
+/* RESPONSIVE STYLES */
 
+/* Tablet styles (768px and below) */
+@media (max-width: 768px) {
+  .DashboardContainer {
+    padding-left: 20px;
+    padding-right: 20px;
+    height: auto;
+    min-height: 100vh;
+  }
 
+  .Dashboard {
+    font-size: 2.5rem;
+  }
 
+  .dashboardText {
+    width: 100%;
+    max-width: 573px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  .DashboardMainContent {
+    flex-direction: column;
+    gap: 20px;
+    padding-right: 0;
+    margin-top: 20px;
+  }
+
+  .LeftSection {
+    width: 100%;
+  }
+
+  .RightSection {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .QuickActionsContainer {
+    padding: 30px;
+    max-width: 100%;
+  }
+
+  .QuickActionsTitle {
+    font-size: 1.5rem;
+  }
+
+  .QuickActionsButtons {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .ActionContent {
+    height: 100px;
+  }
+
+  .RecentSummariesContainer {
+    padding: 30px;
+    max-width: 100%;
+    margin-top: 20px;
+  }
+
+  .RecentSummariesTitle {
+    font-size: 1.5rem;
+    width: 100%;
+  }
+
+  .summaryCard {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .statusBadge {
+    align-self: flex-end;
+  }
+
+  .UsageStatsContainer {
+    width: 100%;
+    max-width: 486px;
+    padding: 30px;
+  }
+
+  .UsageStatsTitle {
+    font-size: 1.5rem;
+  }
+
+  .filesDetailsContainer {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}
+
+/* Mobile styles (480px and below) */
+@media (max-width: 480px) {
+  .DashboardContainer {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .Dashboard {
+    font-size: 2rem;
+  }
+
+  .dashboardText {
+    font-size: 0.9rem;
+    width: 100%;
+  }
+
+  .QuickActionsContainer {
+    padding: 20px;
+  }
+
+  .QuickActionsTitle {
+    font-size: 1.25rem;
+  }
+
+  .ActionContent {
+    height: 90px;
+    padding: 10px;
+  }
+
+  .ActionText {
+    font-size: 0.9rem;
+  }
+
+  .ActionIcon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .RecentSummariesContainer {
+    padding: 20px;
+  }
+
+  .RecentSummariesTitle {
+    font-size: 1.25rem;
+  }
+
+  .summaryCard {
+    padding: 16px;
+  }
+
+  .summaryTitle {
+    font-size: 1.1rem;
+  }
+
+  .summaryDescription {
+    font-size: 0.9rem;
+  }
+
+  .summaryDate,
+  .fileType {
+    font-size: 0.85rem;
+  }
+
+  .filesDetailsContainer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .UsageStatsContainer {
+    padding: 20px;
+  }
+
+  .UsageStatsTitle {
+    font-size: 1.25rem;
+  }
+
+  .UsageStatsItem {
+    padding: 12px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .UsageIconImage {
+    align-self: flex-end;
+  }
+
+  .UsageStatsLabel {
+    font-size: 1.1rem;
+  }
+
+  .UsageStatsNumber {
+    font-size: 1.5rem;
+  }
+
+  .UsageStatsInfo {
+    font-size: 1rem;
+  }
+
+  .UsageBar {
+    width: 100%;
+    max-width: 200px;
+  }
+}

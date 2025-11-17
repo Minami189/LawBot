@@ -104,7 +104,9 @@ export default function Dashboard() {
                 <span className={classes.statusIcon}>✓</span>
                 Success
               </div>
+              
             </div>
+
           </div>
         </div>
 
