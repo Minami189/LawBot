@@ -8,18 +8,18 @@ import Folder from "../../assests/dashboard/Folder.png";
 import Drives from "../../assests/dashboard/HardDrives.png";
 import SealCheck from "../../assests/dashboard/SealCheck.png";
 import { useFileUpload } from "../../functions/useFileUpload";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AppContext } from "../../App";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { withBase } from "../../functions/withBase";
-
+import Popup from "./Popup/Popup";
 
 export default function Dashboard() {
   const { userToken } = useContext(AppContext);
   const savedUserToken = localStorage.getItem("userInfo");
   const navigate = useNavigate();
-
+  const [showPopup, setShowPopup] = useState(false);
   let userEmail;
   if(savedUserToken){
     const decodedToken = jwtDecode(savedUserToken);
@@ -45,11 +45,16 @@ export default function Dashboard() {
   });
 
   function handleSummarize(){
-    console.log("summarize open modal");
+    setShowPopup(true);
+  }
+  function handleClosePopup(){
+    setShowPopup(false);
   }
 
   return (
     <div className={classes.DashboardContainer}>
+      {showPopup && <Popup onClose={handleClosePopup} />}
+      
       <div className={classes.Dashboard}>Dashboard</div>
 
       <div style={{display:"flex", alignItems:"center", gap:15}}>
