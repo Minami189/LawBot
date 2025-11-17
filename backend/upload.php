@@ -1,12 +1,25 @@
 <?php
 require_once 'db.php';
+header("Access-Control-Allow-Origin: http://localhost:5173");
+header("Access-Control-Allow-Credentials: true");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 
-$userEmail = "jermainecamachooo@gmail.com";
 
-if (!empty($_FILES['file']['name']) || $_FILES['file']['error'] !== UPLOAD_ERR_OK) {
+if (empty($_FILES['file']['name']) || $_FILES['file']['error'] != UPLOAD_ERR_OK) {
     echo json_encode(["success" => false, "message" => "No file uploaded or upload error"]);
     exit;
+    return;
 }
+
+$userEmail;
+if(empty($_POST['userEmail'])){
+    echo json_encode(["success" => false, "message" => "User email is required"]);
+    exit;
+    return;
+}
+
+$userEmail = $_POST['userEmail'];
 
 $file = $_FILES['file'];
 $filename = basename($file['name']);

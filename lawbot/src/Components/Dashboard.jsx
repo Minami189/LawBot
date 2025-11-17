@@ -7,11 +7,35 @@ import Vector from "../assests/dashboard/Vector.png";
 import Folder from "../assests/dashboard/Folder.png";
 import Drives from "../assests/dashboard/HardDrives.png";
 import { useFileUpload } from "./functions/useFileUpload";
-
+import { useContext } from "react";
+import { AppContext } from "../App";
+import { jwtDecode } from "jwt-decode";
 
 export default function Dashboard() {
-  const upload = useFileUpload((file) => {
-    console.log("Uploaded:", file);
+  const { userToken } = useContext(AppContext);
+  const savedUserToken = localStorage.getItem("userInfo");
+  let userEmail;
+  if(savedUserToken){
+    const decodedToken = jwtDecode(savedUserToken);
+    userEmail = decodedToken.email;
+  }else{
+    userEmail = jwtDecode(userToken).email;
+  }
+  
+  const upload = useFileUpload(async(file) => {
+    const fileData = new FormData();
+    console.log(file);
+
+    fileData.append("file", file, file.name);  
+    fileData.append("userEmail", userEmail);
+    
+    const response = await fetch("http://localhost/backend/upload.php", {
+      method: "POST",
+      body: fileData
+    });
+
+    const data = await response.json();
+    console.log(data);
   });
 
   return (
