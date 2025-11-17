@@ -2,4 +2,6 @@ para mairun ito kailangan mo ng ollama at composer
 https://getcomposer.org/
 https://ollama.com/
 
-then sa bash paste this: composer require ardagnsrn/ollama-php
+then sa bash paste this: 
+composer require ardagnsrn/ollama-php
+composer require smalot/pdfparser
