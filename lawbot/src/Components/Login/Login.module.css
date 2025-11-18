@@ -207,6 +207,8 @@ a{
   cursor: pointer; 
 }
 
+
+
 .action p{
     color:red;
     width:100%;
@@ -216,6 +218,7 @@ a{
     font-size: 0.9rem;
     display:flex;
     justify-content: center;
+    align-items: center;
 }
 
 @media (max-width: 1400px) {
