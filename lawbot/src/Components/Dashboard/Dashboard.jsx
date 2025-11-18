@@ -30,7 +30,7 @@ export default function Dashboard() {
   
   const upload = useFileUpload(async(file) => {
     const fileData = new FormData();
-    console.log(file);
+    
 
     fileData.append("file", file, file.name);  
     fileData.append("userEmail", userEmail);

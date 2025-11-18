@@ -46,7 +46,7 @@ export default function Login(){
             return;
         }
         //remove sa storage kapag naglogin kahit nakaremember pa sila o nde
-        localStorage.removeItem("userInfo");
+        localStorage.clear();
         //sa variable lang massave kung di nakaset to remember
         setUserToken(token);
         //ito way para masave na nakalogin kung nakaset to remember

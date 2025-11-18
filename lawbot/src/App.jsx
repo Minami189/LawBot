@@ -29,7 +29,7 @@ function App() {
           <Route path="/signup" element={<Register/>}/>
           <Route path="/logs" element={<Logs/>}/>
           <Route path="/about" element={<About/>}/>
-          <Route path="/summarize" element={<Summarize/>}/>
+          <Route path="/summary" element={<Summarize/>}/>
           <Route path="/auditlog" element={<AuditLog/>}/>
           <Route path="*" element={<Landing/>}/>
         </Routes>
