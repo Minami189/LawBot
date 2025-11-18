@@ -1,20 +1,23 @@
 @import url('../../Styles/main.module.css');
 
-footer {
-  bottom: 0;
+.mainFooter, .foooter {
+  background-color: var(--mainColor);
   width: 100%;
-
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  bottom: 0;
+  z-index: 999;
 }
 
-.mainFooter {
+footer {
   display: flex;
+  align-items: center;
+  flex-direction: row;
   flex-wrap: wrap;
-  padding: 5rem;
-  gap: 3rem;
-  background-color: var(--mainColor);
+
+  gap: 4rem;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 5rem 5rem 4rem;
+  max-width: 1920px;
 }
 
 .footerCopyright {
@@ -24,7 +27,7 @@ footer {
   text-align: center;
   font-size: 0.8rem;
   font-family: var(--textfont);
-  color: var(--footer-font-cpyrt-color);
+  color: var(--textColor);
   background-color: var(--mainColorLight);
 }
 
@@ -64,7 +67,7 @@ footer {
   flex-shrink: 1;
   flex-basis: auto;
 
-  font-family: "SF Pro Display-Bold";
+  font-family: var(--title);
 }
 
 .footerLogo {
@@ -74,7 +77,9 @@ footer {
 
 .footerName {
   font-size: 1.5rem;
-  color: var(--footer-font-logo-color);
+  color: var(--textColor);
+  font-family: var(--title);
+  font-weight: 650;
 }
 
 .footerContent {
@@ -84,11 +89,11 @@ footer {
   align-items: center;
   max-width: 28rem;
 
-  font-family: "SF Pro Display-Medium";
+  font-family: var(--subtitle);
   text-align: justify;
   font-size: 1.25rem;
   line-height: 1.5em;
-  color: var(--footer-font-content-color);
+  color: var(--tertiarycolor);
 }
 
 .footerAccounts {
@@ -121,17 +126,18 @@ footer {
 }
 
 .title {
-  color: var(--footer-font-nav-title-color);
+  color: var(--textColor);
   font-size: 1.3rem;
   margin-bottom: 3rem;
-  font-family: "SF Pro Display-Bold";
+  font-family: var(--title);
+  font-weight: 650;
 }
 
 .subcontent {
-  color: var(--footer-font-nav-section-color);
+  color: var(--tertiarycolor);
   font-size: 1.15rem;
   margin-bottom: 1.75rem;
-  font-family: "SF Pro Display-Regular";
+  font-family: var(--subtitle);
 }
 
 .footerRight a {
@@ -143,7 +149,7 @@ footer {
 .footerRight a::after {
   content: "";
   position: absolute;
-  background-color: var(--footer-font-nav-underline-color);
+  background-color: var(--textColor);
   height: 0.1875rem;
   width: 100%;
   left: 0;
@@ -154,7 +160,7 @@ footer {
 }
 
 .footerRight a:hover {
-  color: var(--footer-font-nav-hover-color);
+  color: var(--textColor);
 }
 
 .footerRight a:hover::after {
@@ -166,14 +172,14 @@ footer {
 }
 
 .iconCircle.mail {
-  color: var(--mail-color);
+  color: var(--mainColor);
 }
 .iconCircle.facebook {
-  color: var(--fb-color);
+  color: var(--mainColor);
 }
 
 .iconCircle.facebook {
-  color: var(--fb-color);
+  color: var(--mainColor);
 }
 
 /*
@@ -192,7 +198,7 @@ footer {
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  background-color: var(--icon-circle-color);
+  background-color: var(--MainColorContrast);
 
   scale: 1;
   font-size: 1.5rem;
@@ -203,46 +209,49 @@ footer {
 
 .iconCircle:hover {
   scale: 1.5;
-  color: var(--footer-icon-hover-color);
-  background-color: var(--footer-icon-circle-hover-color);
+  color: var(--textColor);
+  background-color: var(--mainColor);
 }
 
 .buttonFooter {
-  background-color: var(--footer-button-color);
+  background-color: var(--mainColor);
   padding: 0.5rem;
   width: 11rem;
   height: 3.5rem;
 
   border-width: 0.125rem;
   border-radius: 0.25rem;
-  border-color: var(--footer-button-border-color);
+  border-color: var(--MainColorContrast);
 
-  color: var(--footer-button-font-color);
+  color: var(--textColor);
   font-size: 1.05rem;
-  font-family: "SF Pro Display-Bold";
+  font-family: var(--subtitle);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .buttonFooter:hover {
-  color: var(--footer-button-font-hover-color);
-  background-color: var(--footer-button-hover-color);
+  color: var(--mainColor);
+  background-color: var(--MainColorContrast);
 }
 
-@media (max-width: 800px) {
+@media only screen and (max-width: 1030px) {
   /* Footer Responsiveness */
   .footerRightContainerLeft,
   .footerRightContainerRight {
     flex-basis: auto;
     align-items: center;
   }
+
   .footerLeft {
     flex-basis: 100%;
   }
+
   .footerRight {
     margin-right: 0rem;
     gap: 2rem;
     justify-content: space-around;
   }
+  
   .footerContent {
     max-width: fit-content;
   }
