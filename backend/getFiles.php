@@ -1,7 +1,17 @@
 <?php
 require_once 'db.php';
+header("Access-Control-Allow-Origin: http://localhost:5173");
+header("Access-Control-Allow-Credentials: true");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 
-$userEmail = 'jermainecamachooo@gmail.com';
+$userEmail;
+if(empty($_POST["userEmail"])){
+    return;
+}
+
+$userEmail = $_POST["userEmail"];
+$userEmail = "test@gmail.com";
 
 $stmt = $pdo->prepare("SELECT id, filename FROM files WHERE user_email = :email");
 $stmt->execute([':email' => $userEmail]);
