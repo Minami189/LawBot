@@ -11,7 +11,6 @@ if(empty($_POST["userEmail"])){
 }
 
 $userEmail = $_POST["userEmail"];
-$userEmail = "test@gmail.com";
 
 $stmt = $pdo->prepare("SELECT id, filename FROM files WHERE user_email = :email");
 $stmt->execute([':email' => $userEmail]);
