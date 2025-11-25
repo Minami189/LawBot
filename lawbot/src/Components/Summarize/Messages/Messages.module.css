@@ -1,0 +1,41 @@
+
+.userTitle{
+    align-self: flex-end;
+    padding-right: 0.3rem;
+}
+
+.botTitle{
+    align-self: flex-start;
+    padding-left: 0.3rem;
+}
+
+.userText{
+    align-self: flex-end;
+    background-color: rgba(215, 181, 181, 0.726);
+    padding: clamp(0.8rem, 2vw, 1.5rem);
+    border-radius: 10px;
+    font-weight: 500px;
+    flex-direction: column;
+}
+
+.botText{
+    color: white;
+    align-self: flex-start;
+    background-color: rgb(197, 114, 83);
+    padding: clamp(0.8rem, 2vw, 1.5rem);
+    border-radius: 10px;
+}
+
+.messageContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.show{
+    display: flex;
+}
+
+.hide{
+    display: none;
+}
