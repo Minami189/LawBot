@@ -1,6 +1,7 @@
-@import url('../../Styles/main.module.css');
+@import url("../../Styles/main.module.css");
 
-.mainNavigation, .header {
+.mainNavigation,
+.header {
   background-color: var(--mainColor);
   width: 100%;
   height: 4.5rem;
@@ -10,11 +11,15 @@
   z-index: 999;
 }
 
+a {
+  text-decoration: none;
+}
+
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  
+
   gap: 1rem;
   padding: 1rem 0.75rem;
   max-width: 1920px;
@@ -24,6 +29,7 @@
   margin: 0 auto;
 
   color: var(--textColor);
+  box-shadow: 0 4px 20px rgba(58, 102, 53, 0.1);
   transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
 }
 
@@ -173,7 +179,10 @@
   padding: 0.5rem;
   width: 7rem;
   height: 2.5rem;
+}
 
+.btnSidebarTrial,
+.btnTrial {
   color: var(--mainColor);
   font-size: 1rem;
   font-family: var(--title);
@@ -185,13 +194,13 @@
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-
-.btnTrial:hover {
+.btnTrial:hover,
+.btnSidebarTrial:hover {
   color: var(--MainColorContrast);
   background-color: var(--mainColor);
 }
 
-.btnIconWrapper{
+.btnIconWrapper {
   display: flex;
   position: relative;
   width: 1em;
@@ -217,10 +226,12 @@
 }
 
 /* On hover: show regular, hide solid */
+.btnSidebarTrial:hover .btnIconFill,
 .btnTrial:hover .btnIconFill {
   opacity: 0;
 }
 
+.btnSidebarTrial:hover .btnIconReg,
 .btnTrial:hover .btnIconReg {
   opacity: 1;
   color: var(--MainColorContrast);
@@ -246,6 +257,7 @@
   height: 100vh;
   width: 20rem;
   background-color: var(--mainColor);
+  box-shadow: 0 4px 20px rgba(58, 102, 53, 0.1);
   padding: 5rem 1.5rem 1rem 1.5rem;
   display: flex;
   flex-direction: column;
@@ -255,22 +267,38 @@
   z-index: 10000;
 }
 
+.sidebarTop,
+.sidebarBottom {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.sidebarBottom {
+  gap: 1.5rem;
+}
+
 .showSidebar {
   transform: translateX(0);
 }
 
-.sidebar a {
-  text-decoration: none;
-  color: var(--textColor);
-  font-family: var(--title);
-  font-weight: 650;
-  font-size: 1.25rem;
+.sidebarTop a {
   padding: 0.75rem 0;
   border-radius: 6px;
   transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }
 
-.sidebar a:hover {
+.sidebarBottom a,
+.sidebarTop a {
+  text-decoration: none;
+  color: var(--textColor);
+  font-family: var(--title);
+  font-weight: 650;
+  font-size: 1.25rem;
+}
+
+.sidebarTop a:hover {
   background-color: var(--MainColorContrast);
   color: var(--secondaryColor);
 }
@@ -278,6 +306,10 @@
 .sidebarDropdown {
   display: flex;
   flex-direction: column;
+}
+
+.sidebarDropdown button {
+  font-weight: 650;
 }
 
 .sidebarToggle {
@@ -308,6 +340,46 @@
 
 .sidebarDropdownMenu.open {
   max-height: 300px;
+}
+
+.sidebarTop .btnHome,
+.sidebarTop .sidebarDropdown {
+  padding: 0.5rem 1rem;
+}
+
+.btnSidebarLogin {
+  color: var(--MainColorContrast);
+  font-size: 1rem;
+  font-family: var(--title);
+  font-weight: 600;
+  background-color: var(--mainColorLight);
+  border-color: var(--mainColor);
+  border-width: 0.125rem;
+  border-radius: 0.5em;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.btnSidebarLogin:hover {
+  background-color: var(--mainColor);
+  border-color: var(--MainColorContrast);
+}
+
+.btnSidebarLogin .btnIconReg {
+  opacity: 1;
+  color: var(--MainColorContrast);
+}
+
+.btnSidebarTrial,
+.btnSidebarLogin {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding: 0.5rem;
+  width: 100%;
+  height: 3rem;
+  font-size: 1.25rem;
+  font-family: var(--title);
+  font-weight: 600;
 }
 
 @media only screen and (max-width: 800px) {

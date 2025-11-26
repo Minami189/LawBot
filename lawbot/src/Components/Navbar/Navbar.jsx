@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { XIcon, GavelIcon, ListIcon, CaretRightIcon, CaretDownIcon } from "@phosphor-icons/react";
+import { XIcon, GavelIcon, ListIcon, CaretRightIcon, CaretDownIcon, SignInIcon } from "@phosphor-icons/react";
 import classes from "./Navbar.module.css";
 import logo from "../../assests/logo.png";
 import { withBase } from "../../functions/withBase";
@@ -121,58 +121,74 @@ function Navbar() {
 					>
 						<XIcon size={28} />
 					</button>
+					<div className={classes.sidebarTop}>
+						<a className={classes.btnHome} href={withBase("/#")}>Home</a>
 
-					<a href={withBase("/#")}>Home</a>
+						<div className={classes.sidebarDropdown}>
+							<button
+								onClick={() => toggleDropdown("about-side")}
+								className={classes.sidebarToggle}
+							>
+								About Us
+								{openDropdown === "about-side" ? (
+									<CaretDownIcon size={20} />
+								) : (
+									<CaretRightIcon size={20} />
+								)}
+							</button>
+							<div
+								className={`${classes.sidebarDropdownMenu} ${
+									openDropdown === "about-side" ? classes.open : ""
+								}`}
+							>
+								<a href={withBase("/#mission")}>Mission & Vision</a>
+								<a href={withBase("/#team")}>Our Team</a>
+								<a href={withBase("/#history")}>History</a>
+							</div>
+						</div>
 
-					<div className={classes.sidebarDropdown}>
-						<button
-							onClick={() => toggleDropdown("about-side")}
-							className={classes.sidebarToggle}
-						>
-							About Us
-							{openDropdown === "about-side" ? (
-								<CaretDownIcon size={20} />
-							) : (
-								<CaretRightIcon size={20} />
-							)}
-						</button>
-						<div
-							className={`${classes.sidebarDropdownMenu} ${
-								openDropdown === "about-side" ? classes.open : ""
-							}`}
-						>
-							<a href={withBase("/#mission")}>Mission & Vision</a>
-							<a href={withBase("/#team")}>Our Team</a>
-							<a href={withBase("/#history")}>History</a>
+						<div className={classes.sidebarDropdown}>
+							<button
+								onClick={() => toggleDropdown("help-side")}
+								className={classes.sidebarToggle}
+							>
+								Help
+								{openDropdown === "help-side" ? (
+									<CaretDownIcon size={20} />
+								) : (
+									<CaretRightIcon size={20} />
+								)}
+							</button>
+							<div
+								className={`${classes.sidebarDropdownMenu} ${
+									openDropdown === "help-side" ? classes.open : ""
+								}`}
+							>
+								<a href={withBase("/#faq")}>FAQ</a>
+								<a href={withBase("/#support")}>Support</a>
+							</div>
 						</div>
 					</div>
-
-					<div className={classes.sidebarDropdown}>
-						<button
-							onClick={() => toggleDropdown("help-side")}
-							className={classes.sidebarToggle}
-						>
-							Help
-							{openDropdown === "help-side" ? (
-								<CaretDownIcon size={20} />
-							) : (
-								<CaretRightIcon size={20} />
-							)}
-						</button>
-						<div
-							className={`${classes.sidebarDropdownMenu} ${
-								openDropdown === "help-side" ? classes.open : ""
-							}`}
-						>
-							<a href={withBase("/#faq")}>FAQ</a>
-							<a href={withBase("/#support")}>Support</a>
-						</div>
+					<hr />
+					<div className={classes.sidebarBottom}>
+						<a href={withBase("/login")}>
+							<button className={classes.btnSidebarLogin}>
+								<span className={classes.btnIconWrapper}>
+									<SignInIcon weight="bold" className={classes.btnIconReg} />
+								</span> &nbsp;
+								Login
+							</button>
+						</a>
+						<a href={withBase("/signup")}>
+							<button className={classes.btnSidebarTrial}>
+								<span className={classes.btnIconWrapper}>
+									<GavelIcon weight="fill" className={classes.btnIconFill}/>
+									<GavelIcon weight="bold" className={classes.btnIconReg} />
+								</span> &nbsp;
+								Try Free
+							</button>
+						</a>
 					</div>
-
-					<a href={withBase("/login")}>Login</a>
-					<a href={withBase("/#trial")} className={classes.tryBtn}>
-						Try For Free
-					</a>
 				</nav>
 			</header>
 		</div>
