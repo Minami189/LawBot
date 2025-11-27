@@ -9,8 +9,40 @@
     width:100vw;
     display:flex;
     justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-family: "Poppins", sans-serif;
+    padding: 5rem 7rem;
+    text-align: center;
+    overflow-y: auto;
 }
 
-.example{
-    color:red
+.title{
+    font-size: 70px;
+    font-weight: 700px;
+    color: #A29090;
+    margin-bottom: 200px;
+    margin-top: 50px;
+    align-self: center;
+    word-break: break-word;
+    line-height: 1.05;
 }
+
+.description{
+    font-size: 20px;
+    font-weight: 700px;
+    color: #382E2E;
+    margin-bottom: 15px;
+    align-self: bottom left;
+}
+
+.aboutImg{
+    display: block;
+    margin: 0 auto;      
+    width: 100%;         
+    max-width: 1000px;   
+    height: auto;        
+    border-radius: 20px; 
+}
+
