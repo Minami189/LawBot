@@ -1,9 +1,7 @@
-<<<<<<< Updated upstream:lawbot/src/Components/About/About.jsx
+
 import classes from "./About.module.css";
-=======
-import classes from "../Styles/about.module.css";
-import aboutImg from "../assests/aboutus/AboutUs.png"
->>>>>>> Stashed changes:lawbot/src/Components/About.jsx
+import aboutImg from "../../assests/aboutus/AboutUs.png"
+
 
 export default function About(){
     return(
