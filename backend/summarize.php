@@ -1,16 +1,31 @@
 <?php
 require_once 'db.php';
 require __DIR__ . '/vendor/autoload.php';
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Credentials: true");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 
 use ArdaGnsrn\Ollama\Ollama;
 use Smalot\PdfParser\Parser;
 
 $client = Ollama::client();
 
-$id = 3;
+if(empty($_POST["fileID"]) || empty($_POST["chatID"])){
+    echo json_encode([
+        "success" => false,
+        "message" => "missing parameters"
+    ]);
+    exit;
+}
+
+$fileID = $_POST["fileID"];
+$chatID  = $_POST["chatID"];
+
+
 
 $stmt = $pdo->prepare("SELECT filename, filedata FROM files WHERE id = :id");
-$stmt->execute([':id' => $id]);
+$stmt->execute([':id' => $fileID]);
 $files = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$files){
@@ -36,6 +51,10 @@ if (in_array($ext, ['jpg', 'jpeg', 'png'])){
     };
 
     $prompt = "
+You are an AI specifically made to give tips and summarizations of legal documents,
+documents not connected to law or legal topics should be ignored and replied with,
+'The document does not provide enough legal context' 
+
 I am giving you an image file. Here is its base64-encoded preview:
 
 MIME type: $mime
@@ -54,6 +73,10 @@ elseif ($ext === 'pdf') {
 
     $text = mb_convert_encoding($text, 'UTF-8', 'UTF-8');
     $prompt = "
+You are an AI specifically made to give tips and summarizations of legal documents,
+documents not connected to law or legal topics should be ignored and replied with,
+'The document does not provide enough legal context' 
+
 I am giving you a PDF file:
 
 $text
@@ -69,6 +92,9 @@ Return clean text suitable for direct display.";
 elseif ($ext === 'txt') {
     $text = mb_convert_encoding($filedata, 'UTF-8', 'UTF-8');
     $prompt = "
+You are an AI specifically made to give tips and summarizations of legal documents,
+documents not connected to law or legal topics should be ignored and replied with,
+'The document does not provide enough legal context' 
 I am giving you a plain text file:
 
 $text
@@ -97,6 +123,14 @@ try {
         "success" => true,
         "message" => nl2br(htmlspecialchars($completion->response, ENT_QUOTES | ENT_SUBSTITUTE))
     ]);
+
+    $botResponse = nl2br(htmlspecialchars($completion->response, ENT_QUOTES | ENT_SUBSTITUTE));
+    $stmt = $pdo->prepare("INSERT INTO messages (chatID, type, content) VALUES (:chatID, :type, :content)");
+    $stmt->bindParam(':chatID', $chatID, PDO::PARAM_INT);
+    $stmt->bindValue(':type', "bot", PDO::PARAM_STR);
+    $stmt->bindParam(':content', $botResponse, PDO::PARAM_STR);
+    $stmt->execute();
+
 } catch (\GuzzleHttp\Exception\GuzzleException $error) {
     echo json_encode([
         "success" => false,

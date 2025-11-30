@@ -1,6 +1,6 @@
 import classes from './Messages.module.css'
 
-export default function Messages({type="user", content="sample content", className=""}) {
+export default function Messages({type="user", content="", className=""}) {
 
   return (
     <div className={`${classes.messageContainer} classes.${className}`}>

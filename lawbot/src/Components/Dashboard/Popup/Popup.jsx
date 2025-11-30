@@ -8,22 +8,22 @@ export default function Popup({ onClose }){
     const { userToken } = useContext(AppContext);
     const [files, setFiles] = useState([]);
     const [fileID, setFileID] = useState();
+    const [email, setEmail] = useState();
     const navigate = useNavigate();
+
     useEffect(()=>{
         loadFiles();
     },[])
-
-
+ 
     async function loadFiles(){
         const formData = new FormData();
-        let userEmail;
         const savedUserToken = localStorage.getItem("userInfo");
-
+        let userEmail;
         if(savedUserToken){
             const decodedToken = jwtDecode(savedUserToken);
             userEmail = decodedToken.email;
         }else{
-            userEmail = jwtDecode(userToken).email;
+            userEmail= jwtDecode(userToken).email;
         }
 
         formData.append("userEmail", userEmail);
@@ -32,17 +32,39 @@ export default function Popup({ onClose }){
             method:"POST",
             body: formData,
         });
-
+        setEmail(userEmail);
         const {success, files} = await response.json();
         if(!success) return;
         setFiles(files);
     }
 
-    function handleSelectFile(fileID){
+    async function handleSelectFile(fileID, index){
         setFileID(fileID);
         localStorage.removeItem("selectedFileID");
         localStorage.setItem("selectedFileID", fileID);
-        navigate(withBase("/summary"));
+        
+        const fetchData = new FormData();
+        fetchData.append("new_chat", "placeholder");
+        fetchData.append("title", `${files[index].filename} summary`);
+        fetchData.append("userEmail", email);
+
+        const response = await fetch("http://localhost/backend/chatbot.php", {
+            method:"POST",
+            body: fetchData
+        });
+
+        
+        const {success, message} = await response.json();
+        if(success){
+            localStorage.removeItem("chatID");
+            localStorage.setItem("chatID", message);
+            localStorage.removeItem("summarizing");
+            localStorage.setItem("summarizing", true);
+            
+            navigate(withBase("/summary"))
+        }else{
+            console.error(message);
+        }
     }
 
     return(
@@ -59,7 +81,7 @@ export default function Popup({ onClose }){
                         {
                             files.map((file, index)=>{
                                 return(
-                                    <h4 onClick={()=>handleSelectFile(file.id)} key={index}>{file.filename}</h4>
+                                    <h4 onClick={()=>handleSelectFile(file.id, index)} key={index}>{file.filename}</h4>
                                 )
                             })
                         }

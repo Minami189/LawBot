@@ -16,10 +16,11 @@ import { withBase } from "../../functions/withBase";
 import Popup from "./Popup/Popup";
 
 export default function Dashboard() {
-  const { userToken } = useContext(AppContext);
-  const savedUserToken = localStorage.getItem("userInfo");
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
+
+  const { userToken } = useContext(AppContext);
+  const savedUserToken = localStorage.getItem("userInfo");
   let userEmail;
   if(savedUserToken){
     const decodedToken = jwtDecode(savedUserToken);
