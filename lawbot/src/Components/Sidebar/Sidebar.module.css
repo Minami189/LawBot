@@ -1,0 +1,30 @@
+@import url("../../Styles/main.module.css");
+
+a {
+  text-decoration: none;
+}
+
+.mainSidebar,
+.header {
+  background-color: var(--mainColor);
+  width: 100%;
+  height: 4.5rem;
+
+  position: fixed;
+  top: 0;
+  z-index: 999;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+
+  box-shadow: 0 4px 20px rgba(58, 102, 53, 0.1);
+}
+
+@media only screen and (max-width: 800px) {
+  
+}
