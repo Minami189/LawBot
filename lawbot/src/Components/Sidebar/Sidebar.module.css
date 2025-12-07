@@ -4,27 +4,160 @@ a {
   text-decoration: none;
 }
 
-.mainSidebar,
-.header {
-  background-color: var(--mainColor);
-  width: 100%;
-  height: 4.5rem;
-
+/* SIDEBAR WRAPPER */
+.sidebarWrapper {
+  display: flex;
+  height: 100vh;
+  background: var(--sidebar-bg);
   position: fixed;
   top: 0;
+  left: 0;
   z-index: 999;
 }
 
-.header {
+/* MINI BAR — fixed 4rem */
+.miniBar {
+  width: 4rem;
+  background: var(--sidebar-mini-bg);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-
-
-  box-shadow: 0 4px 20px rgba(58, 102, 53, 0.1);
+  padding: 1rem 0;
+  gap: 1.5rem;
 }
 
-@media only screen and (max-width: 800px) {
-  
+/* === FULL SIDEBAR ANIMATION === */
+.fullSidebar {
+  width: 18rem;
+  background: var(--sidebar-bg);
+
+  /* The magic */
+  transition: width 0.28s ease, opacity 0.25s ease;
+  overflow: hidden;
+  opacity: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.fullSidebar.closed {
+  width: 0rem;
+  opacity: 0;
+  padding: 1rem 0; /* prevents content shift */
+}
+
+/* FADE-IN-OUT TEXT WHEN COLLAPSING */
+.fade {
+  transition: opacity 0.2s ease 0.05s, transform 0.25s ease;
+}
+
+.fullSidebar.closed .fade {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+/* REST OF YOUR ORIGINAL CSS — unchanged */
+.logo {
+  width: 26px;
+  cursor: pointer;
+}
+
+.icon {
+  cursor: pointer;
+  color: #888;
+}
+
+.icon:hover {
+  color: #fff;
+}
+
+.bottomIcons {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.userIcon {
+  color: #66e6c2;
+}
+
+/* Full sidebar sections */
+.section {
+  margin-bottom: 1.5rem;
+}
+
+.sectionTitle {
+  font-size: 0.85rem;
+  opacity: 0.6;
+  margin-bottom: 0.5rem;
+}
+
+.rowBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: none;
+  border: none;
+  color: var(--sidebar-text);
+  padding: 0.5rem 0.2rem;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.rowBtn:hover {
+  background: var(--sidebar-hover);
+}
+
+.chatList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.chatList li {
+  padding: 0.4rem 0.5rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.chatList li:hover {
+  background: var(--sidebar-hover);
+}
+
+.bottomSection {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid #333;
+}
+
+.userBox {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.userName {
+  font-size: 0.9rem;
+}
+
+.userPlan {
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
+
+.newChatBtn {
+  width: 100%;
+  padding: 0.6rem;
+  background: #262626;
+  border: none;
+  color: var(--sidebar-text);
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.newChatBtn:hover {
+  background: #333333;
 }
