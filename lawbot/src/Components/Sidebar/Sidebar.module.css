@@ -4,93 +4,128 @@ a {
   text-decoration: none;
 }
 
-/* SIDEBAR WRAPPER */
+:root {
+  --sidebar-bg: #1f1f1f;
+  --sidebar-mini-bg: #0f0f0f;
+  --sidebar-text: #e0e0e0;
+  --sidebar-hover: #2a2a2a;
+}
+
+/* WRAPPER (outer container) */
 .sidebarWrapper {
   display: flex;
   height: 100vh;
-  background: var(--sidebar-bg);
   position: fixed;
   top: 0;
   left: 0;
+  background: var(--sidebar-bg);
   z-index: 999;
+
+  /* Animation */
+  transition: width 0.28s ease, opacity 0.28s ease;
+  overflow: hidden;
 }
 
-/* MINI BAR — fixed 4rem */
+.sidebarWrapper.open {
+  width: 20rem; /* ChatGPT width */
+}
+
+.sidebarWrapper.closed {
+  width: 4rem; /* collapsed width */
+}
+
+/* MINI BAR */
 .miniBar {
   width: 4rem;
   background: var(--sidebar-mini-bg);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem 0;
-  gap: 1.5rem;
+  padding: 1.2rem 0;
+  gap: 1.6rem;
+  border-right: 1px solid #2a2a2a;
 }
 
-/* === FULL SIDEBAR ANIMATION === */
-.fullSidebar {
-  width: 18rem;
-  background: var(--sidebar-bg);
-
-  /* The magic */
-  transition: width 0.28s ease, opacity 0.25s ease;
-  overflow: hidden;
-  opacity: 1;
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-}
-
-.fullSidebar.closed {
-  width: 0rem;
-  opacity: 0;
-  padding: 1rem 0; /* prevents content shift */
-}
-
-/* FADE-IN-OUT TEXT WHEN COLLAPSING */
-.fade {
-  transition: opacity 0.2s ease 0.05s, transform 0.25s ease;
-}
-
-.fullSidebar.closed .fade {
-  opacity: 0;
-  transform: translateX(-10px);
-}
-
-/* REST OF YOUR ORIGINAL CSS — unchanged */
 .logo {
   width: 26px;
-  cursor: pointer;
+  opacity: 0.9;
 }
 
 .icon {
   cursor: pointer;
   color: #888;
+  transition: color 0.15s ease;
 }
 
 .icon:hover {
   color: #fff;
 }
 
+.iconBtn {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+/* ICONS AT BOTTOM */
 .bottomIcons {
   margin-top: auto;
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 1.3rem;
 }
 
 .userIcon {
   color: #66e6c2;
 }
 
-/* Full sidebar sections */
+/* FULL SIDEBAR */
+.fullSidebar {
+  width: 16rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  color: var(--sidebar-text);
+
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.sidebarWrapper.closed .fullSidebar {
+  opacity: 0;
+  transform: translateX(-20px);
+  pointer-events: none;
+}
+
+/* LIST ELEMENTS */
 .section {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.8rem;
 }
 
 .sectionTitle {
-  font-size: 0.85rem;
-  opacity: 0.6;
-  margin-bottom: 0.5rem;
+  font-size: 0.82rem;
+  opacity: 0.55;
+  margin-bottom: 0.6rem;
+}
+
+/* New Chat button (ChatGPT style) */
+.newChatBtn {
+  width: 100%;
+  padding: 0.65rem;
+  background: #262626;
+  border: none;
+  color: var(--sidebar-text);
+  border-radius: 7px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  transition: background 0.15s ease;
+}
+
+.newChatBtn:hover {
+  background: #303030;
 }
 
 .rowBtn {
@@ -101,9 +136,11 @@ a {
   background: none;
   border: none;
   color: var(--sidebar-text);
-  padding: 0.5rem 0.2rem;
+  padding: 0.55rem 0.2rem;
   cursor: pointer;
   border-radius: 6px;
+  transition: background 0.12s ease;
+  font-size: 0.88rem;
 }
 
 .rowBtn:hover {
@@ -117,15 +154,18 @@ a {
 }
 
 .chatList li {
-  padding: 0.4rem 0.5rem;
+  padding: 0.45rem 0.5rem;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 6px;
+  opacity: 0.9;
+  font-size: 0.88rem;
 }
 
 .chatList li:hover {
   background: var(--sidebar-hover);
 }
 
+/* USER SECTION */
 .bottomSection {
   margin-top: auto;
   padding-top: 1rem;
@@ -135,7 +175,11 @@ a {
 .userBox {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: 0.75rem;
+}
+
+.userInfo {
+  line-height: 1.15;
 }
 
 .userName {
@@ -147,17 +191,9 @@ a {
   opacity: 0.6;
 }
 
-.newChatBtn {
-  width: 100%;
-  padding: 0.6rem;
-  background: #262626;
-  border: none;
-  color: var(--sidebar-text);
-  border-radius: 6px;
-  cursor: pointer;
-  margin-bottom: 1rem;
-}
-
-.newChatBtn:hover {
-  background: #333333;
+/* MOBILE AUTO-HIDE */
+@media (max-width: 950px) {
+  .sidebarWrapper.open {
+    width: 4rem !important; /* force collapse */
+  }
 }
