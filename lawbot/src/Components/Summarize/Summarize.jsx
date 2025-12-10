@@ -180,14 +180,7 @@ export default function Summarize(){
 
              <div className={classes.chatsContainer}>
 
-                {/* Sample Div for the chats */}
-                <div className={classes.chatContainer} onClick={()=>{
-                    
-                }}>
-                    <h1 className={classes.chatTitle}>Employment Contract</h1>
-                </div>
 
-                {/* Sample Div for the chats using objects and map*/}
 
                 {
                 

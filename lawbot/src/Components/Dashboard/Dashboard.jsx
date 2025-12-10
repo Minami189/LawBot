@@ -41,8 +41,27 @@ export default function Dashboard() {
 
     setStorageUsed(Number(decodedToken.storageUsed) || 0);
     setDocumentsProcessed(decodedToken.documentsProcessed);
+
+    loadStats();
   },[]);
 
+  async function loadStats(){
+    const fetchData = new FormData();
+    fetchData.append("userEmail", userEmail);
+    const response = await fetch("http://localhost/backend/getStats.php", {
+      method: "POST",
+      body: fetchData
+    });
+
+    const {success, message} = await response.json();
+    if(!success){
+      console.error(message);
+      return;
+    }
+
+    setStorageUsed(Number(message.storage_used) || 0);
+    setDocumentsProcessed(Number(message.documents_processed) || 0);
+  }
 
   const upload = useFileUpload(async(file) => {
     const fileData = new FormData();
@@ -55,9 +74,9 @@ export default function Dashboard() {
       method: "POST",
       body: fileData
     });
-
     const data = await response.json();
     console.log(data);
+    loadStats();
   });
 
   function handleSummarize(){
@@ -74,7 +93,7 @@ export default function Dashboard() {
     return `${mib.toFixed(1)} MB`;
   };
 
-  const storageLimitBytes = 500 * 1024 ** 2; // 500 MB in bytes
+  const storageLimitBytes = 50 * 1024 ** 2; // 50 MB in bytes
   const storagePercent = Math.min(100, (storageUsed / storageLimitBytes) * 100 || 0);
 
   return (
@@ -231,7 +250,7 @@ export default function Dashboard() {
                   ></div>
                 </div>
                 <span className={classes.UsageStatsInfo}>
-                  {`${storagePercent.toFixed(0)}% of 500 MB limit`}
+                  {`${storagePercent.toFixed(0)}% of 50 MB limit`}
                 </span>
               </div>
               <img
