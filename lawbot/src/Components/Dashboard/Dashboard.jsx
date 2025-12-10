@@ -21,6 +21,7 @@ export default function Dashboard() {
   const { userToken } = useContext(AppContext);
   const [storageUsed, setStorageUsed] = useState(0);
   const [documentsProcessed, setDocumentsProcessed] = useState(0);
+  const [recent, setRecent] = useState([]);
   const savedUserToken = localStorage.getItem("userInfo");
   let userEmail;
   if(savedUserToken){
@@ -61,6 +62,23 @@ export default function Dashboard() {
 
     setStorageUsed(Number(message.storage_used) || 0);
     setDocumentsProcessed(Number(message.documents_processed) || 0);
+  }
+
+  async function loadRecent(){
+    const fetchData = new FormData();
+    fetchData.append("userEmail", userEmail);
+    const response = await fetch("http://localhost/backend/getRecent.php", {
+      method: "POST",
+      body: fetchData
+    });
+
+    const {message, success} = response.json();
+    if(!success){
+      console.error(message);
+      return;
+    }
+
+    console.log(message);
   }
 
   const upload = useFileUpload(async(file) => {
