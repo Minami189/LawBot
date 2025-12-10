@@ -116,7 +116,7 @@ export default function Dashboard() {
 
   return (
     <div className={classes.DashboardContainer}>
-      {showPopup && <Popup onClose={handleClosePopup} />}
+      {showPopup && <Popup onClose={handleClosePopup} loadStats={loadStats} />}
       
       <div className={classes.Dashboard}>Dashboard</div>
 

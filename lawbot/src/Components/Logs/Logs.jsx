@@ -1,24 +1,52 @@
 import classes from "./Logs.module.css";
-import { useState, useRef, useEffect } from "react";
-
+import { useState, useRef, useEffect, useContext } from "react";
+import { AppContext } from "../../App";
+import { jwtDecode } from "jwt-decode";
 
 export default function Logs(){
     const [logs, setLogs] = useState([]);
     const [viewLogs, setViewLogs] = useState([]);
     const filterRef = useRef(null);
+    const {userToken} = useContext(AppContext);
+
 
     useEffect(()=>{
-        const fetchedLogs = [
-            {
-                document: "Employment Contract - Jordan Poole",
-                action: "summarize",
-                date: "11/5/2025 - 14:33"
-            }
-        ]
 
+        handleLogs();
+
+    },[])
+
+    async function handleLogs(){
+        const fetchData = new FormData();
+        const savedUserToken = localStorage.getItem("userInfo");
+        let userEmail;
+        if(savedUserToken){
+            const decodedToken = jwtDecode(savedUserToken);
+            userEmail = decodedToken.email;
+        }else{
+            userEmail= jwtDecode(userToken).email;
+        }
+
+        fetchData.append("userEmail", userEmail);
+
+        const response = await fetch("http://localhost/backend/getLogs.php", {
+            method:"POST",
+            body:fetchData
+        });
+
+        const {message, success,} = await response.json();
+        if(!success){
+            console.error(message);
+            return;
+        }
+
+
+
+        const fetchedLogs = message;
+        console.log(fetchedLogs);
         setLogs(fetchedLogs);
         setViewLogs(fetchedLogs);
-    },[])
+    }
 
     function handleSearch() {
         const keyword = filterRef.current.value.toLowerCase();
@@ -31,6 +59,11 @@ export default function Logs(){
 
         setViewLogs(filtered);
         console.log(filtered);
+    }
+
+    function truncateDocument(name = "", maxLen = 30){
+        if(name.length <= maxLen) return name;
+        return `${name.slice(0, maxLen)}...`;
     }
 
 
@@ -73,7 +106,7 @@ export default function Logs(){
                             return(
                                 <div className={classes.tableRow}>
                                     <div className={classes.docInfo}>
-                                        <h3>{log.document}</h3>
+                                        <h3>{truncateDocument(log.document)}</h3>
                                     </div>
                                     <span>{log.action}</span>
                                     <span>{log.date}</span>

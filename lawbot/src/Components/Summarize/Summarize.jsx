@@ -92,6 +92,15 @@ export default function Summarize(){
         if(!localStorage.getItem("summarizing")){
             return;
         }
+
+        const savedUserToken = localStorage.getItem("userInfo");
+        let userEmail;
+        if(savedUserToken){
+            const decodedToken = jwtDecode(savedUserToken);
+            userEmail = decodedToken.email;
+        }else{
+            userEmail= jwtDecode(userToken).email;
+        }
         
         setMessages(prev=>[{
             content:  <ThreeDotsWave/>,
@@ -101,7 +110,7 @@ export default function Summarize(){
         const fetchData = new FormData();
         fetchData.append("chatID", localStorage.getItem("chatID"));
         fetchData.append("fileID", localStorage.getItem("selectedFileID"));
-        
+        fetchData.append("userEmail", userEmail);
         
         const response = await fetch("http://localhost/backend/summarize.php",{
             method:"POST",

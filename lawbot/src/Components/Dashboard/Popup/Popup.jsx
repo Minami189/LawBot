@@ -4,7 +4,7 @@ import { AppContext } from "../../../App";
 import { jwtDecode } from "jwt-decode";
 import { withBase } from "../../../functions/withBase";
 import { useNavigate } from "react-router-dom";
-export default function Popup({ onClose }){
+export default function Popup({ onClose, loadStats }){
     const { userToken } = useContext(AppContext);
     const [files, setFiles] = useState([]);
     const [fileID, setFileID] = useState();
@@ -67,6 +67,31 @@ export default function Popup({ onClose }){
         }
     }
 
+    async function handleDeleteFile(e, fileId){
+        e.stopPropagation();
+        const savedUserToken = localStorage.getItem("userInfo");
+        let userEmail;
+
+        if(savedUserToken){
+            const decodedToken = jwtDecode(savedUserToken);
+            userEmail = decodedToken.email;
+        }else{
+            userEmail= jwtDecode(userToken).email;
+        }
+
+        const fetchData = new FormData();
+        fetchData.append("fileID", fileId);
+        fetchData.append("userEmail", userEmail);
+
+        const response = await fetch("http://localhost/backend/deleteFile.php",{
+            method: "POST",
+            body: fetchData
+        });
+
+        setFiles((prev)=>prev.filter((f)=>f.id !== fileId));
+        loadStats();
+    }
+
     return(
         <div className={classes.popup}>
             <div className={classes.backdrop} onClick={onClose}></div>
@@ -78,13 +103,20 @@ export default function Popup({ onClose }){
                 <div className={classes.body}>
                     <p>pick a document to summarize.</p>
                     <div className={classes.documentList}>
-                        {
-                            files.map((file, index)=>{
-                                return(
-                                    <h4 onClick={()=>handleSelectFile(file.id, index)} key={index}>{file.filename}</h4>
-                                )
-                            })
-                        }
+                        {files.map((file, index)=>{
+                            return(
+                                <h4 onClick={()=>handleSelectFile(file.id, index)} key={file.id ?? index}>
+                                    <span className={classes.fileTitle}>{file.filename}</span>
+                                    <button
+                                        className={classes.deleteButton}
+                                        onClick={(e)=>handleDeleteFile(e, file.id)}
+                                        type="button"
+                                    >
+                                        Delete
+                                    </button>
+                                </h4>
+                            )
+                        })}
                     </div>
                 </div>
                 <div className={classes.actions}>
