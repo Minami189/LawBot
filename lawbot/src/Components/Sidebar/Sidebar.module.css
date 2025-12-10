@@ -17,6 +17,10 @@
   backdrop-filter: blur(2px);
 }
 
+.sidebarContainer{
+  display: flex;
+}
+
 /* --- Container --- */
 .sidebar {
   position: fixed;

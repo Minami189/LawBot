@@ -14,6 +14,7 @@ import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { withBase } from "../../functions/withBase";
 import Popup from "./Popup/Popup";
+import Sidebar from "../Sidebar/Sidebar"
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -121,166 +122,172 @@ export default function Dashboard() {
   const storagePercent = Math.min(100, (storageUsed / storageLimitBytes) * 100 || 0);
 
   return (
-    <div className={classes.DashboardContainer}>
-      {showPopup && <Popup onClose={handleClosePopup} loadStats={loadStats} />}
+
+
       
-      <div className={classes.Dashboard}>Dashboard</div>
+      <div className={classes.DashboardContainer}>
+         <Sidebar/>
+        
+        {showPopup && <Popup onClose={handleClosePopup} loadStats={loadStats} />}
+        
+        <div className={classes.Dashboard}><p className={classes.dashboardTitle}>Dashboard</p>
 
-      <div style={{display:"flex", alignItems:"center", gap:15}}>
-        <img src={SealCheck}></img>
-        <div className={classes.dashboardText}>
-          See your latest activities, analyzed documents, and insights at a
-          glance. Stay organized and in control of your legal workflow.
+        <div style={{display:"flex", alignItems:"center", gap:15}}>
+          <img src={SealCheck}></img>
+          <div className={classes.dashboardText}>
+            See your latest activities, analyzed documents, and insights at a
+            glance. Stay organized and in control of your legal workflow.
+          </div>
         </div>
-      </div>
+        </div>
 
 
-      {/* NEW FLEX WRAPPER */}
-      <div className={classes.DashboardMainContent}>
-        {/* LEFT SIDE */}
-        <div className={classes.LeftSection}>
-          <div className={classes.QuickActionsContainer}>
-            <div className={classes.QuickActionsTitle}>Quick Actions</div>
-            <div className={classes.QuickActionsButtons}>
+        {/* NEW FLEX WRAPPER */}
+        <div className={classes.DashboardMainContent}>
+          {/* LEFT SIDE */}
+          <div className={classes.LeftSection}>
+            <div className={classes.QuickActionsContainer}>
+              <div className={classes.QuickActionsTitle}>Quick Actions</div>
+              <div className={classes.QuickActionsButtons}>
 
-              <div className={classes.QuickActionsTop}>
-                {/* Upload New Document */}
-                <div className={classes.ActionBox}>
-                  {/*input para mapagana file upload no need visible*/}
-                  <input {...upload.getInputProps()} style={{ display: "none" }} />
-                  {/*eto nyan yung clickable para sa upload*/}
-                  <div className={classes.ActionContent} onClick={upload.open}>
+                <div className={classes.QuickActionsTop}>
+                  {/* Upload New Document */}
+                  <div className={classes.ActionBox}>
+                    {/*input para mapagana file upload no need visible*/}
+                    <input {...upload.getInputProps()} style={{ display: "none" }} />
+                    {/*eto nyan yung clickable para sa upload*/}
+                    <div className={classes.ActionContent} onClick={upload.open}>
+                      <img
+                        src={fileIcon}
+                        alt="file icon"
+                        className={classes.ActionIcon}
+                      />
+                      <span className={classes.ActionText}>
+                        Upload New Document
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* View Document History */}
+                  <div className={classes.ActionBox}>
+                    <div className={classes.ActionContent} onClick={()=>{console.log("click");navigate(withBase("/logs"))}}>
+                      <img
+                        src={bx_box}
+                        alt="box icon"
+                        className={classes.ActionIcon}
+                      />
+                      <span className={classes.ActionText}>
+                        View Document History
+                      </span>
+                    </div>
+                  </div>
+                  
+                </div>
+                <div className={`${classes.ActionBox} ${classes.ActionBoxFullWidth}`}>
+                  <div className={classes.ActionContent} onClick={handleSummarize}>
                     <img
                       src={fileIcon}
                       alt="file icon"
                       className={classes.ActionIcon}
                     />
                     <span className={classes.ActionText}>
-                      Upload New Document
+                      Summarize a Document
                     </span>
                   </div>
                 </div>
 
-                {/* View Document History */}
-                <div className={classes.ActionBox}>
-                  <div className={classes.ActionContent} onClick={()=>{console.log("click");navigate(withBase("/logs"))}}>
-                    <img
-                      src={bx_box}
-                      alt="box icon"
-                      className={classes.ActionIcon}
-                    />
-                    <span className={classes.ActionText}>
-                      View Document History
-                    </span>
-                  </div>
-                </div>
-                
               </div>
-              <div className={`${classes.ActionBox} ${classes.ActionBoxFullWidth}`}>
-                <div className={classes.ActionContent} onClick={handleSummarize}>
-                  <img
-                    src={fileIcon}
-                    alt="file icon"
-                    className={classes.ActionIcon}
-                  />
-                  <span className={classes.ActionText}>
-                    Summarize a Document
+            </div>
+
+            <div className={classes.RecentSummariesContainer}>
+              <div className={classes.RecentSummariesTitle}>Recent Summaries</div>
+
+
+              {
+                recent.map((rec)=>{
+                  return(
+                    <div className={classes.summaryCard}>
+                      {/* LEFT SIDE  Summaries*/}
+                      <div className={classes.summaryLeft}>
+                        <div className={classes.summaryTitle}>
+                          {truncateDocument(rec.document)}
+                        </div>
+    
+    
+                        <div className={classes.filesDetailsContainer}>
+                          <div className={classes.summaryDate}>
+                            <img
+                              src={Calendar}
+                              alt="Calendar"
+                              className={classes.icon}
+                            />
+                            {rec.date}
+                          </div>
+    
+                        </div>
+                      </div>
+    
+                      {/* RIGHT SIDE Summaries*/}
+                      <div className={classes.statusBadge}>
+                        <span className={classes.statusIcon}>✓</span>
+                        Success
+                      </div>
+                      
+                    </div>
+                  )
+                })
+
+              }
+
+
+              
+
+            </div>
+          </div>
+
+          {/* RIGHT SIDE */}
+          <div className={classes.RightSection}>
+            <div className={classes.UsageStatsContainer}>
+              <div className={classes.UsageStatsHeader}>
+                <h3 className={classes.UsageStatsTitle}>Usage Statistics</h3>
+              </div>
+
+              <div className={classes.UsageStatsItem}>
+                <div className={classes.UsageStatsText}>
+                  <span className={classes.UsageStatsLabel}>
+                    Documents Processed
+                  </span>
+                  <span className={classes.UsageStatsNumber}>{documentsProcessed}</span>
+                  <span className={classes.UsageStatsInfo}>
+                    documents summarized since last login
                   </span>
                 </div>
+                <img
+                  src={Folder}
+                  alt="Folder"
+                  className={classes.UsageIconImage}
+                />
               </div>
 
-            </div>
-          </div>
-
-          <div className={classes.RecentSummariesContainer}>
-            <div className={classes.RecentSummariesTitle}>Recent Summaries</div>
-
-
-            {
-              recent.map((rec)=>{
-                return(
-                  <div className={classes.summaryCard}>
-                    {/* LEFT SIDE  Summaries*/}
-                    <div className={classes.summaryLeft}>
-                      <div className={classes.summaryTitle}>
-                        {truncateDocument(rec.document)}
-                      </div>
-  
-  
-                      <div className={classes.filesDetailsContainer}>
-                        <div className={classes.summaryDate}>
-                          <img
-                            src={Calendar}
-                            alt="Calendar"
-                            className={classes.icon}
-                          />
-                          {rec.date}
-                        </div>
-  
-                      </div>
-                    </div>
-  
-                    {/* RIGHT SIDE Summaries*/}
-                    <div className={classes.statusBadge}>
-                      <span className={classes.statusIcon}>✓</span>
-                      Success
-                    </div>
-                    
+              <div className={classes.UsageStatsItem}>
+                <div className={classes.UsageStatsText}>
+                  <span className={classes.UsageStatsLabel}>Storage Used</span>
+                  <span className={classes.UsageStatsNumber}>{formatBytes(storageUsed)}</span>
+                  <div className={classes.UsageBar}>
+                    <div
+                      className={classes.UsageBarFill}
+                      style={{ width: `${storagePercent.toFixed(0)}%` }}
+                    ></div>
                   </div>
-                )
-              })
-
-            }
-
-
-            
-
-          </div>
-        </div>
-
-        {/* RIGHT SIDE */}
-        <div className={classes.RightSection}>
-          <div className={classes.UsageStatsContainer}>
-            <div className={classes.UsageStatsHeader}>
-              <h3 className={classes.UsageStatsTitle}>Usage Statistics</h3>
-            </div>
-
-            <div className={classes.UsageStatsItem}>
-              <div className={classes.UsageStatsText}>
-                <span className={classes.UsageStatsLabel}>
-                  Documents Processed
-                </span>
-                <span className={classes.UsageStatsNumber}>{documentsProcessed}</span>
-                <span className={classes.UsageStatsInfo}>
-                  documents summarized since last login
-                </span>
-              </div>
-              <img
-                src={Folder}
-                alt="Folder"
-                className={classes.UsageIconImage}
-              />
-            </div>
-
-            <div className={classes.UsageStatsItem}>
-              <div className={classes.UsageStatsText}>
-                <span className={classes.UsageStatsLabel}>Storage Used</span>
-                <span className={classes.UsageStatsNumber}>{formatBytes(storageUsed)}</span>
-                <div className={classes.UsageBar}>
-                  <div
-                    className={classes.UsageBarFill}
-                    style={{ width: `${storagePercent.toFixed(0)}%` }}
-                  ></div>
+                  <span className={classes.UsageStatsInfo}>
+                    {`${storagePercent.toFixed(0)}% of 50 MB limit`}
+                  </span>
                 </div>
-                <span className={classes.UsageStatsInfo}>
-                  {`${storagePercent.toFixed(0)}% of 50 MB limit`}
-                </span>
-              </div>
-              <img
-                src={Drives}
-                alt="Drives"
-                className={classes.UsageIconImage}
-              />
+                <img
+                  src={Drives}
+                  alt="Drives"
+                  className={classes.UsageIconImage}
+                />
             </div>
           </div>
         </div>

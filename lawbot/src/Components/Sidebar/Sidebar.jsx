@@ -9,6 +9,7 @@ import {
 import { useState, useEffect } from "react";
 import classes from "./Sidebar.module.css";
 import logo from "../../assests/logo.png";
+import { withBase } from "../../functions/withBase";
 
 function Sidebar() {
   const [open, setOpen] = useState(true);
@@ -29,7 +30,7 @@ function Sidebar() {
   const toggleSidebar = () => setOpen((v) => !v);
 
   return (
-    <>
+    <div className={classes.sidebarContainer}>
       {/* Backdrop for mobile when sidebar open */}
       {isMobile && open && (
         <div
@@ -120,7 +121,7 @@ function Sidebar() {
           </div>
         </div>
       </aside>
-    </>
+    </div>
   );
 }
 

@@ -4,15 +4,29 @@
   box-sizing: border-box;
 }
 
+#root {
+  display: flex;
+  width: 100%;
+  height: auto;
+}
 
+.DashboardScreen {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap; /* you probably WANT this */
+}
+
+.DashboardContainer{
+  display: flex;
+  flex-direction: column;
+  padding-left: 5rem;
+  min-height: 100vh;
+}
 /* FLEX LAYOUT FOR MAIN CONTENT */
 .DashboardMainContent {
+  margin-top: 5rem;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 30px;
-  margin-top: 30px;
-  padding-right: 60px; 
+  justify-content: space-evenly;
 }
 
 /* LEFT SIDE: holds Quick Actions + Recent Summaries */
@@ -30,14 +44,16 @@
   justify-content: flex-end;
 }
 
-.DashboardContainer {
-  min-height: 100vh;
-  width: 100%;
-  padding-left: 50px;
-  padding-bottom: 30px;
+
+.dashboardTitle{
+  margin-top: 3rem;
+ 
 }
 
 .Dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   font-family: "Playfair";
   font-size: 4rem;
   display: flex;
@@ -270,7 +286,8 @@
   border-radius: 15px;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
   width: 100%;
-  max-width: 486px;
+  margin-right: 1rem;
+  flex-grow: 1;
 }
 
 
@@ -368,12 +385,16 @@
 /* RESPONSIVE STYLES */
 
 /* Tablet styles (768px and below) */
-@media (max-width: 768px) {
+@media (max-width: 990px) {
   .DashboardContainer {
     padding-left: 20px;
     padding-right: 20px;
     height: auto;
     min-height: 100vh;
+    margin-left: 50px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
   }
 
   .Dashboard {
@@ -389,7 +410,7 @@
 
   .DashboardMainContent {
     flex-direction: column;
-    gap: 20px;
+    
     padding-right: 0;
     margin-top: 20px;
   }
@@ -399,8 +420,9 @@
   }
 
   .RightSection {
+    margin: 0;
     width: 100%;
-    justify-content: flex-start;
+    justify-content: center;
   }
 
   .QuickActionsContainer {
@@ -449,8 +471,7 @@
   }
 
   .UsageStatsContainer {
-    width: 100%;
-    max-width: 486px;
+    width: 100%;;
     padding: 30px;
   }
 
@@ -568,4 +589,5 @@
     width: 100%;
     max-width: 200px;
   }
+ 
 }
