@@ -5,7 +5,6 @@ import Dashboard from './Components/Dashboard/Dashboard.jsx';
 import Register from './Components/Register/Register.jsx';
 import Logs from "./Components/Logs/Logs.jsx"
 import About from './Components/About/About.jsx';
-import AuditLog from './Components/AuditLog/AuditLog.jsx';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Summarize from './Components/Summarize/Summarize.jsx';
 //para makuha sa ibang pages sino logged user
@@ -30,7 +29,7 @@ function App() {
           <Route path="/logs" element={<Logs/>}/>
           <Route path="/about" element={<About/>}/>
           <Route path="/summary" element={<Summarize/>}/>
-          <Route path="/auditlog" element={<AuditLog/>}/>
+          <Route path="/auditlog" element={<Logs/>}/>
           <Route path="*" element={<Landing/>}/>
         </Routes>
       </BrowserRouter>      
