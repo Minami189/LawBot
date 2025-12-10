@@ -9,8 +9,8 @@ import { jwtDecode } from "jwt-decode";
 export default function Summarize(){
     const [messages, setMessages] = useState([])
     const [chats, setChats] = useState([])
-    const [chatID, setChatID] = useState();
-    const [title, setTitle] = useState();
+    const [chatID, setChatID] = useState(null);
+    const [title, setTitle] = useState('');
     const { userToken } = useContext(AppContext);
     const messageRef = useRef(null);
     const bottomRef = useRef(null);
@@ -54,7 +54,6 @@ export default function Summarize(){
     }
 
     async function loadChats(){
-        setChatID();
         const decoded = jwtDecode(localStorage.getItem("userInfo"));  
         let userEmail = decoded.email;
         const fetchData = new FormData();
@@ -71,14 +70,21 @@ export default function Summarize(){
             setChats(chats);
         }else{
             console.error(message);
+            return;
         }
 
-        if(localStorage.getItem("chatID")){
-            const chatID = localStorage.getItem("chatID");
-            const chat = chats.find((value)=> value.id = chatID);
-            setTitle(chat.title);
-            console.log("title", chat);
-        } 
+        const storedChatId = localStorage.getItem("chatID");
+        const initialChatId = storedChatId ?? (chats[0]?.id ?? null);
+
+        if (initialChatId) {
+            const initialChat = chats.find((value)=> String(value.id) === String(initialChatId));
+            if (initialChat) {
+                setChatID(initialChat.id);
+                setTitle(initialChat.title);
+                localStorage.setItem("chatID", initialChat.id);
+                loadMessages(initialChat.id);
+            }
+        }
     }
 
     async function getSummarize(){
@@ -113,11 +119,13 @@ export default function Summarize(){
         
     }
 
-    async function loadMessages(){
+    async function loadMessages(activeChatId){
+        const targetChatId = activeChatId ?? localStorage.getItem("chatID");
+        if(!targetChatId) return;
         if(localStorage.getItem("summarizing")) return;
 
         const fetchData = new FormData();
-        fetchData.append("chatID", localStorage.getItem("chatID"));
+        fetchData.append("chatID", targetChatId);
         
         const response = await fetch("http://localhost/backend/getMessages.php",{
             method:"POST",
@@ -133,9 +141,13 @@ export default function Summarize(){
         }
     }
 
-    async function handleSelectChat(chatID){
-        localStorage.setItem("chatID", chatID);
-        loadMessages();
+    async function handleSelectChat(nextChatId){
+        if(!nextChatId) return;
+        localStorage.setItem("chatID", nextChatId);
+        setChatID(nextChatId);
+        const nextChat = chats.find((value)=> String(value.id) === String(nextChatId));
+        setTitle(nextChat?.title ?? '');
+        loadMessages(nextChatId);
     }
 
     const hasRun = useRef(false);
