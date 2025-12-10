@@ -169,11 +169,11 @@ export default function Summarize(){
 
     return(
         <div className={classes.page}>
-
-        
             <div className={classes.chat}>
                 <h1>{title}</h1>
                 <div className={classes.chatContent}>
+                    <Messages content={<ThreeDotsWave/>} type={"bot"}/>
+                    
                     {
                         messages.map((message)=>{
                             return(

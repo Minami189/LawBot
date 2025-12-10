@@ -2,24 +2,22 @@ import { motion } from "framer-motion";
 import React from "react";
 
 const LoadingDot = {
-  display: "block",
-  width: "2rem",
-  height: "2rem",
+  display: "flex",
+  width: "0.60rem",
+  height: "0.60rem",
   backgroundColor: "white",
   borderRadius: "50%"
-
 };
 
 const LoadingContainer = {
-  width: "10rem",
-  height: "3rem",
+  gap: "10px",
   display: "flex",
   justifyContent: "space-around"
 };
 
 const DotVariants = {
   initial: { y: 0 },
-  animate: { y: -20 }
+  animate: { y: -3 }
 };
 
 const DotTransition = {
@@ -33,7 +31,6 @@ export default function ThreeDotsWave() {
   return (
     <div
       style={{
-        paddingTop: "3rem",
         width: "100%",
         display: "flex",
         alignItems: "center",
