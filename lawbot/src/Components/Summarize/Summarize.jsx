@@ -9,7 +9,6 @@ import { jwtDecode } from "jwt-decode";
 export default function Summarize(){
     const [messages, setMessages] = useState([])
     const [chats, setChats] = useState([])
-    const [loading, setLoading] = useState(false);
     const [chatID, setChatID] = useState();
     const [title, setTitle] = useState();
     const { userToken } = useContext(AppContext);
