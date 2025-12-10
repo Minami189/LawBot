@@ -42,7 +42,7 @@ export default function Dashboard() {
 
     setStorageUsed(Number(decodedToken.storageUsed) || 0);
     setDocumentsProcessed(decodedToken.documentsProcessed);
-
+    loadRecent()
     loadStats();
   },[]);
 
@@ -72,12 +72,13 @@ export default function Dashboard() {
       body: fetchData
     });
 
-    const {message, success} = response.json();
+    const {message, success} = await response.json();
     if(!success){
       console.error(message);
       return;
     }
 
+    setRecent(message);
     console.log(message);
   }
 
@@ -110,6 +111,11 @@ export default function Dashboard() {
     const mib = bytes / (1024 ** 2);
     return `${mib.toFixed(1)} MB`;
   };
+
+  function truncateDocument(name = "", maxLen = 45){
+    if(name.length <= maxLen) return name;
+    return `${name.slice(0, maxLen)}...`;
+  }
 
   const storageLimitBytes = 50 * 1024 ** 2; // 50 MB in bytes
   const storagePercent = Math.min(100, (storageUsed / storageLimitBytes) * 100 || 0);
@@ -189,46 +195,45 @@ export default function Dashboard() {
           <div className={classes.RecentSummariesContainer}>
             <div className={classes.RecentSummariesTitle}>Recent Summaries</div>
 
-            <div className={classes.summaryCard}>
-              {/* LEFT SIDE  Summaries*/}
-              <div className={classes.summaryLeft}>
-                <div className={classes.summaryTitle}>
-                  Employment Contract - Jordan Poole
-                </div>
 
-                <div className={classes.summaryDescription}>
-                  Topics covered: Legal employment agreement with terms and
-                  conditions...
-                </div>
-
-                <div className={classes.filesDetailsContainer}>
-                  <div className={classes.summaryDate}>
-                    <img
-                      src={Calendar}
-                      alt="Calendar"
-                      className={classes.icon}
-                    />
-                    November 05, 2025
+            {
+              recent.map((rec)=>{
+                return(
+                  <div className={classes.summaryCard}>
+                    {/* LEFT SIDE  Summaries*/}
+                    <div className={classes.summaryLeft}>
+                      <div className={classes.summaryTitle}>
+                        {truncateDocument(rec.document)}
+                      </div>
+  
+  
+                      <div className={classes.filesDetailsContainer}>
+                        <div className={classes.summaryDate}>
+                          <img
+                            src={Calendar}
+                            alt="Calendar"
+                            className={classes.icon}
+                          />
+                          {rec.date}
+                        </div>
+  
+                      </div>
+                    </div>
+  
+                    {/* RIGHT SIDE Summaries*/}
+                    <div className={classes.statusBadge}>
+                      <span className={classes.statusIcon}>✓</span>
+                      Success
+                    </div>
+                    
                   </div>
+                )
+              })
 
-                  <div className={classes.fileType}>
-                    <img
-                      src={Vector}
-                      alt="File Type"
-                      className={classes.icon}
-                    />
-                    PDF
-                  </div>
-                </div>
-              </div>
+            }
 
-              {/* RIGHT SIDE Summaries*/}
-              <div className={classes.statusBadge}>
-                <span className={classes.statusIcon}>✓</span>
-                Success
-              </div>
-              
-            </div>
+
+            
 
           </div>
         </div>
