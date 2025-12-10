@@ -1,94 +1,126 @@
 import {
-  PencilSimpleIcon,
-  MagnifyingGlassIcon,
-  StackIcon,
-  StarIcon,
-  UserCircleIcon
+  SquaresFourIcon,
+  ClockCounterClockwiseIcon,
+  FileTextIcon,
+  HouseIcon,
+  UserCircleIcon,
+  ListIcon
 } from "@phosphor-icons/react";
 import { useState, useEffect } from "react";
-import classes from "./Navbar.module.css";
+import classes from "./Sidebar.module.css";
 import logo from "../../assests/logo.png";
 
 function Sidebar() {
   const [open, setOpen] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Auto-hide on small screens
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 950) setOpen(false);
-      else setOpen(true);
+      const mobile = window.innerWidth <= 950;
+      setIsMobile(mobile);
+      setOpen(!mobile);
     };
+
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const toggleSidebar = () => setOpen((v) => !v);
+
   return (
-    <aside className={`${classes.sidebarWrapper} ${open ? classes.open : classes.closed}`}>
-      
-      {/* Mini Left Bar */}
-      <div className={classes.miniBar}>
-        <img src={logo} className={classes.logo} alt="logo" />
+    <>
+      {/* Backdrop for mobile when sidebar open */}
+      {isMobile && open && (
+        <div
+          className={classes.backdrop}
+          onClick={() => setOpen(false)}
+          role="button"
+          aria-label="Close sidebar"
+        />
+      )}
 
-        <button onClick={() => setOpen(!open)} className={classes.iconBtn}>
-          <PencilSimple size={22} className={classes.icon} />
-        </button>
-
-        <MagnifyingGlass size={22} className={classes.icon} />
-        <Stack size={22} className={classes.icon} />
-
-        <div className={classes.bottomIcons}>
-          <Star size={22} className={classes.icon} />
-          <UserCircle size={22} className={classes.userIcon} />
-        </div>
-      </div>
-
-      {/* Main Sidebar Content */}
-      <div className={classes.fullSidebar}>
-        <div className={classes.section}>
-          <button className={classes.newChatBtn}>＋ New chat</button>
-
-          <button className={classes.rowBtn}>
-            <PencilSimple size={20} />
-            <span>New chat</span>
+      <aside
+        className={`${classes.sidebar} ${open ? classes.open : classes.closed} ${
+          isMobile ? classes.mobile : ""
+        }`}
+        aria-expanded={open}
+      >
+        {/* Top area: logo + burger (burger always visible) */}
+        <div className={classes.topRow}>
+          <button
+            className={classes.logoBtn}
+            onClick={toggleSidebar}
+            aria-label={open ? "Minimize sidebar" : "Open sidebar"}
+          >
+            <img src={logo} className={classes.logo} alt="logo" />
           </button>
-          <button className={classes.rowBtn}>
-            <MagnifyingGlass size={20} />
-            <span>Search chats</span>
-          </button>
-          <button className={classes.rowBtn}>
-            <Stack size={20} />
-            <span>Library</span>
-          </button>
-          <button className={classes.rowBtn}>
-            <Stack size={20} />
-            <span>Projects</span>
+
+          {/* burger to mimic your previous closeBtn */}
+          <button
+            className={classes.burgerBtn}
+            onClick={toggleSidebar}
+            aria-label={open ? "Close sidebar" : "Open sidebar"}
+          >
+            <ListIcon size={20} />
           </button>
         </div>
+          
+        {/* Primary nav icons (stacked) */}
+        <nav className={classes.nav}>
+          <a href={withBase("/index.html")}>
+            <button className={classes.iconBtn}>
+              <HouseIcon size={24} />
+              <span className={classes.label}>Home</span>
+            </button>
+          </a>
+          <a href={withBase("/dashboard")}>
+            <button className={classes.iconBtn}>
+              <SquaresFourIcon size={24} />
+              <span className={classes.label}>Dashboard</span>
+            </button>
+          </a>
 
+          <a href={withBase("/summary")}>
+            <button className={classes.iconBtn}>
+              <FileTextIcon size={24} />
+              <span className={classes.label}>Summary</span>
+            </button>
+          </a>
+
+          <a href={withBase("/logs")}>
+            <button className={classes.iconBtn}>
+              <ClockCounterClockwiseIcon size={24} />
+              <span className={classes.label}>History</span>
+            </button>
+          </a>
+        </nav>
+        
         <div className={classes.section}>
-          <p className={classes.sectionTitle}>Your chats</p>
+          {/*
+          <p className={classes.sectionTitle + " " + classes.label}>Your chats</p>
 
           <ul className={classes.chatList}>
-            <li>Five-level text encryption</li>
-            <li>Sum and divide numbers</li>
-            <li>Signs and Wonders Teaser</li>
-            <li>AI legal document summary</li>
-            <li>Button copy suggestions</li>
+            <li><span className={classes.label}>Five-level text encryption</span></li>
+            <li><span className={classes.label}>Sum and divide numbers</span></li>
+            <li><span className={classes.label}>Signs and Wonders Teaser</span></li>
+            <li><span className={classes.label}>AI legal document summary</span></li>
+            <li><span className={classes.label}>Button copy suggestions</span></li>
           </ul>
+          */}
         </div>
 
         <div className={classes.bottomSection}>
           <div className={classes.userBox}>
-            <UserCircle size={32} />
-            <div className={classes.userInfo}>
+            <UserCircleIcon size={30} className={classes.userIcon} />
+            <div className={classes.userInfo + " " + classes.label}>
               <p className={classes.userName}>A.P. Moon</p>
               <p className={classes.userPlan}>Free</p>
             </div>
           </div>
         </div>
-      </div>
-    </aside>
+      </aside>
+    </>
   );
 }
 

@@ -1,107 +1,139 @@
 @import url("../../Styles/main.module.css");
 
-a {
-  text-decoration: none;
-}
-
 :root {
   --sidebar-bg: #1f1f1f;
-  --sidebar-mini-bg: #0f0f0f;
+  --sidebar-mini-bg: #1f1f1f;
+  --sidebar-mini-closed-bg: #0f0f0f;
   --sidebar-text: #e0e0e0;
   --sidebar-hover: #2a2a2a;
 }
 
-/* WRAPPER (outer container) */
-.sidebarWrapper {
-  display: flex;
-  height: 100vh;
+/* Backdrop for mobile */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 998;
+  backdrop-filter: blur(2px);
+}
+
+/* --- Container --- */
+.sidebar {
   position: fixed;
   top: 0;
   left: 0;
-  background: var(--sidebar-bg);
-  z-index: 999;
-
-  /* Animation */
-  transition: width 0.28s ease, opacity 0.28s ease;
-  overflow: hidden;
-}
-
-.sidebarWrapper.open {
-  width: 20rem; /* ChatGPT width */
-}
-
-.sidebarWrapper.closed {
-  width: 4rem; /* collapsed width */
-}
-
-/* MINI BAR */
-.miniBar {
-  width: 4rem;
-  background: var(--sidebar-mini-bg);
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  width: 16rem; /* expanded width */
+  background: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  transition:
+    width 0.28s cubic-bezier(.2,.9,.2,1),
+    background 0.25s ease;
+  z-index: 999;
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.35);
+  overflow: hidden; /* hide overflowing text when minimized */
+}
+
+/* collapsed state */
+.sidebar.closed {
+  width: 4rem;
+  background: var(--sidebar-mini-closed-bg);
+}
+
+.sidebar.closed .burgerBtn {
+  display: none;
+}
+
+/* top row: logo + burger */
+.topRow {
+  display: flex;
   align-items: center;
-  padding: 1.2rem 0;
-  gap: 1.6rem;
-  border-right: 1px solid #2a2a2a;
+  gap: 0.5rem;
+  padding: 0.9rem 0.6rem;
+  justify-content: space-between;
 }
 
-.logo {
-  width: 26px;
-  opacity: 0.9;
-}
-
-.icon {
-  cursor: pointer;
-  color: #888;
-  transition: color 0.15s ease;
-}
-
-.icon:hover {
-  color: #fff;
-}
-
-.iconBtn {
+.logoBtn {
   background: none;
   border: none;
   padding: 0;
-}
-
-/* ICONS AT BOTTOM */
-.bottomIcons {
-  margin-top: auto;
+  cursor: pointer;
   display: flex;
-  flex-direction: column;
-  gap: 1.3rem;
+  align-items: center;
+  gap: 0.4rem;
 }
 
-.userIcon {
-  color: #66e6c2;
-}
-
-/* FULL SIDEBAR */
-.fullSidebar {
-  width: 16rem;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-  color: var(--sidebar-text);
-
+.logo {
+  width: 2rem;
+  height: 2rem;
   opacity: 1;
-  transform: translateX(0);
-  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-.sidebarWrapper.closed .fullSidebar {
+.burgerBtn {
+  background: none;
+  border: none;
+  color: var(--sidebar-text);
+  cursor: pointer;
+  padding: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* nav (icons stacked) */
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 0 0.5rem;
+}
+
+/* icon + label button */
+.iconBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--sidebar-text);
+  padding: 0.55rem 0.4rem;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+
+.iconBtn:hover {
+  background: var(--sidebar-hover);
+}
+
+/* label: we hide text when closed by restricting max-width + opacity transition */
+.label {
+  display: inline-block;
+  max-width: 10rem; /* max label width in expanded state */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  opacity: 1;
+  transition: opacity 0.18s ease, max-width 0.28s ease;
+}
+
+/* When sidebar is closed, collapse labels */
+.sidebar.closed .label {
+  max-width: 0;
   opacity: 0;
-  transform: translateX(-20px);
+  margin-left: 0;
   pointer-events: none;
 }
 
-/* LIST ELEMENTS */
+/* Section: chats list */
 .section {
-  margin-bottom: 1.8rem;
+  margin-top: 1rem;
+  padding: 0 0.6rem;
+  overflow-y: auto;
+  flex: 1 1 auto;
 }
 
 .sectionTitle {
@@ -110,43 +142,7 @@ a {
   margin-bottom: 0.6rem;
 }
 
-/* New Chat button (ChatGPT style) */
-.newChatBtn {
-  width: 100%;
-  padding: 0.65rem;
-  background: #262626;
-  border: none;
-  color: var(--sidebar-text);
-  border-radius: 7px;
-  cursor: pointer;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
-  transition: background 0.15s ease;
-}
-
-.newChatBtn:hover {
-  background: #303030;
-}
-
-.rowBtn {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  background: none;
-  border: none;
-  color: var(--sidebar-text);
-  padding: 0.55rem 0.2rem;
-  cursor: pointer;
-  border-radius: 6px;
-  transition: background 0.12s ease;
-  font-size: 0.88rem;
-}
-
-.rowBtn:hover {
-  background: var(--sidebar-hover);
-}
-
+/* chat list */
 .chatList {
   list-style: none;
   padding: 0;
@@ -154,46 +150,88 @@ a {
 }
 
 .chatList li {
-  padding: 0.45rem 0.5rem;
-  cursor: pointer;
+  padding: 0.45rem 0.4rem;
   border-radius: 6px;
-  opacity: 0.9;
+  cursor: pointer;
   font-size: 0.88rem;
+  color: var(--sidebar-text);
 }
-
 .chatList li:hover {
   background: var(--sidebar-hover);
 }
 
-/* USER SECTION */
+/* bottom area */
 .bottomSection {
-  margin-top: auto;
-  padding-top: 1rem;
+  padding: 0.9rem 0.6rem;
   border-top: 1px solid #333;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+
+.bottomSection:hover {
+  background: var(--sidebar-hover);
 }
 
 .userBox {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.6rem;
 }
 
 .userInfo {
-  line-height: 1.15;
+  line-height: 1.1;
 }
 
 .userName {
   font-size: 0.9rem;
 }
-
 .userPlan {
   font-size: 0.75rem;
   opacity: 0.6;
 }
 
-/* MOBILE AUTO-HIDE */
+/* small icon in bottom */
+.lowerIcons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.smallIconBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* user icon color */
+.userIcon {
+  color: #66e6c2;
+}
+
+/* -- mobile tweaks -- */
 @media (max-width: 950px) {
-  .sidebarWrapper.open {
-    width: 4rem !important; /* force collapse */
+  .sidebar {
+    /* On mobile we keep the same widths but overlaying backdrop handles click-to-close */
+    transform: translateX(0);
+    position: fixed;
+  }
+
+  .sidebar.closed {
+    width: 4rem;
+    align-items: center;
+  }
+
+  .sidebar.closed .iconBtn,
+  .sidebar.closed .userBox {
+    align-items: center;
+    gap: 0;
   }
 }
