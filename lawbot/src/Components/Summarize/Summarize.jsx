@@ -172,7 +172,6 @@ export default function Summarize(){
             <div className={classes.chat}>
                 <h1>{title}</h1>
                 <div className={classes.chatContent}>
-                    <Messages content={<ThreeDotsWave/>} type={"bot"}/>
                     
                     {
                         messages.map((message)=>{
@@ -191,9 +190,11 @@ export default function Summarize(){
             </div>
 
              <div className={classes.chatsContainer}>
-
-
-
+                    <p className={classes.chatListTitle}>Chat History</p>
+                     <div key={1} className={classes.chatContainer}> 
+                        <h1 className={classes.chatTitle}>
+                        {("Minecraft Pocket Edition").length >= 23 ? ("Minecraft Pocket Edition").slice(0, 22) + "..." : "Minecraft Pocket Edition"}
+                        </h1></div>
                 {
                 
                 chats.map((element) => {

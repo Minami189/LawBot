@@ -118,9 +118,6 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
     display: none;
 }
 
-
-
-
 @media (max-width: 1000px){
     .chatsContainer{
         display: none;
@@ -132,4 +129,9 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
     }
 }
 
+.chatListTitle{
+    padding-top: 1rem;
+    font-family: var(--textfont);
+    font-weight: bold;
+}
 
