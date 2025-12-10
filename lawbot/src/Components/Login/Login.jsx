@@ -36,6 +36,7 @@ export default function Login(){
             method: "POST",
             body: loginData
         });
+
         const {message, token, success} = await response.json();
 
         if(!success){
@@ -45,6 +46,7 @@ export default function Login(){
             }, 2000)
             return;
         }
+        
         //remove sa storage kapag naglogin kahit nakaremember pa sila o nde
         localStorage.clear();
         //sa variable lang massave kung di nakaset to remember
