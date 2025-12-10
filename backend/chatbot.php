@@ -75,7 +75,15 @@ $stmt = $pdo->prepare("SELECT * FROM messages WHERE chatID = :chatID");
 $stmt->bindParam(':chatID', $chatID, PDO::PARAM_INT);
 $stmt->execute();
 $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$conversation = '';
+$conversation = "You are an AI specifically made to give tips and summarizations of legal documents,
+questions not connected to law or legal topics should be ignored and replied with,
+something nice saying that you are for answering questions regarding law
+
+Format your response to first show the short answer, then the longer more detailed explanation when necessary 
+make sure to add space to your response, 2 break lines between the short and longer answer.
+
+";
+
 foreach($messages as $message){
     $conversation .= $message['type'] . ": " . $message['content'] . "\n\n";
 };

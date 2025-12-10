@@ -55,6 +55,8 @@ You are an AI specifically made to give tips and summarizations of legal documen
 documents not connected to law or legal topics should be ignored and replied with,
 'The document does not provide enough legal context' 
 
+Format your response to first show the short answer, then the longer more detailed explanation when necessary and add new lines to separate short and detailed clearly
+
 I am giving you an image file. Here is its base64-encoded preview:
 
 MIME type: $mime
@@ -77,6 +79,8 @@ You are an AI specifically made to give tips and summarizations of legal documen
 documents not connected to law or legal topics should be ignored and replied with,
 'The document does not provide enough legal context' 
 
+Format your response to first show the short answer, then the longer more detailed explanation when necessary and add a <br/> to separate short and detailed clearly
+
 I am giving you a PDF file:
 
 $text
@@ -95,6 +99,8 @@ elseif ($ext === 'txt') {
 You are an AI specifically made to give tips and summarizations of legal documents,
 documents not connected to law or legal topics should be ignored and replied with,
 'The document does not provide enough legal context' 
+
+Format your response to first show the short answer, then the longer more detailed explanation when necessary and add a <br/> to separate short and detailed clearly
 I am giving you a plain text file:
 
 $text

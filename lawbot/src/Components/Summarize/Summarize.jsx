@@ -11,12 +11,14 @@ export default function Summarize(){
     const [chats, setChats] = useState([])
     const [chatID, setChatID] = useState(null);
     const [title, setTitle] = useState('');
+    const [suppressHoverId, setSuppressHoverId] = useState(null);
     const { userToken } = useContext(AppContext);
     const messageRef = useRef(null);
     const bottomRef = useRef(null);
 
     async function handleMessage(e){
         e.preventDefault();
+
         const msg = messageRef.current.value;
         messageRef.current.value = "";
         const savedUserToken = localStorage.getItem("userInfo");
@@ -51,6 +53,7 @@ export default function Summarize(){
         }else{
             console.error("error in the server");
         }
+        loadChats();
     }
 
     async function loadChats(){
@@ -159,11 +162,75 @@ export default function Summarize(){
         loadMessages(nextChatId);
     }
 
+    async function handleDeleteChat(e, chatId){
+        e.stopPropagation();
+
+        const fetchData = new FormData();
+        fetchData.append("chatID", chatId);
+        const response = await fetch("http://localhost/backend/deleteChat.php", {
+            method:"POST", 
+            body: fetchData
+        })
+
+        const {success, message} = await response.json();
+        if(!success){
+            console.error(message);
+            return;
+        }
+        
+        localStorage.removeItem("chatID")
+        setTitle("New Chat")
+        setMessages([]);
+        loadChats();
+    }
+
+    async function handleCreateChat(){
+        const savedUserToken = localStorage.getItem("userInfo");
+        let userEmail;
+        if(savedUserToken){
+            const decodedToken = jwtDecode(savedUserToken);
+            userEmail = decodedToken.email;
+        }else{
+            userEmail= jwtDecode(userToken).email;
+        }
+
+        const fetchData = new FormData();
+        fetchData.append("new_chat", "1");
+        fetchData.append("title", "New Chat");
+        fetchData.append("userEmail", userEmail);
+
+        const response = await fetch("http://localhost/backend/chatbot.php", {
+            method:"POST",
+            body: fetchData
+        });
+
+        const {success, message} = await response.json();
+        if(!success){
+            console.error(message);
+            return;
+        }
+
+        localStorage.setItem("chatID", message);
+        setChatID(message);
+        setTitle("New Chat");
+        await loadChats();
+        await loadMessages(message);
+    }
+
+    async function newChat(){
+        if(localStorage.getItem("chatID")){
+            return;
+        }
+
+        setTitle("New Chat");
+    }
+
     const hasRun = useRef(false);
     useEffect(() => {
         if (!hasRun.current) {
             hasRun.current = true;
             getSummarize();
+            newChat();
         }
     }, []);
 
@@ -200,15 +267,19 @@ export default function Summarize(){
 
              <div className={classes.chatsContainer}>
                     <p className={classes.chatListTitle}>Chat History</p>
-                     <div key={1} className={classes.chatContainer}> 
-                        <h1 className={classes.chatTitle}>
-                        {("Minecraft Pocket Edition").length >= 23 ? ("Minecraft Pocket Edition").slice(0, 22) + "..." : "Minecraft Pocket Edition"}
-                        </h1></div>
+                    <button
+                        type="button"
+                        className={classes.newChatBtn}
+                        onClick={handleCreateChat}
+                    >
+                        + New Chat
+                    </button>
+
                 {
                 
                 chats.map((element) => {
                         return(
-                            <div key={element.id} className={classes.chatContainer} 
+                            <div key={element.id} className={`${classes.chatContainer} ${suppressHoverId === element.id ? classes.chatContainerNoHover : ""}`} 
 
                                 onClick={()=>{
                                     handleSelectChat(element.id);
@@ -217,6 +288,16 @@ export default function Summarize(){
                                 <h1 className={classes.chatTitle}>
                                     {(element.title).length >= 23 ? (element.title).slice(0, 22) + "..." : element.title}
                                 </h1>
+                                <button
+                                    type="button"
+                                    className={classes.closeChatBtn}
+                                    onClick={(e)=>handleDeleteChat(e, element.id)}
+                                    onMouseEnter={()=>setSuppressHoverId(element.id)}
+                                    onMouseLeave={()=>setSuppressHoverId(null)}
+                                    aria-label="Delete chat"
+                                >
+                                    ×
+                                </button>
                             </div>
                         );
                     })
