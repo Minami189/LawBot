@@ -24,12 +24,17 @@
     background-color: rgb(197, 114, 83);
     padding: clamp(0.8rem, 2vw, 1.5rem);
     border-radius: 10px;
+    max-width: 100%;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.5) rgba(0,0,0,0.2);
 }
 
 .messageContainer{
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    width:100%;
 }
 
 .show{
@@ -38,4 +43,71 @@
 
 .hide{
     display: none;
+}
+
+.table{
+    width: max-content;
+    min-width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.25rem;
+    font-size: 0.9em;
+}
+
+.botText::-webkit-scrollbar{
+    height: 8px;
+}
+
+.botText::-webkit-scrollbar-track{
+    background: rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+
+.botText::-webkit-scrollbar-thumb{
+    background: rgba(255,255,255,0.6);
+    border-radius: 10px;
+}
+
+.botText::-webkit-scrollbar-thumb:hover{
+    background: rgba(255,255,255,0.8);
+}
+
+.table th,
+.table td{
+    border: 1px solid rgba(0,0,0,0.1);
+    padding: 0.35rem 0.5rem;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.35;
+}
+
+.table ol{
+    margin: 0.15rem 0 0.15rem 1.2rem;
+    padding-left: 0.4rem;
+}
+
+.table ol li{
+    padding-left: 0.2rem;
+}
+
+.rule{
+    border: none;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    margin: 0.5rem 0;
+}
+
+.messageContainer hr{
+    border: none;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    margin: 0.5rem 0;
+}
+
+/* Lists inside bot messages */
+.messageContainer ol{
+    margin: 0.35rem 0 0.35rem 1.4rem;
+    padding-left: 0.4rem;
+    list-style-position: outside;
+}
+
+.messageContainer ol li{
+    padding-left: 0.2rem;
 }

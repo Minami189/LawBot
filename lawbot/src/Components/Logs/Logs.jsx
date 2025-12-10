@@ -1,6 +1,39 @@
 import classes from "./Logs.module.css";
+import { useState, useRef, useEffect } from "react";
+
 
 export default function Logs(){
+    const [logs, setLogs] = useState([]);
+    const [viewLogs, setViewLogs] = useState([]);
+    const filterRef = useRef(null);
+
+    useEffect(()=>{
+        const fetchedLogs = [
+            {
+                document: "Employment Contract - Jordan Poole",
+                action: "summarize",
+                date: "11/5/2025 - 14:33"
+            }
+        ]
+
+        setLogs(fetchedLogs);
+        setViewLogs(fetchedLogs);
+    },[])
+
+    function handleSearch() {
+        const keyword = filterRef.current.value.toLowerCase();
+
+        const filtered = logs.filter(log =>
+            Object.values(log).some(value =>
+                value.toLowerCase().includes(keyword)
+            )
+        );
+
+        setViewLogs(filtered);
+        console.log(filtered);
+    }
+
+
     return(
         <div className={classes.page}>
             <div className={classes.container}>
@@ -18,6 +51,8 @@ export default function Logs(){
                         type="text" 
                         className={classes.search}
                         placeholder="search document"
+                        onChange={handleSearch}
+                        ref={filterRef}
                     />
 
                     <button className={classes.filterBtn}>
@@ -31,52 +66,21 @@ export default function Logs(){
                         <span>Document</span>
                         <span>Action</span> 
                         <span>Date</span>
-                        <span>Status</span>
                     </div>
 
-                    {/* ITEM 1 */}
-                    <div className={classes.tableRow}>
-                        <div className={classes.docInfo}>
-                            <h3>Employment Contract – Jordan Poole</h3>
-                            <p>Legal employment agreement with terms and conditions</p>
-                        </div>
-                        <span>Summarize</span>
-                        <span>11/5/2025 – 14:33</span>
-                        <span className={`${classes.status} ${classes.processing}`}>Processing...</span>
-                    </div>
-
-                    {/* ITEM 2 */}
-                    <div className={classes.tableRow}>
-                        <div className={classes.docInfo}>
-                            <h3>Employment Contract – Jordan Poole</h3>
-                            <p>Legal employment agreement with terms and conditions</p>
-                        </div>
-                        <span>Upload</span>
-                        <span>11/5/2025 – 14:20</span>
-                        <span className={`${classes.status} ${classes.success}`}>Success</span>
-                    </div>
-
-                    {/* ITEM 3 */}
-                    <div className={classes.tableRow}>
-                        <div className={classes.docInfo}>
-                            <h3>Employment Contract – Jordan Poole</h3>
-                            <p>Legal employment agreement with terms and conditions</p>
-                        </div>
-                        <span>Summarize</span>
-                        <span>9/4/2025 – 10:54</span>
-                        <span className={`${classes.status} ${classes.failed}`}>Failed</span>
-                    </div>
-
-                    {/* ITEM 4 */}
-                    <div className={classes.tableRow}>
-                        <div className={classes.docInfo}>
-                            <h3>Employment Contract – Jordan Poole</h3>
-                            <p>Legal employment agreement with terms and conditions</p>
-                        </div>
-                        <span>Upload</span>
-                        <span>9/2/2025 – 9:46</span>
-                        <span className={`${classes.status} ${classes.success}`}>Success</span>
-                    </div>
+                    {
+                        viewLogs.map((log)=>{
+                            return(
+                                <div className={classes.tableRow}>
+                                    <div className={classes.docInfo}>
+                                        <h3>{log.document}</h3>
+                                    </div>
+                                    <span>{log.action}</span>
+                                    <span>{log.date}</span>
+                                </div>
+                            )
+                        })
+                    }
 
                 </div>
             </div>

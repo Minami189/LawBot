@@ -9,7 +9,6 @@ import { jwtDecode } from "jwt-decode";
 export default function Summarize(){
     const [messages, setMessages] = useState([])
     const [chats, setChats] = useState([])
-    const [loading, setLoading] = useState(false);
     const [chatID, setChatID] = useState();
     const [title, setTitle] = useState();
     const { userToken } = useContext(AppContext);
@@ -181,14 +180,7 @@ export default function Summarize(){
 
              <div className={classes.chatsContainer}>
 
-                {/* Sample Div for the chats */}
-                <div className={classes.chatContainer} onClick={()=>{
-                    
-                }}>
-                    <h1 className={classes.chatTitle}>Employment Contract</h1>
-                </div>
 
-                {/* Sample Div for the chats using objects and map*/}
 
                 {
                 

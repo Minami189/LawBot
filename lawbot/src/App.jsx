@@ -33,6 +33,7 @@ function App() {
           <Route path="/summary" element={<Summarize/>}/>
           <Route path="/auditlog" element={<AuditLog/>}/>
           <Route path="/help" element={<Help/>}></Route>
+          <Route path="/auditlog" element={<Logs/>}/>
           <Route path="*" element={<Landing/>}/>
         </Routes>
       </BrowserRouter>      

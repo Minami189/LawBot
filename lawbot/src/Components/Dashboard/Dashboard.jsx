@@ -8,7 +8,7 @@ import Folder from "../../assests/dashboard/Folder.png";
 import Drives from "../../assests/dashboard/HardDrives.png";
 import SealCheck from "../../assests/dashboard/SealCheck.png";
 import { useFileUpload } from "../../functions/useFileUpload";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { AppContext } from "../../App";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
@@ -18,8 +18,10 @@ import Popup from "./Popup/Popup";
 export default function Dashboard() {
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
-
   const { userToken } = useContext(AppContext);
+  const [storageUsed, setStorageUsed] = useState(0);
+  const [documentsProcessed, setDocumentsProcessed] = useState(0);
+  const [recent, setRecent] = useState([]);
   const savedUserToken = localStorage.getItem("userInfo");
   let userEmail;
   if(savedUserToken){
@@ -29,6 +31,56 @@ export default function Dashboard() {
     userEmail = jwtDecode(userToken).email;
   }
   
+  useEffect(()=>{
+    let decodedToken;
+
+    if(savedUserToken){
+      decodedToken = jwtDecode(savedUserToken);
+    }else{
+      decodedToken = jwtDecode(userToken);
+    }
+
+    setStorageUsed(Number(decodedToken.storageUsed) || 0);
+    setDocumentsProcessed(decodedToken.documentsProcessed);
+
+    loadStats();
+  },[]);
+
+  async function loadStats(){
+    const fetchData = new FormData();
+    fetchData.append("userEmail", userEmail);
+    const response = await fetch("http://localhost/backend/getStats.php", {
+      method: "POST",
+      body: fetchData
+    });
+
+    const {success, message} = await response.json();
+    if(!success){
+      console.error(message);
+      return;
+    }
+
+    setStorageUsed(Number(message.storage_used) || 0);
+    setDocumentsProcessed(Number(message.documents_processed) || 0);
+  }
+
+  async function loadRecent(){
+    const fetchData = new FormData();
+    fetchData.append("userEmail", userEmail);
+    const response = await fetch("http://localhost/backend/getRecent.php", {
+      method: "POST",
+      body: fetchData
+    });
+
+    const {message, success} = response.json();
+    if(!success){
+      console.error(message);
+      return;
+    }
+
+    console.log(message);
+  }
+
   const upload = useFileUpload(async(file) => {
     const fileData = new FormData();
     
@@ -40,9 +92,9 @@ export default function Dashboard() {
       method: "POST",
       body: fileData
     });
-
     const data = await response.json();
     console.log(data);
+    loadStats();
   });
 
   function handleSummarize(){
@@ -51,6 +103,16 @@ export default function Dashboard() {
   function handleClosePopup(){
     setShowPopup(false);
   }
+
+  function formatBytes(bytes = 0){
+    const gib = bytes / (1024 ** 3);
+    if (gib >= 1) return `${gib.toFixed(2)} GB`;
+    const mib = bytes / (1024 ** 2);
+    return `${mib.toFixed(1)} MB`;
+  };
+
+  const storageLimitBytes = 50 * 1024 ** 2; // 50 MB in bytes
+  const storagePercent = Math.min(100, (storageUsed / storageLimitBytes) * 100 || 0);
 
   return (
     <div className={classes.DashboardContainer}>
@@ -183,9 +245,9 @@ export default function Dashboard() {
                 <span className={classes.UsageStatsLabel}>
                   Documents Processed
                 </span>
-                <span className={classes.UsageStatsNumber}>24</span>
+                <span className={classes.UsageStatsNumber}>{documentsProcessed}</span>
                 <span className={classes.UsageStatsInfo}>
-                  +14% from last period
+                  documents summarized since last login
                 </span>
               </div>
               <img
@@ -198,12 +260,15 @@ export default function Dashboard() {
             <div className={classes.UsageStatsItem}>
               <div className={classes.UsageStatsText}>
                 <span className={classes.UsageStatsLabel}>Storage Used</span>
-                <span className={classes.UsageStatsNumber}>1.1 gb</span>
+                <span className={classes.UsageStatsNumber}>{formatBytes(storageUsed)}</span>
                 <div className={classes.UsageBar}>
-                  <div className={classes.UsageBarFill}></div>
+                  <div
+                    className={classes.UsageBarFill}
+                    style={{ width: `${storagePercent.toFixed(0)}%` }}
+                  ></div>
                 </div>
                 <span className={classes.UsageStatsInfo}>
-                  47% of 2.5 gb limit
+                  {`${storagePercent.toFixed(0)}% of 50 MB limit`}
                 </span>
               </div>
               <img

@@ -43,7 +43,9 @@ if(!empty($_POST['email']) && !empty($_POST['password'])){
         
         $payload = [
             "username" => $user['username'],
-            "email" => $user['email']
+            "email" => $user['email'],
+            "storageUsed" => $user['storage_used'],
+            "documentsProcessed" => $user['documents_processed']
         ];
 
         $jwt = JWT::encode($payload, $secretKey, 'HS256');
