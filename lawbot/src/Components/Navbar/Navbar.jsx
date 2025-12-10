@@ -76,7 +76,7 @@ function Navbar() {
 						onMouseEnter={() => !isMobile && setOpenDropdown("help")}
 						onMouseLeave={() => !isMobile && setOpenDropdown(null)}
 					>
-						<a href={withBase("/#")}>Help</a>
+						<a href={withBase("/help")}>Help</a>
 						<span className={classes.underline}></span>
 						<div
 							className={`${classes.dropdownMenu} ${

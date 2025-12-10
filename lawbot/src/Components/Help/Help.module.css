@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+:root {
+  --maincolor: #F6DFCA;
+  --secondarycolor: #F9EADC;
+  --tertiarycolor: #A29090;
+  --textcolor: #3C3232;
+  --textcolorlight: #FBECE1;
+  --title: "Playfair Display", serif;
+  --subtitle: "Merriweather Sans", sans-serif;
+  --textfont: "Geist Mono", monospace;
+}
+
+
+.pageContainer{
+    padding: 80px;  
+    background-color: var(--maincolor);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+}
+
+.help{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.contentContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.help h1{
+    font-family: var(--title);
+    font-weight: 1000;
+    font-size: 3rem;
+    color: #3C3232;
+}
+.help p{
+    color: #3C3232;
+    max-width: 45vw;;
+    font-family: var(--textfont);
+    font-size: 0.90rem;
+}
+
+.button{
+    border: 3px solid var(--textcolor);
+    color: var(--textcolor);
+    font-weight: bold;
+    padding: 1rem 2rem;
+    border-radius: 20px;
+    transition: all 0.5s ease-in-out;
+    text-align: center;
+    width: 100vw;
+}
+
+.button:hover{
+    background-color: var(--tertiarycolor);
+    color: var(--maincolor);
+}
+
+.Section{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    scroll-snap-align: start;
+    background-color: var(--maincolor);
+    padding: 3rem 3rem;
+    box-sizing: border-box;
+    scroll-snap-align: start;
+}
+
+.imageHelp{
+    width: 435px;
+    height: 382px;
+}
+
+.imageSupport{
+    width: 480px;
+    height: 324px;
+}
+
+.imageContainerMobile{
+        display: none;
+    }
+
+@media (max-width: 830px) {
+
+    .help h1{
+        font-family: var(--title);
+        font-weight: 1000;
+        font-size: clamp(1rem, 3vh 3rem);
+        color: #3C3232;
+    }
+    .help p{
+        color: #3C3232;
+        max-width: 45vw;;
+        font-family: var(--textfont);
+        font-size: clamp(0.25rem, 2vh 1rem);
+        color: #3C3232;
+    }
+    .help{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3rem;
+    } 
+
+    .imageHelp{
+        width: clamp(120px, 20vh, 435px);
+        height: auto;
+    }
+
+    .imageSupport{
+        width: clamp(120px, 20vh, 435px);
+        height: auto;
+    }
+
+    .imageContainerDesktop{
+        display: none;
+    }
+    .imageContainerMobile{
+        display: flex;
+    }
+}
+
+
+
