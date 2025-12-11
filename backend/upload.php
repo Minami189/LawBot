@@ -25,6 +25,23 @@ $file = $_FILES['file'];
 $filename = basename($file['name']);
 //Stored as BLOB, kinukuha binary content ng file
 $filedata = file_get_contents($file['tmp_name']);
+$fileSize = filesize($file['tmp_name']);
+
+
+$stmt = $pdo->prepare("SELECT SUM(LENGTH(filedata)) AS total_used FROM files WHERE user_email = :email");
+$stmt->bindParam(':email', $userEmail, PDO::PARAM_STR);
+$stmt->execute();
+$totalUsed = (int) ($stmt->fetchColumn() ?? 0);
+
+$maxStorage = 50 * 1024 * 1024;
+
+if (($totalUsed + $fileSize) > $maxStorage) {
+    echo json_encode([
+        "success" => false,
+        "message" => "Storage limit exceeded. Maximum allowed: 50 MB"
+    ]);
+    exit;
+}
 
 
 $allowedExtensions = ['png', 'jpg', 'jpeg', 'pdf', 'txt', 'doc', 'docx'];
