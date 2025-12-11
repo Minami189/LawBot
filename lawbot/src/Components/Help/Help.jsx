@@ -1,5 +1,6 @@
 import classes from './Help.module.css';
 import Navbar from '../Navbar/Navbar';
+import Footer from "../Footer/Footer.jsx";
 import { withBase } from "../../functions/withBase";
 import bro from '../../assests/bro.png'
 import support from '../../assests/support.png';
@@ -44,7 +45,8 @@ export default function Help() {
                     <img src={support} alt="" className={classes.imageSupport}/>
                 </div>
             </div>
-        </section>
+          </section>
+          <Footer />
     </div>
   )
 }
