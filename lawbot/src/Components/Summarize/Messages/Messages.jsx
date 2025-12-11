@@ -12,8 +12,8 @@ const markdownComponents = {
   hr: () => <hr className={classes.rule} />,
 }
 
-export default function Messages({ type = 'You', content = '', className = '' }) {
-  const isUser = type === 'You'
+export default function Messages({ type = 'user', content = '', className = '' }) {
+  const isUser = type === 'user'
   const wrapperClass = `${classes.messageContainer} ${classes[className] ?? ''}`
   const textClass = isUser ? classes.userText : classes.botText
 
@@ -35,7 +35,7 @@ export default function Messages({ type = 'You', content = '', className = '' })
 
   return (
     <div className={wrapperClass}>
-      <h5 className={isUser ? classes.userTitle : classes.botTitle}>{type}</h5>
+      <h5 className={isUser ? classes.userTitle : classes.botTitle}>{type == "user" ? "You" : "Lawbot"}</h5>
       <div className={textClass}>{renderContent()}</div>
     </div>
   )

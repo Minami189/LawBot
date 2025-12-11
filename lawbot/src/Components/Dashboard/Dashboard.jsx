@@ -194,7 +194,7 @@ export default function Dashboard() {
                       className={classes.ActionIcon}
                     />
                     <span className={classes.ActionText}>
-                      Summarize a Document
+                      Document Actions
                     </span>
                   </div>
                 </div>

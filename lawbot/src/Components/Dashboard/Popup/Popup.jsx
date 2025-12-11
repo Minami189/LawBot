@@ -97,11 +97,11 @@ export default function Popup({ onClose, loadStats }){
             <div className={classes.backdrop} onClick={onClose}></div>
             <div className={classes.modal}>
                 <div className={classes.header}>
-                    <h2>Summarize Document</h2>
+                    <h2>Document Actions</h2>
                     <button className={classes.closeBtn} onClick={onClose}>×</button>
                 </div>
                 <div className={classes.body}>
-                    <p>pick a document to summarize.</p>
+                    <p>click on a document to summarize it.</p>
                     <div className={classes.documentList}>
                         {files.map((file, index)=>{
                             return(
