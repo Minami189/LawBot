@@ -24,7 +24,7 @@ after that finishes, type in "ollama pull gpt-oss:120b-cloud" and hit enter
 
 go to https://getcomposer.org/download/ and install composer by clicking on Composer-Setup.exe
 
-Make sure that "add this php to your path" is checked before continuing
+If it asks an option to "add this php to your path" make sure that "add this php to your path" is checked before continuing
 
 after installing composer open cmd as administrator 
 
