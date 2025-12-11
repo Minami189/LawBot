@@ -55,8 +55,6 @@ if (!in_array($ext, $allowedExtensions)) {
 }
 
 $allowedMimes = [
-    'image/png', 
-    'image/jpeg', 
     'application/pdf', 
     'text/plain',
     'application/msword',
