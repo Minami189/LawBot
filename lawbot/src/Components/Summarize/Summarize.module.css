@@ -10,6 +10,19 @@ body, .scrollContainer { -ms-overflow-style: none; }
 body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Chrome */
 
 
+:root {
+  --maincolor: #F6DFCA;
+  --secondarycolor: #F9EADC;
+  --tertiarycolor: #A29090;
+  --textcolor: #3C3232;
+  --textcolorlight: #FBECE1;
+  --title: "Playfair Display", serif;
+  --subtitle: "Merriweather Sans", sans-serif;
+  --textfont: "Geist Mono", monospace;
+}
+
+
+
 .page{
     width:100%;
     height:100vh;
@@ -30,6 +43,7 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
     border-radius: 25px;
     gap:25px;
     box-shadow:  hsla(0, 0%, 0%, 0.25) 0px 4px 4px 1px;
+    margin-left: 5rem;
 }
 
 .chat h1{
@@ -141,13 +155,45 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
     transform: scale(0.95);
 }
 
-.show{
-    display: flex;
-}
 
-.hide{
+
+.hamburgerBtn {
     display: none;
 }
+
+.chatsContainerMobile {
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin-top: 4rem;
+    margin-right: 10px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    height: 90vh;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+}
+
+
+
+.chatsContainerMobile{
+    display: none;
+}
+
+.show {
+    transform: translateX(0);
+}
+
+/* When hidden */
+.hide {
+    transform: translateX(150%);
+}
+
 
 @media (max-width: 1000px){
     .chatsContainer{
@@ -157,13 +203,60 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
     .chat{
         padding: 0rem 1rem;
         padding-top: 2rem;
+        margin: 0;
     }
+    .chatsContainerMobile {
+        display: block;
+    }
+
+    .hamburgerBtn {
+        display: none; /* show with media query */
+        position: fixed;
+        top: 20px;      /* adjust as needed */
+        right: 20px;    /* adjust as needed */
+        font-size: 2rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 9999;
+        width: auto;     /* let it shrink to content */
+        height: auto;
+        padding: 0.5rem; /* optional, makes it easier to tap */
+        display: block;  /* show in mobile */
+    }
+}
+
+.sidebarContentMobile{
+    padding: 1rem;
+    padding-top: 2rem;
+    border-radius: 20px;
+    background-color: #F9EADC;
+    height: 100%;
+    box-shadow:  hsla(0, 0%, 0%, 0.25) 0px 4px 4px 1px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px
+}
+
+.closeChatBtnMobile{
+    all: unset;
 }
 
 .chatListTitle{
     padding-top: 1rem;
     font-family: var(--textfont);
     font-weight: bold;
+}
+
+.chatTitleMobile{
+    font-size: 1rem;
+}
+
+.newChatBtnMobile{
+    background-color: #3d3028;
+    color: #fff;
+    border-radius: 10px;
+    padding: 5px;
 }
 
 .newChatBtn{
