@@ -13,9 +13,7 @@ export default function Login(){
     const [message, setMessage] = useState("");
     const emailRef = useRef(null);
     const passRef = useRef(null);
-    const rememberRef = useRef(null);
     const navigate = useNavigate();
-    const [remember, setRemember] = useState(false);
     const {setUserToken} = useContext(AppContext);
 
     function handleVisible(){
@@ -47,26 +45,15 @@ export default function Login(){
             return;
         }
         
-        //remove sa storage kapag naglogin kahit nakaremember pa sila o nde
+
         localStorage.clear();
-        //sa variable lang massave kung di nakaset to remember
         setUserToken(token);
-        //ito way para masave na nakalogin kung nakaset to remember
-        if(remember){
-            localStorage.setItem("userInfo", token);        
-        }
+        localStorage.setItem("userInfo", token);        
+        
         navigate("/dashboard");
-
     }
 
-    function handleRemember(){
-        const remember = rememberRef.current.checked;
-        if(remember){
-            setRemember(true);
-        }else{
-            setRemember(false);
-        }
-    }
+
 
     return(
         <div className={classes.page}>
@@ -100,10 +87,6 @@ export default function Login(){
 
                         </div>
 
-                        <div className={classes.bottom}>
-                            <label><input type="checkbox" ref={rememberRef} onChange={handleRemember}/>Remember me</label>
-                            <a href="#">Forgot password?</a>
-                        </div>
                         
                         <div className={classes.action}>
                             <p>{message}</p>
