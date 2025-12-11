@@ -34,7 +34,7 @@
   flex: 2;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 30px;  
 }
 
 /* RIGHT SIDE: holds Usage Stats */
@@ -53,7 +53,7 @@
 .Dashboard {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: rem;
   font-family: "Playfair";
   font-size: 4rem;
   display: flex;
@@ -385,8 +385,9 @@
 /* RESPONSIVE STYLES */
 
 /* Tablet styles (768px and below) */
-@media (max-width: 990px) {
+@media (max-width: 1200px) {
   .DashboardContainer {
+    gap: 2rem;
     padding-left: 20px;
     padding-right: 20px;
     height: auto;
@@ -420,7 +421,7 @@
   }
 
   .RightSection {
-    margin: 0;
+    margin-top:3rem;
     width: 100%;
     justify-content: center;
   }

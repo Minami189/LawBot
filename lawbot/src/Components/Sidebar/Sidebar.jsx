@@ -17,7 +17,7 @@ import { SignOut } from "@phosphor-icons/react";
 
 
 function Sidebar() {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const { userToken, setUserToken } = useContext(AppContext);
   const navigate = useNavigate();
@@ -45,7 +45,7 @@ function Sidebar() {
     const handleResize = () => {
       const mobile = window.innerWidth <= 950;
       setIsMobile(mobile);
-      setOpen(!mobile);
+      
     };
 
     handleResize();

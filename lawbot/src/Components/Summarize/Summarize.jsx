@@ -16,6 +16,7 @@ export default function Summarize(){
     const { userToken } = useContext(AppContext);
     const messageRef = useRef(null);
     const bottomRef = useRef(null);
+    const [showNav, setShowNav] = useState(false);
 
     async function handleMessage(e){
         e.preventDefault();
@@ -33,7 +34,7 @@ export default function Summarize(){
 
         const fetchData = new FormData();
 
-        setMessages((prev)=>[...prev,{type: "user", content: msg}]);
+        setMessages((prev)=>[...prev,{type: "You", content: msg}]);
         setMessages(prev=>[...prev,{
             content:  <ThreeDotsWave/>,
             type: ""
@@ -267,6 +268,7 @@ export default function Summarize(){
                 </form>
             </div>
 
+           
              <div className={classes.chatsContainer}>
                     <p className={classes.chatListTitle}>Chat History</p>
                     <button
@@ -278,7 +280,6 @@ export default function Summarize(){
                     </button>
 
                 {
-                
                 chats.map((element) => {
                         return(
                             <div key={element.id} className={`${classes.chatContainer} ${suppressHoverId === element.id ? classes.chatContainerNoHover : ""}`} 
@@ -306,6 +307,73 @@ export default function Summarize(){
                 }
 
              </div>
+
+            
+
+    
+                                                            
+
+            <div className={classes.mobileNavbar}>
+                <button className={classes.hamburgerBtn}
+                onClick={ () => {setShowNav(prev => !prev); console.log(showNav)}}
+                >
+                    ☰
+                </button>
+
+                <div>
+                     <div 
+                        className={
+                            `${classes.chatsContainerMobile} ${showNav ? classes.show : classes.hide}`
+                        }
+                    >
+                        <div className={classes.sidebarContentMobile}>
+                            <p className={classes.chatListTitle}>Chat History</p>
+                            <button
+                                type="button"
+                                className={classes.newChatBtnMobile}
+                                onClick={handleCreateChat}
+                            >
+                                + New Chat
+                            </button>
+
+                                {
+                                chats.map((element) => {
+                                        return(
+                                            <div key={element.id} className={`${classes.chatContainer} ${suppressHoverId === element.id ? classes.chatContainerNoHover : ""}`} 
+
+                                                onClick={()=>{
+                                                    handleSelectChat(element.id);
+                                                }}> 
+
+                                                <h1 className={classes.chatTitle}>
+                                                    {(element.title).length >= 5 ? (element.title).slice(0, 5) + "..." : element.title}
+                                                </h1>
+                                                <button
+                                                    type="button"
+                                                    className={classes.closeChatBtnMobile}
+                                                    onClick={(e)=>handleDeleteChat(e, element.id)}
+                                                    onMouseEnter={()=>setSuppressHoverId(element.id)}
+                                                    onMouseLeave={()=>setSuppressHoverId(null)}
+                                                    aria-label="Delete chat"
+                                                >
+                                                    ×
+                                                </button>
+                                            </div>
+                                        );
+                                    })
+                                }
+
+                    
+                         </div>
+
+
+                    </div>
+                </div>
+                
+
+
+            </div>
+         
 
 
 

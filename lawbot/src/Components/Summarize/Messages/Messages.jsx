@@ -12,8 +12,8 @@ const markdownComponents = {
   hr: () => <hr className={classes.rule} />,
 }
 
-export default function Messages({ type = 'user', content = '', className = '' }) {
-  const isUser = type === 'user'
+export default function Messages({ type = 'You', content = '', className = '' }) {
+  const isUser = type === 'You'
   const wrapperClass = `${classes.messageContainer} ${classes[className] ?? ''}`
   const textClass = isUser ? classes.userText : classes.botText
 
