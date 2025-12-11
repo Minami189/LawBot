@@ -5,6 +5,7 @@ import Messages from "./Messages/Messages.jsx";
 import ThreeDotsWave from "../../animations/ThreeDotsWave.jsx";
 import { faL } from "@fortawesome/free-solid-svg-icons";
 import { jwtDecode } from "jwt-decode"; 
+import Sidebar from "../Sidebar/Sidebar.jsx";
 
 export default function Summarize(){
     const [messages, setMessages] = useState([])
@@ -245,6 +246,7 @@ export default function Summarize(){
 
     return(
         <div className={classes.page}>
+            <Sidebar/>
             <div className={classes.chat}>
                 <h1>{title}</h1>
                 <div className={classes.chatContent}>

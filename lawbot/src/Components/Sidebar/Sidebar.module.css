@@ -220,6 +220,30 @@
   color: #66e6c2;
 }
 
+.logoutBtn {
+  background: none;
+  border: none;
+  color: var(--sidebar-text);
+  cursor: pointer;
+  padding: 0.4rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: background 0.12s ease, color 0.12s ease;
+  opacity: 0.7;
+}
+
+.logoutBtn:hover {
+  background: rgba(255, 59, 59, 0.15);
+  color: #ff6b6b;
+  opacity: 1;
+}
+
+.logoutBtn:active {
+  transform: scale(0.95);
+}
+
 /* -- mobile tweaks -- */
 @media (max-width: 950px) {
   .sidebar {
