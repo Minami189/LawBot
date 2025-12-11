@@ -22,6 +22,7 @@ $stmt = $pdo->prepare("
     FROM logs
     WHERE userEmail = :email
       AND DATE(`date`) = CURDATE()
+      AND action = 'summarize'
     ORDER BY `date` DESC
     LIMIT 3
 ");
@@ -36,6 +37,7 @@ if(!$recents){
         SELECT *
         FROM logs
         WHERE userEmail = :email
+        AND action = 'summarize'
         ORDER BY `date` DESC
         LIMIT 1
     ");

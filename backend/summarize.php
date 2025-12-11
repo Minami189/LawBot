@@ -52,7 +52,7 @@ if (in_array($ext, ['jpg', 'jpeg', 'png'])){
 
     $prompt = "
 You are an AI specifically made to give tips and summarizations of legal documents,
-documents not connected to law or legal topics should be ignored and replied with,
+documents not connected to law or legal topics should be replied with,
 'The document does not provide enough legal context' 
 
 Format your response to first show the short answer, then the longer more detailed explanation when necessary and add new lines to separate short and detailed clearly
@@ -76,7 +76,7 @@ elseif ($ext === 'pdf') {
     $text = mb_convert_encoding($text, 'UTF-8', 'UTF-8');
     $prompt = "
 You are an AI specifically made to give tips and summarizations of legal documents,
-documents not connected to law or legal topics should be ignored and replied with,
+documents not connected to law or legal topics should be replied with,
 'The document does not provide enough legal context' 
 
 Format your response to first show the short answer, then the longer more detailed explanation when necessary and add a <br/> to separate short and detailed clearly
@@ -97,7 +97,7 @@ elseif ($ext === 'txt') {
     $text = mb_convert_encoding($filedata, 'UTF-8', 'UTF-8');
     $prompt = "
 You are an AI specifically made to give tips and summarizations of legal documents,
-documents not connected to law or legal topics should be ignored and replied with,
+documents not connected to law or legal topics should be replied with,
 'The document does not provide enough legal context' 
 
 Format your response to first show the short answer, then the longer more detailed explanation when necessary and add a <br/> to separate short and detailed clearly
