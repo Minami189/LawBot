@@ -153,3 +153,7 @@ $stmt->bindParam(':document', $document, PDO::PARAM_STR);
 $stmt->bindParam(':action', $action, PDO::PARAM_STR);
 $stmt->bindParam(':userEmail', $userEmail, PDO::PARAM_STR);
 $stmt->execute();
+
+$stmt = $pdo->prepare("UPDATE users SET documents_processed = documents_processed + 1 WHERE email = :userEmail");
+$stmt->bindParam(':userEmail', $userEmail, PDO::PARAM_STR);
+$stmt->execute();
