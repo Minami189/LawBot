@@ -195,11 +195,7 @@ try {
     $stmt->bindParam(':userEmail', $userEmail, PDO::PARAM_STR);
     $stmt->execute();
 
-    echo json_encode([
-        "success" => true,
-        "message" => $botResponse
-    ]);
-    exit;
+   
 
 } 
 catch(\Throwable $error) {
