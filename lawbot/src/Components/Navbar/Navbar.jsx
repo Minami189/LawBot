@@ -106,7 +106,7 @@ function Navbar() {
 					</button>
 
 					<div className={classes.sidebarTop}>
-						<a className={classes.btnHome} href={withBase("/#")}>Home</a>
+						<a className={classes.btnHome} href={withBase("/index.html")}>Home</a>
 						<a className={classes.btnHome} href={withBase("/about")}>About Us</a>
 						<a className={classes.btnHome} href={withBase("/help")}>Help</a>
 					</div>

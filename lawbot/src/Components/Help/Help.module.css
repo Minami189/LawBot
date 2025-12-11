@@ -13,7 +13,7 @@
 
 
 .pageContainer{
-    padding: 80px;  
+    
     background-color: var(--maincolor);
     display: flex;
     flex-direction: column;
