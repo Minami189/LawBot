@@ -6,14 +6,40 @@ import {
   UserCircleIcon,
   ListIcon
 } from "@phosphor-icons/react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import classes from "./Sidebar.module.css";
 import logo from "../../assests/logo.png";
 import { withBase } from "../../functions/withBase";
+import { AppContext } from "../../App";
+import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
+import { SignOut } from "@phosphor-icons/react";
+
 
 function Sidebar() {
   const [open, setOpen] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
+  const { userToken, setUserToken } = useContext(AppContext);
+  const navigate = useNavigate();
+  
+  // Get username from token
+  const savedUserToken = localStorage.getItem("userInfo");
+  let username = "User";
+  if(savedUserToken){
+    try {
+      const decodedToken = jwtDecode(savedUserToken);
+      username = decodedToken.username || decodedToken.email || "User";
+    } catch (e) {
+      console.error("Error decoding token:", e);
+    }
+  } else if(userToken){
+    try {
+      const decodedToken = jwtDecode(userToken);
+      username = decodedToken.username || decodedToken.email || "User";
+    } catch (e) {
+      console.error("Error decoding token:", e);
+    }
+  }
 
   useEffect(() => {
     const handleResize = () => {
@@ -28,6 +54,20 @@ function Sidebar() {
   }, []);
 
   const toggleSidebar = () => setOpen((v) => !v);
+
+  function handleLogout() {
+    // Clear all localStorage items
+    localStorage.removeItem("userInfo");
+    localStorage.removeItem("chatID");
+    localStorage.removeItem("selectedFileID");
+    localStorage.removeItem("summarizing");
+    
+    // Clear token from context
+    setUserToken(null);
+    
+    // Redirect to login
+    navigate(withBase("/login"));
+  }
 
   return (
     <div className={classes.sidebarContainer}>
@@ -85,7 +125,7 @@ function Sidebar() {
           <a href={withBase("/summary")}>
             <button className={classes.iconBtn}>
               <FileTextIcon size={24} />
-              <span className={classes.label}>Summary</span>
+              <span className={classes.label}>Lawbot</span>
             </button>
           </a>
 
@@ -115,10 +155,18 @@ function Sidebar() {
           <div className={classes.userBox}>
             <UserCircleIcon size={30} className={classes.userIcon} />
             <div className={classes.userInfo + " " + classes.label}>
-              <p className={classes.userName}>A.P. Moon</p>
+              <p className={classes.userName}>{username}</p>
               <p className={classes.userPlan}>Free</p>
             </div>
           </div>
+          <button 
+            className={classes.logoutBtn}
+            onClick={handleLogout}
+            aria-label="Logout"
+            title="Logout"
+          >
+            <SignOut size={18} />
+          </button>
         </div>
       </aside>
     </div>

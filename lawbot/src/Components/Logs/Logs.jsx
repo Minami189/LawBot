@@ -2,6 +2,7 @@ import classes from "./Logs.module.css";
 import { useState, useRef, useEffect, useContext } from "react";
 import { AppContext } from "../../App";
 import { jwtDecode } from "jwt-decode";
+import Sidebar from "../Sidebar/Sidebar";
 
 export default function Logs(){
     const [logs, setLogs] = useState([]);
@@ -69,6 +70,7 @@ export default function Logs(){
 
     return(
         <div className={classes.page}>
+            <Sidebar/>
             <div className={classes.container}>
 
                 {/* Title */}
@@ -83,14 +85,12 @@ export default function Logs(){
                     <input 
                         type="text" 
                         className={classes.search}
-                        placeholder="search document"
+                        placeholder="filter by document, action, date"
                         onChange={handleSearch}
                         ref={filterRef}
                     />
 
-                    <button className={classes.filterBtn}>
-                        filter actions
-                    </button>
+
                 </div>
 
                 {/* Table */}
