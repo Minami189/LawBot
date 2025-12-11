@@ -32,7 +32,7 @@ inside cmd enter in cd [the directory of the backend folder]
 
 type composer update, wait for it to finish
 
-type composer install and hit enter (composer require) wait for it to finish
+type composer install and hit enter wait for it to finish
 
 
 
