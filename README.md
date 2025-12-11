@@ -52,19 +52,19 @@ remove the semicolon at the beginning of extension=zip and save
 
 # Starting Up
 
-go open the lawbot folder that you pulled
+on xampp start both apache and MySQL
+
+create a database named lawbotdb in the php myadmin 
+
+inside the backend folder you will find a file named lawbotdb(1), import that inside the lawbotdb
+
+go open the lawbot folder that you pulled in vscode
 
 create a command prompt terminal 
 
 type in cd lawbot in your created terminal
 
 type npm install and hit enter wait for it to finish
-
-on xampp start both apache and MySQL
-
-create a database named lawbotdb in the php myadmin 
-
-inside the backend folder you will find a file named lawbotdb(1), import that inside the lawbotdb
 
 type npm run dev and hit enter
 
