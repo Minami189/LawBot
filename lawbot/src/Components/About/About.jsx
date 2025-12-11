@@ -1,5 +1,6 @@
-import classes from "./About.module.css";
-import aboutImg from "../../assests/aboutus/AboutUs.png"
+
+import classes from "../About/About.module.css";
+import aboutImg from "../../assests/aboutus/aboutUs.png";
 
 
 export default function About(){

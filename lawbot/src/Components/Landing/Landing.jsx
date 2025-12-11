@@ -10,7 +10,7 @@ import upload from '../../assests/Landing/Upload.png';
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Reveal } from "../../animations/Reveal.tsx";
-import FileUpload from "../FileUpload/FileUpload.jsx";
+import { withBase } from "../../functions/withBase";
 
 function Landing() {    
     const [activeStep, setActiveStep] = useState(0);
@@ -20,7 +20,7 @@ function Landing() {
     {
       title: "Upload your files",
       desc: "Drag and drop or select files from your computer.",
-      img: upload, // insert your image path
+      img: "", 
     },
     {
       title: "Summarize",
@@ -29,7 +29,7 @@ function Landing() {
     },
     {
       title: "Review",
-      desc: "Check the summarized document and export or save.",
+      desc: "Check out your summarized document",
       img: "",
     },
     ];
@@ -57,7 +57,9 @@ function Landing() {
                         </Reveal>
                         <Reveal>
                         <div className={classes.uploadBar}>
-                            <FileUpload onFileUpload={handleFileUpload} />
+                           <a href={withBase("signup")}>
+                            <p className={classes.landingButton}>Get Lawbot for Free!</p>
+                           </a>
                         </div>
                         </Reveal>
                         <div className={`${classes.subtitle}`}>
@@ -203,13 +205,13 @@ function Landing() {
                             </div>
 
                             <div className={classes.securityFeature}>
-                                <h2>AES-256</h2>
-                                <p>Ensured encryption for stored files.</p>
+                                <h2>Safe Files</h2>
+                                <p>Ensured safety for stored files.</p>
                             </div>
 
                             <div className={classes.securityFeature}>
-                                <h2>Auto-Deletion</h2>
-                                <p>Documents auto-delete after 24 hours.</p>
+                                <h2>Delete</h2>
+                                <p>Documents are allowed to delete anytime.</p>
                             </div>
                             <div className={classes.securityFeature}>
                                 <h2>Independence</h2>
