@@ -24,15 +24,15 @@ after that finishes, type in "ollama pull gpt-oss:120b-cloud" and hit enter
 
 go to https://getcomposer.org/download/ and install composer by clicking on Composer-Setup.exe
 
-Make sure that "add this php to your path" is checked before continuing
+If it asks an option to "add this php to your path" make sure that "add this php to your path" is checked before continuing
 
-after installing composer open cmd as administrator 
+after installing composer close previous command prompts, then open cmd as administrator 
 
 inside cmd enter in cd [the directory of the backend folder]
 
 type composer update, wait for it to finish
 
-type composer install and hit enter (composer require) wait for it to finish
+type composer install and hit enter wait for it to finish
 
 
 
@@ -52,17 +52,19 @@ remove the semicolon at the beginning of extension=zip and save
 
 # Starting Up
 
-go open the lawbot folder that you pulled
+on xampp start both apache and MySQL
+
+create a database named lawbotdb in the php myadmin 
+
+inside the backend folder you will find a file named lawbotdb(1), import that inside the lawbotdb
+
+go open the lawbot folder that you pulled in vscode
 
 create a command prompt terminal 
 
 type in cd lawbot in your created terminal
 
 type npm install and hit enter wait for it to finish
-
-on xampp start both apache and MySQL
-
-create a database named lawbotdb in the php myadmin and import lawbotdb(1) inside the empty database 
 
 type npm run dev and hit enter
 
