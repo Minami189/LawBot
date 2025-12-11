@@ -68,4 +68,6 @@ type npm install and hit enter wait for it to finish
 
 type npm run dev and hit enter
 
+make sure the link it gives is localhost:5173 (if it shows something else, close other terminals running an instance of the website)
+
 get the link and paste it on google
