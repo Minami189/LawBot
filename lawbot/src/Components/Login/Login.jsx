@@ -49,7 +49,7 @@ export default function Login(){
         localStorage.clear();
         setUserToken(token);
         localStorage.setItem("userInfo", token);        
-        
+
         navigate("/dashboard");
     }
 
