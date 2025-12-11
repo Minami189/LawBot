@@ -26,7 +26,7 @@ go to https://getcomposer.org/download/ and install composer by clicking on Comp
 
 If it asks an option to "add this php to your path" make sure that "add this php to your path" is checked before continuing
 
-after installing composer open cmd as administrator 
+after installing composer close previous command prompts, then open cmd as administrator 
 
 inside cmd enter in cd [the directory of the backend folder]
 
