@@ -34,7 +34,7 @@ export default function Summarize(){
 
         const fetchData = new FormData();
 
-        setMessages((prev)=>[...prev,{type: "You", content: msg}]);
+        setMessages((prev)=>[...prev,{type: "user", content: msg}]);
         setMessages(prev=>[...prev,{
             content:  <ThreeDotsWave/>,
             type: ""
