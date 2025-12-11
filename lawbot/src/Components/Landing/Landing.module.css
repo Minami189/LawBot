@@ -76,10 +76,20 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
   max-width: 800px;
 }
 
+.uploadBar{
+  padding: 1.5rem 4rem;
+  background-color: var(--textcolor);
+  border-radius: 20px;
+}
+
 .uploadBar p {
   margin: 0;
   font-weight: 500;
   letter-spacing: 0.5px;
+}
+
+.landingButton{
+  color: white;
 }
 
 
@@ -604,9 +614,8 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
     font-size: clamp(0.3rem, 2vh, 1rem);
   }
   .securityFeaturesContainer {
-    display: grid;
-    grid-template-columns: 1fr 1fr; 
-    grid-template-rows: 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
     text-align: center;
     gap: 1rem;
     padding: 0;
