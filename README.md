@@ -17,7 +17,7 @@ open cmd as administartor
 
 type in "ollama pull llama3.1" and hit enter then wait for it to finish
 
-after that finishes, type in "ollama pull gpt-oss:120b-cloud"
+after that finishes, type in "ollama pull gpt-oss:120b-cloud" and hit enter
 
 
 # Composer
