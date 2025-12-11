@@ -1,4 +1,4 @@
-*{
+.example{
     box-sizing: border-box;
     padding:0px;
     margin:0px;
@@ -45,4 +45,3 @@
     height: auto;        
     border-radius: 20px; 
 }
-

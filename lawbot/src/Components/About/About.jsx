@@ -1,17 +1,20 @@
-
+<<<<<<< Updated upstream:lawbot/src/Components/About/About.jsx
 import classes from "./About.module.css";
-import aboutImg from "../../assests/aboutus/AboutUs.png"
-
+=======
+import classes from "../Styles/about.module.css";
+import aboutImg from "../assests/aboutus/AboutUs.png"
+>>>>>>> Stashed changes:lawbot/src/Components/About.jsx
 
 export default function About(){
     return(
-        <div className={classes.page}>
+        <div className={classes.example}>
                 <img src={aboutImg} alt="About Lawbot" className={classes.aboutImg} />
             <h1 className={classes.title}>THE SMART WAY OF MAKING DOCUMENTS 
                 <br/>
                 COMPLEX INFORMATION CLEAR AND
                 <br/>
-                EASY TO UNDERSTAND</h1>
+                EASY TO UNDERSTAND
+            </h1>
             <p className={classes.description}>
                 Welcome to Lawbot-your smart legal assistant. Our goal is to make the documents easier to understand for everyone. 
             </p>
@@ -24,8 +27,6 @@ export default function About(){
             <p className={classes.description}>
                 making complex information clear and easy to understand, Lawbot is here to support and assist you anytime.
             </p>
-
-            
         </div>
     )
 }
