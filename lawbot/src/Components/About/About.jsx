@@ -1,9 +1,9 @@
 import classes from "./About.module.css";
-import aboutImg from "../../assests/aboutus/AboutUs.png"
-import target from "../../assests/aboutus/target.png"
-import warning from "../../assests/aboutus/warning.png"
-import diamond from "../../assests/aboutus/diamond.png"
-import Navbar from "../../Navbar/Navbar";
+import aboutImg from "../../assests/aboutus/AboutUs.png";
+import target from "../../assests/aboutus/Mission.png";
+import warning from "../../assests/aboutus/Limitation.png";
+import diamond from "../../assests/aboutus/Value.png";
+import Navbar from "../Navbar/Navbar";
 
 
 export default function About(){
