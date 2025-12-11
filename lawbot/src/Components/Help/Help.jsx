@@ -1,5 +1,6 @@
 import classes from './Help.module.css';
 import Navbar from '../Navbar/Navbar';
+import Footer from "../Footer/Footer.jsx";
 import { withBase } from "../../functions/withBase";
 import bro from '../../assests/bro.png'
 import support from '../../assests/support.png';
@@ -38,13 +39,14 @@ export default function Help() {
                     support that removes confusion and builds confidence, allowing individuals of any background to use the tools effectively. 
                     Whether you're exploring the platform for the first time or returning with questions, this guidance helps you 
                     move forward with ease and clarity.</p>
-                    <a href={withBase("/#contactUs")}><p className={classes.button}>Contact Us</p></a>
+                    <a href="mailto:thedevelopers@lawbot.com?subject=Contact%20Us&body=Hello%2C%20I%20would%20like%20to%20get%20in%20touch."><p className={classes.button}>Contact Us</p></a>
                 </div>
                 <div className={classes.imageContainerDesktop}>
                     <img src={support} alt="" className={classes.imageSupport}/>
                 </div>
             </div>
-        </section>
+          </section>
+          <Footer />
     </div>
   )
 }

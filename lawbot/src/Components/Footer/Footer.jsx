@@ -43,16 +43,15 @@ function Footer() {
                 <div className={classes.footerRight}>
                     <div className={classes.footerRightContainerLeft}>
                         <p className={classes.title}>Site Map</p>
-                        <a href="" className={classes.subcontent}>Home</a>
-                        <a href="" className={classes.subcontent}>About Us</a>
-                        <a href="" className={classes.subcontent}>Contact Us</a>
-                        <a href="" className={classes.subcontent}>Help</a>
+                        <a className={classes.subcontent} href="/">Home</a>
+                        <a className={classes.subcontent} href="/about">About Us</a>
+                        <a className={classes.subcontent} href="/help">Help</a>
                     </div>
                     <div className={classes.footerRightContainerRight}>
                         <p className={classes.title}>About LawBOT</p>
-                        <a href="" className={classes.subcontent}>Our Goal</a>
-                        <a href="" className={classes.subcontent}>Features</a>
-                        <a href="" className={classes.subcontent}>Security</a>
+                        <a className={classes.subcontent} href="/">Our Goal</a>
+                        <a className={classes.subcontent} href="/">Features</a>
+                        <a className={classes.subcontent} href="/">Security</a>
                     </div>
                 </div>
             </footer>

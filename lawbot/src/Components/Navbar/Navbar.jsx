@@ -104,53 +104,11 @@ function Navbar() {
 					>
 						<XIcon size={28} />
 					</button>
+
 					<div className={classes.sidebarTop}>
-						<a className={classes.btnHome} href={withBase("/#")}>Home</a>
-
-						<div className={classes.sidebarDropdown}>
-							<button
-								onClick={() => toggleDropdown("about-side")}
-								className={classes.sidebarToggle}
-							>
-								About Us
-								{openDropdown === "about-side" ? (
-									<CaretDownIcon size={20} />
-								) : (
-									<CaretRightIcon size={20} />
-								)}
-							</button>
-							<div
-								className={`${classes.sidebarDropdownMenu} ${
-									openDropdown === "about-side" ? classes.open : ""
-								}`}
-							>
-								<a href={withBase("/#mission")}>Mission & Vision</a>
-								<a href={withBase("/#team")}>Our Team</a>
-								<a href={withBase("/#history")}>History</a>
-							</div>
-						</div>
-
-						<div className={classes.sidebarDropdown}>
-							<button
-								onClick={() => toggleDropdown("help-side")}
-								className={classes.sidebarToggle}
-							>
-								Help
-								{openDropdown === "help-side" ? (
-									<CaretDownIcon size={20} />
-								) : (
-									<CaretRightIcon size={20} />
-								)}
-							</button>
-							<div
-								className={`${classes.sidebarDropdownMenu} ${
-									openDropdown === "help-side" ? classes.open : ""
-								}`}
-							>
-								<a href={withBase("/#faq")}>FAQ</a>
-								<a href={withBase("/#support")}>Support</a>
-							</div>
-						</div>
+						<a className={classes.btnHome} href={withBase("/")}>Home</a>
+						<a className={classes.btnHome} href={withBase("/about")}>About Us</a>
+						<a className={classes.btnHome} href={withBase("/help")}>Help</a>
 					</div>
 					<hr />
 					<div className={classes.sidebarBottom}>
