@@ -56,15 +56,6 @@ function Navbar() {
 					>
 						<a href={withBase("/about")}>About Us</a>
 						<span className={classes.underline}></span>
-						<div
-							className={`${classes.dropdownMenu} ${
-								openDropdown === "about" ? classes.open : ""
-							}`}
-						>
-							<a href={withBase("/#mission")}>Mission & Vision</a>
-							<a href={withBase("/#team")}>Our Team</a>
-							<a href={withBase("/#history")}>History</a>
-						</div>
 					</div>
 
 					{/* Help Dropdown */}
@@ -78,14 +69,6 @@ function Navbar() {
 					>
 						<a href={withBase("/help")}>Help</a>
 						<span className={classes.underline}></span>
-						<div
-							className={`${classes.dropdownMenu} ${
-								openDropdown === "help" ? classes.open : ""
-							}`}
-						>
-							<a href={withBase("/#faq")}>FAQ</a>
-							<a href={withBase("/#support")}>Support</a>
-						</div>
 					</div>
 				</nav>
 
