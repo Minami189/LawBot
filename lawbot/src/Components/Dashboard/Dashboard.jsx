@@ -94,8 +94,11 @@ export default function Dashboard() {
       method: "POST",
       body: fileData
     });
-    const data = await response.json();
-    console.log(data);
+    const {success, message} = await response.json();
+    if(!success){
+      alert(message);
+    }
+
     loadStats();
   });
 
@@ -191,7 +194,7 @@ export default function Dashboard() {
                       className={classes.ActionIcon}
                     />
                     <span className={classes.ActionText}>
-                      Summarize a Document
+                      Document Actions
                     </span>
                   </div>
                 </div>

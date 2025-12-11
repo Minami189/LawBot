@@ -25,10 +25,12 @@ function Sidebar() {
   // Get username from token
   const savedUserToken = localStorage.getItem("userInfo");
   let username = "User";
+  let userEmail;
   if(savedUserToken){
     try {
       const decodedToken = jwtDecode(savedUserToken);
       username = decodedToken.username || decodedToken.email || "User";
+      userEmail = decodedToken.email;
     } catch (e) {
       console.error("Error decoding token:", e);
     }
@@ -36,6 +38,7 @@ function Sidebar() {
     try {
       const decodedToken = jwtDecode(userToken);
       username = decodedToken.username || decodedToken.email || "User";
+      userEmail = decodedToken.email;
     } catch (e) {
       console.error("Error decoding token:", e);
     }
@@ -55,7 +58,27 @@ function Sidebar() {
 
   const toggleSidebar = () => setOpen((v) => !v);
 
-  function handleLogout() {
+  async function handleLogout() {
+
+
+    const fetchData = new FormData();
+    fetchData.append("action", "Logout");
+    fetchData.append("document", "N/A");
+    fetchData.append("userEmail", userEmail);
+
+    const response = await fetch("http://localhost/backend/logs.php",{
+      method:"POST",
+      body:fetchData
+    })
+
+    const {success, message} = await response.json();
+    if(!success){
+      console.error(message);
+      return;
+    }
+
+
+
     // Clear all localStorage items
     localStorage.removeItem("userInfo");
     localStorage.removeItem("chatID");
@@ -64,7 +87,6 @@ function Sidebar() {
     
     // Clear token from context
     setUserToken(null);
-    
     // Redirect to login
     navigate(withBase("/login"));
   }

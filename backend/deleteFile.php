@@ -34,7 +34,7 @@ $updateStmt = $pdo->prepare("
 $updateStmt->execute([$fileSizeBytes, $userEmail]);
 
 
-$action = "delete";
+$action = "Delete";
 // Use the filename we fetched earlier for logging
 $document = $filename;
 $userEmail = $_POST["userEmail"];

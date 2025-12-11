@@ -20,7 +20,6 @@ export function useFileUpload(onFileUpload) {
       "application/pdf": [".pdf"],
       "application/msword": [".doc", ".docx"],
       "text/plain": [".txt"],
-      "image/png": [".png"],
     },
   });
 
