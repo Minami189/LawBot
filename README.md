@@ -2,7 +2,9 @@
 
 clone this repo with "git clone https://github.com/Minami189/LawBot.git" on cmd on any directory you want
 
-move the backend folder inside the lawbot folder you just pulled to xampp/htdocs
+inside the  folder you just pulled you will find a folder named "backend"
+
+move or copy that folder to xampp/htdocs
 
 
 # Ollama
