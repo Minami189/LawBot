@@ -192,32 +192,13 @@ function Landing() {
                         <Reveal width="100%">
                             <div className={classes.securityTitleContainer}>
                                 <h1>Confidentiality Is Our Priority</h1>
-                                <p>Lawbot utilizes different types of security measurements to ensure proper encryption 
+                                <p>Lawbot utilizes bcrypt to ensure security
                                 of your data while delivering fast and reliable services</p>
                             </div>
                     
                         </Reveal>
                         <Reveal width="100%">
-                        <div className={classes.securityFeaturesContainer}>
-                            <div className={classes.securityFeature}>
-                                <h2>HTTPS</h2>
-                                <p>secure data transfer.</p>
-                            </div>
-
-                            <div className={classes.securityFeature}>
-                                <h2>Safe Files</h2>
-                                <p>Ensured safety for stored files.</p>
-                            </div>
-
-                            <div className={classes.securityFeature}>
-                                <h2>Delete</h2>
-                                <p>Documents are allowed to delete anytime.</p>
-                            </div>
-                            <div className={classes.securityFeature}>
-                                <h2>Independence</h2>
-                                <p>No third-party data sharing.</p>
-                            </div>
-                        </div>
+            
                         </Reveal>
                     </div>
                     
