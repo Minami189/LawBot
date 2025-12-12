@@ -36,9 +36,9 @@ after installing composer close previous command prompts, then open cmd as admin
 
 inside cmd enter in cd [the directory of inside the backend folder you moved to htdocs from earlier]
 
-type composer update, wait for it to finish
+type "composer update" and hit enter, wait for it to finish
 
-type composer install and hit enter wait for it to finish
+type "composer install" and hit enter wait for it to finish
 
 
 
