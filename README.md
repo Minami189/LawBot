@@ -44,7 +44,7 @@ type "composer install" and hit enter wait for it to finish
 
 # Backend Setup
 
-start and open xampp 
+open xampp 
 
 open MySQL config and press my.ini
 
