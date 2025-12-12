@@ -34,7 +34,7 @@ proceed to installing
 
 after installing composer close previous command prompts, then open cmd as administrator 
 
-inside cmd enter in cd [the directory of the backend folder]
+inside cmd enter in cd [the directory of inside the backend folder]
 
 type composer update, wait for it to finish
 
