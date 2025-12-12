@@ -2,7 +2,7 @@
 
 clone this repo with "git clone https://github.com/Minami189/LawBot.git" on cmd on any directory you want
 
-inside the  folder you just pulled you will find a folder named "backend"
+inside the  folder you just cloned you will find a folder named "backend"
 
 move or copy that folder to xampp/htdocs
 
@@ -48,7 +48,7 @@ open xampp
 
 open MySQL config and press my.ini
 
-change the max_allowed_packet under key_buffer to max_allowed_packet=50M and save
+ctrl+f find the max_allowed_packet under key_buffer and change it to max_allowed_packet=50M and save
 
 open apache config and press php.ini and ctrl+f find the ;extension=zip
 
@@ -62,9 +62,9 @@ on xampp start both apache and MySQL
 
 create a database named lawbotdb in the php myadmin 
 
-inside the backend folder you will find a file named lawbotdb(1), import that inside the lawbotdb
+inside the backend folder you will find a file named lawbotdb, import that inside the lawbotdb
 
-go open the lawbot folder that you pulled in vscode
+go open the cloned lawbot folder in vscode
 
 create a command prompt terminal 
 
